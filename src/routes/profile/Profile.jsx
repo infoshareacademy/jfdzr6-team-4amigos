@@ -1,20 +1,18 @@
+import { doc, getDoc } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { queryProfiles } from "../../api";
+import { db } from "../../api/firebase";
 
 const Profile = () => {
   const { docId } = useParams();
   const [profile, setProfile] = useState([]);
 
   const getProfile = (docId) => {
-    queryProfiles(docId, (querySnapshot) => {
-      const profile = querySnapshot.docs.map((doc) => {
-        
-        return { id: doc.id, ...doc.data() };
-      });
-
-      setProfile(...profile);
-    });
+    getDoc(doc(db,"users",docId))
+    .then(docData=>{
+      const data = docData.data();
+      setProfile(data)
+    })
   };
 
   useEffect(() => {

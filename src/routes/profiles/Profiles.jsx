@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { getProfiles, registerDbListener } from "../../api";
 
 const Profiles = () => {
@@ -11,7 +12,7 @@ const Profiles = () => {
   }, []);
 
   const renderProfiles = profiles.map((profile) => {
-    return <li key={profile.id}><a href={`/auth/profiles/${profile.userId}`}>{profile.name}</a></li>;
+    return <li key={profile.id}><Link to={`/profiles/${profile.id}`}>{profile.name}</Link></li>;
   });
   return (
     <div>
