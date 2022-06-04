@@ -45,7 +45,7 @@ export const queryProfiles = (filter, cb) => {
 export const registerUser = async (email, password, userData) => {
   const storageRef = ref(
     storage,
-    `avatars/${userData.profilePicture.name}-2`,
+    `avatars/${userData.profilePicture.name}-3`,
   )
   try {
     const jwt = await createUserWithEmailAndPassword(auth, email, password);

@@ -6,13 +6,13 @@ const Profiles = () => {
   const [profiles, setProfiles] = useState([]);
 
   useEffect(() => {
-    registerDbListener(querySnapshot=>{
+    registerDbListener(querySnapshot => {
       setProfiles(getProfiles(querySnapshot))
     })
   }, []);
 
   const renderProfiles = profiles.map((profile) => {
-    return <li key={profile.id}><Link to={`/profiles/${profile.id}`}>{profile.name}</Link></li>;
+    return <li key={profile.id}><Link to={`/profiles/${profile.id}`}>{profile.name}{profile.sports.map(sport => <p>{sport}</p>)}</Link></li>;
   });
   return (
     <div>
