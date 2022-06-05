@@ -45,7 +45,11 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route index element={role === "guest" ? <Landing /> : <Profiles />} />
+        <Route index element={role === "guest" ? <Landing /> 
+: <Profiles />
+
+} />
+<span>Hej tu konflikt</span>
 
         <Route
           element={
