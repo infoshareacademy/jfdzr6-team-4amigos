@@ -17,14 +17,14 @@ export const StyledNav = styled.nav`
     border-bottom: 1px solid #e6e6e6;
     `
 
-export const StyledLogo = styled.div`
+export const StyledLogo = styled.img`
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100px;
+    width: 40px;
     height: 100%;
     background-color: #fff;
-    border-radius: 50%;
+    border-radius: 5%;
 `
 
 export const StyledUl = styled.ul`
@@ -36,6 +36,11 @@ export const StyledUl = styled.ul`
     height: 100%;
     padding: 0 20px;
     margin: 0;
+
+    p{
+        font-size: 14px;
+        color: #C5C7C5;
+    }
 
 `
 export const StyledRegister = styled(NavLink)`
@@ -54,7 +59,7 @@ export const StyledRegister = styled(NavLink)`
     cursor: pointer;
     transition: all 0.3s ease-in-out;
     &:hover {
-        background-color: #e6e6e6;
+        background-color: #C5C7C5;
         color: #000;
     }
     `
@@ -74,10 +79,11 @@ export const StyledRegister = styled(NavLink)`
     cursor: pointer;
     transition: all 0.3s ease-in-out;
     &:hover {
-        background-color: #e6e6e6;
+        background-color: #C5C7C5;
         color: #000;
     }
     `
+
 
 
     

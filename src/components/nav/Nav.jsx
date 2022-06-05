@@ -1,17 +1,15 @@
 import { Link } from "react-router-dom";
+import logo from "../../assets/logoOrange.png";
 
 
 // styles
-import { StyledNav } from "./NavStyle";
-import { StyledUl } from "./NavStyle";
-import { StyledRegister } from "./NavStyle";
-import { StyledLogin } from "./NavStyle";
+import { StyledNav, StyledUl, StyledRegister, StyledLogin, StyledLogo } from "./NavStyle";
 
 export const Nav = () => {
   return (
     <StyledNav>
       <Link to="/">
-          <img src="../../assets/LogoOrange.png" alt="Logo" />
+          <StyledLogo src={logo} alt="Logo" />
       </Link>
       <StyledUl>
         <li>
