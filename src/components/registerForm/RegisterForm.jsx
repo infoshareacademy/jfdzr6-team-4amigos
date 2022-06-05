@@ -6,7 +6,7 @@ const RegisterForm = ({ handleSubmit, handleChange, formData }) => {
     { label: "Spacer", value: "walk" },
     { label: "Taniec", value: "dance" },
     { label: "Jazda na rolkach", value: "rollerSkating" },
-    { label: "Bieganie", value: "runing" },
+    { label: "Bieganie", value: "running" },
     { label: "Siłownia", value: "gym" },
     { label: "Wędkowanie", value: "fishing" },
     { label: "Badminton", value: "badminton" },

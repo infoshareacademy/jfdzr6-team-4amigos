@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getProfiles, registerDbListener } from "../../api";
+import { sportsIcon } from "../../utils/sportsLabel";
 
 const Profiles = () => {
   const [profiles, setProfiles] = useState([]);
@@ -11,8 +12,12 @@ const Profiles = () => {
     })
   }, []);
 
-  const renderProfiles = profiles.map((profile) => {
-    return <li key={profile.id}><Link to={`/profiles/${profile.id}`}>{profile.name}{profile.sports.map(sport => <p>{sport}</p>)}</Link></li>;
+  const renderProfiles = profiles.map(({id,name,sports, profilePicture}) => {
+    return <div key={id}>
+      <img src={profilePicture || "https://images.unsplash.com/photo-1653953547304-9f434ab5cd6d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"} width="150px"/>
+      <ul>{sports.map( sport=><li key={sport}>{sportsIcon[sport]}</li>)}</ul>
+      <Link to={`/profiles/${id}`}>Wyświetl profil</Link>
+    </div>;
   });
   return (
     <div>
