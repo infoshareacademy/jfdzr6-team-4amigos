@@ -38,6 +38,7 @@ function App() {
     });
   }, []);
 
+
   if (!role) {
     return <p>Trwa ładowanie strony...</p>;
   }
@@ -45,7 +46,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route index element={role === "guest" ? <Landing /> : <Profiles />} />
+        <Route index element={role === "guest" ? <Landing /> : <Profiles sports={userData?.sports} uid={user.uid}/>} />
 
         <Route
           element={
@@ -62,7 +63,7 @@ function App() {
             <ProtectedRoute isAllowed={role === "user"} redirectPath="/" />
           }
         >
-          <Route path="profiles" element={<Profiles />} />
+          {/* <Route path="profiles" element={<Profiles/>} /> */}
           <Route path="profiles/:docId" element={<Profile />} />
         </Route>
       </Routes>

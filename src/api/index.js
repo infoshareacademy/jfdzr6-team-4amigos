@@ -34,26 +34,26 @@ export const getProfiles = (querySnapshot) => {
     return { id: doc.id, ...doc.data() };
   });
   ///Pobieranie chatu użytkownika
-  profiles[0].chatHistory.forEach(document=>{
+  // profiles[0].chatHistory.forEach(document=>{
     
-    const docRef = doc(db,COLLECTIONS_NAMES.CHATS, document.id)
-    getDoc(docRef).then(snapshot=>{
-      console.log(snapshot.data());
-    })
-  });
+  //   const docRef = doc(db,COLLECTIONS_NAMES.CHATS, document.id)
+  //   getDoc(docRef).then(snapshot=>{
+  //     console.log(snapshot.data());
+  //   })
+  // });
   return profiles;
 };
 
 export const queryProfiles = (filter, cb) => {
   const q = filter
-    ? query(profilesCollection, where("userId", "==", filter))
+    ? query(profilesCollection, where("sports", "==", filter))
     : query(profilesCollection, defaultQueryConstraint);
 
   getDocs(q).then(cb);
 };
 
 export const registerUser = async (email, password, userData) => {
-  const downloadUrl = null
+  let downloadUrl = null
   try {
     const jwt = await createUserWithEmailAndPassword(auth, email, password);
 
@@ -82,6 +82,7 @@ export const loginUser = (email, password, cb) => {
     });
 };
 
-export const registerDbListener = (cb) => {
-  onSnapshot(query(profilesCollection, defaultQueryConstraint), cb);
+export const registerDbListener = (cb, filterSports) => {
+  // onSnapshot(query(profilesCollection, defaultQueryConstraint), cb); old wersion
+  onSnapshot(query(profilesCollection, where("sports", "array-contains-any", filterSports)), cb);
 };
