@@ -34,13 +34,13 @@ export const getProfiles = (querySnapshot) => {
     return { id: doc.id, ...doc.data() };
   });
   ///Pobieranie chatu użytkownika
-  profiles[0].chatHistory.forEach(document=>{
+  // profiles[0].chatHistory.forEach(document=>{
     
-    const docRef = doc(db,COLLECTIONS_NAMES.CHATS, document.id)
-    getDoc(docRef).then(snapshot=>{
-      console.log(snapshot.data());
-    })
-  });
+  //   const docRef = doc(db,COLLECTIONS_NAMES.CHATS, document.id)
+  //   getDoc(docRef).then(snapshot=>{
+  //     console.log(snapshot.data());
+  //   })
+  // });
   return profiles;
 };
 
