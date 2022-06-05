@@ -46,7 +46,9 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+
         <Route index element={role === "guest" ? <Landing /> : <Profiles sports={userData?.sports} uid={user.uid}/>} />
+
 
         <Route
           element={
