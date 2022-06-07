@@ -10,6 +10,7 @@ import ForgotPassword from "./routes/auth/ForgotPassword";
 import { onAuthStateChanged } from "@firebase/auth";
 import { auth, db } from "./api/firebase";
 import { doc, getDoc } from "firebase/firestore";
+import { Nav } from "./components/nav/Nav";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -44,8 +45,9 @@ function App() {
 
   return (
     <BrowserRouter>
+    <Nav />
       <Routes>
-        <Route index element={role === "guest" ? <Landing /> : <Profiles />} />
+        <Route index element={role === "guest" ? <Landing /> : <Profiles uid={user.uid} sports={userData.sports}/>} />
 
         <Route
           element={
