@@ -81,6 +81,15 @@ const RegisterForm = ({ handleSubmit, handleChange, formData }) => {
         />
       </div>
       <div>
+        <label htmlFor="description">Napisz coś o sobie:</label>
+        <textarea
+          name="description"
+          value={formData.description}
+          placeholder="Napisz coś o sobie"
+          onChange={handleChange}
+        />
+      </div>
+      <div>
         <label htmlFor="email">Email:</label>
         <input
           type="text"

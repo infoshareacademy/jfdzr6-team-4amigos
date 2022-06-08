@@ -19,6 +19,7 @@ export const CardContainer = styled.div`
     border-radius: 10px 10px 0 0;
     background-color: #fff;
     border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
     ul{
         list-style: none;
@@ -32,7 +33,8 @@ export const CardContainer = styled.div`
     }
 
     button{
-        width: 100%;
+        width: calc(100% - 10px);
+        margin: 5px;
         background-color: #FF8020;
         border: none;
         height: 50px;
@@ -50,6 +52,7 @@ export const CardContainer = styled.div`
 
 export const CardPictureWrapper = styled.div`
     position: relative;
+    height: 300px;
 
     img{
         width: 100%;
@@ -65,7 +68,7 @@ export const CardPictureWrapper = styled.div`
         width: 100%;
         padding: 10px 20px;
         position: absolute;
-        bottom: 3px;
+        bottom: 0px;
         left: 0px;
         color: #fff;
         font-size: 22px;
@@ -77,10 +80,5 @@ export const CardPictureWrapper = styled.div`
 export const CardInfoWrapper = styled.div`
     margin: 10px;
 
-    &::after{
-        content: "";
-        display: block;
-        width: 100%;
-        height: 1px;
-    }
+   
 `

@@ -2,12 +2,16 @@
 body {
   margin: 0;
   font-family: 'Open Sans', sans-serif;
-  background-color: #f0ede9;
 }
 
 *{
   box-sizing: border-box;
   font-family: 'Open Sans', sans-serif;
+}
+
+a{
+  color: inherit;
+  text-decoration: none;
 }
 
 ul{
