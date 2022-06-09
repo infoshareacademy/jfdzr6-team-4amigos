@@ -32,7 +32,7 @@ const Profile = () => {
     e.preventDefault()
   }
 
-  const openChat = () =>{
+  const openChat = () => {
     setIsActive(true)
   }
 
@@ -55,15 +55,13 @@ const Profile = () => {
       <h4>Sporty, które uprawiam</h4>
       <ul>{profile.sports.map(sport => <li key={sport}>{sportsIcon[sport]}</li>)}</ul>
       <h4>Poziom zaawansowania</h4>
-      <ProgressBar>
-        <div></div>
-      </ProgressBar>
+      <ProgressBar experience={"intermediate"}/>
       <h4>O mnie</h4>
       <p>{profile.description}</p>
-    {!isActive && <OpenChatButton onClick={openChat}>Zacznij rozmowę</OpenChatButton>}
+      {!isActive && <OpenChatButton onClick={openChat}>Zacznij rozmowę</OpenChatButton>}
     </ProfileDetailsWrapper>
     {isActive && <ChatContainer onSubmit={handleSubmit}>
-      
+
       <ChatMessagesWrapper>
         <IncommingMessage>Hello World!</IncommingMessage>
         <IncommingMessage>Hello World!</IncommingMessage>
@@ -84,7 +82,7 @@ const Profile = () => {
         <OutgoingMessage>Hello World!</OutgoingMessage>
         <OutgoingMessage>Hello Karol!</OutgoingMessage>
       </ChatMessagesWrapper>
-      <TypingInput placeholder="Aa..."/>
+      <TypingInput placeholder="Aa..." />
     </ChatContainer>}
   </ProfileContainer>;
 };

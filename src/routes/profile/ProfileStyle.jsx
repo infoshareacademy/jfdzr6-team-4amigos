@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import { sportExperience } from "../../utils/sportsLabel";
 
 export const ProfileContainer = styled.section`
     width: 85%;    
@@ -69,12 +69,15 @@ export const ProgressBar = styled.div`
     height: 4px;
     background-color: #EDECE8;
     border-radius: 10px;
-
-    div{
-        width: 70%;
+    position: relative;
+    &::after{
+        display: block;
+        content: "";
+        position: absolute;
+        width: ${props=>sportExperience[props.experience]};
         height: 100%;
         background-color: #FF8020;
-        border-radius: 10px;
+        border-radius: 10px;  
     }
 `
 
@@ -89,27 +92,27 @@ export const ChatContainer = styled.form`
     justify-content: flex-end;
 `
 export const TypingInput = styled.input`
-        width: 94%;
-        margin: 0;
-        border: none;
-        padding: 10px 10px;
-        background-color: #EDECE8;
-        border-radius: 10px;
-        border: 1px solid #EDECE8;
-        color: #262f40;
-        font-size: 16px;
+    width: 94%;
+    margin: 0;
+    border: none;
+    padding: 10px 10px;
+    background-color: #EDECE8;
+    border-radius: 10px;
+    border: 1px solid #EDECE8;
+    color: #262f40;
+    font-size: 16px;
 
-        &:focus-visible{
-            border: 1px solid #262f40;
-            outline: none;
-        }
+    &:focus-visible{
+        border: 1px solid #262f40;
+        outline: none;
+    }
     
 `
 export const ChatMessagesWrapper = styled.div`
-padding: 10px;
-display: flex;
-flex-direction: column;
-overflow-y: scroll;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
 `
 
 export const IncommingMessage = styled.div`

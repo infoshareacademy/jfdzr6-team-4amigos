@@ -8,3 +8,9 @@ export const sportsIcon = {
     running: <BiRun />,
     gym: <CgGym />,
 }
+
+export const sportExperience = {
+    amateur: "10%",
+    intermediate: "50%",
+    advanced: "100%",
+}
