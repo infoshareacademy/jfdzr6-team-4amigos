@@ -12,6 +12,7 @@ const Register = () => {
         age: "",
         email:"",
         password:"",
+        city:"",
         confirmPassword:"",
         profilePicture: "",
         sports:[]
