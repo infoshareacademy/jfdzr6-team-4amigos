@@ -15,11 +15,13 @@ export const StyledSection = styled.section`
   margin-top: 100px;
   h1 {
     font-size: 30px;
+    font-family: "Open Sans", sans-serif;
     color: #c5c7c5;
     margin: 0;
   }
   p {
     font-size: 14px;
+    font-family: "Open Sans", sans-serif;
     color: #c5c7c5;
   }
   img {

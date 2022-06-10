@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom"
-import logo from "../../assets/logoSportAmigo.png";
+import logo from "../../assets/img/logoSportAmigo.png";
 
 // styles
 import { StyledSection } from "./LandingStyle";
