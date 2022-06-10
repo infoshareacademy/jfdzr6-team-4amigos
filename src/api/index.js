@@ -53,7 +53,7 @@ export const queryProfiles = (filter, cb) => {
 };
 
 export const registerUser = async (email, password, userData) => {
-  const downloadUrl = null
+  let downloadUrl = null
   try {
     const jwt = await createUserWithEmailAndPassword(auth, email, password);
 
@@ -82,6 +82,7 @@ export const loginUser = (email, password, cb) => {
     });
 };
 
-export const registerDbListener = (cb) => {
-  onSnapshot(query(profilesCollection, defaultQueryConstraint), cb);
+export const registerDbListener = (cb,filter) => {
+  // onSnapshot(query(profilesCollection, defaultQueryConstraint), cb);
+  onSnapshot(query(profilesCollection, where("sports", "array-contains-any", filter)), cb);
 };
