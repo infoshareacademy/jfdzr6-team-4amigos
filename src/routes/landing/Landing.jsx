@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Nav } from "../../components/nav/Nav";
-import logo from "../../assets/logoSportAmigo.png";
+import logo from "../../assets/img/logoSportAmigo.png";
 
 // styles
 import { StyledSection } from "./LandingStyle";
