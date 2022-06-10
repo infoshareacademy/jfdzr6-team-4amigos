@@ -1,4 +1,17 @@
 import React from "react";
+import {
+  StyledInputDiv,
+  StyledForm,
+  StyledH3,
+  StyledCheckbox,
+  StyledH5,
+  StyledSportsInputContainer,
+  StyledSportsLabel,
+  StyledInput,
+  StyledGenderInputDiv,
+  StyledGenderInputContainer,
+  StyledTextarea,StyledSubmitButton
+} from "./RegisterFormStyle";
 
 const RegisterForm = ({ handleSubmit, handleChange, formData }) => {
   const sportsLabel = [
@@ -16,111 +29,134 @@ const RegisterForm = ({ handleSubmit, handleChange, formData }) => {
 
   const renderSportsInput = sportsLabel.map((sportEl) => {
     return (
-      <div key={sportEl.value}>
-        <label htmlFor="sports">{sportEl.label}</label>
-        <input
+      <StyledInputDiv key={sportEl.value}>
+        <StyledCheckbox
           type="checkbox"
           name={sportEl.value}
           value={sportEl.value}
           onChange={handleChange}
         />
-      </div>
+        <StyledSportsLabel htmlFor="sports">{sportEl.label}</StyledSportsLabel>
+      </StyledInputDiv>
     );
   });
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div style={{border:"1px solid black"}}>
-        <h3>Wybierz jakie sporty uprawiasz</h3>
+    <StyledForm onSubmit={handleSubmit}>
+      <StyledH3>1. Jakie sporty Cię interesują?</StyledH3>
+      <StyledH5>Wybierz tyle dyscyplin ile chcesz</StyledH5>
+      <StyledSportsInputContainer>
         {renderSportsInput}
-      </div>
+      </StyledSportsInputContainer>
+
+      <StyledH3>
+        2. Żeby znaleźć dla Ciebie dopasowania, potrzebujemy trochę informacji
+      </StyledH3>
+
+      <StyledH5>Jak masz na imię?</StyledH5>
       <div>
-        <label htmlFor="name">Name:</label>
-        <input
+        <label htmlFor="name"></label>
+        <StyledInput
           type="text"
           name="name"
           value={formData.name}
-          placeholder="Enter your name"
+          placeholder="Twoje imię lub pseudonim"
           onChange={handleChange}
         />
       </div>
+
+      <StyledH5>Ile masz lat?</StyledH5>
       <div>
-        <label htmlFor="profilePicture">Zdjęcie profilowe:</label>
-        <input
-          type="file"
-          name="profilePicture"
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="age">Age:</label>
-        <input
+        <label htmlFor="age"></label>
+        <StyledInput
           type="number"
           name="age"
           value={formData.age}
-          placeholder="Enter your age"
+          placeholder="Podaj swój wiek"
           onChange={handleChange}
         />
       </div>
+
+      <StyledH5>Jesteś kobietą czy mężczyzną?</StyledH5>
+      <StyledGenderInputContainer>
+        <StyledGenderInputDiv>
+          <StyledCheckbox
+            type="radio"
+            name="gender"
+            value="man"
+            checked={formData.gender === "man"}
+            onChange={handleChange}
+          />
+          <StyledSportsLabel htmlFor="gender">Mężczyzna</StyledSportsLabel>
+        </StyledGenderInputDiv>
+        <StyledGenderInputDiv>
+          <StyledCheckbox
+            type="radio"
+            name="gender"
+            value="woman"
+            checked={formData.gender === "woman"}
+            onChange={handleChange}
+          />
+          <StyledSportsLabel htmlFor="gender">Kobieta</StyledSportsLabel>
+        </StyledGenderInputDiv>
+      </StyledGenderInputContainer>
+
+      <StyledH5>Napisz coś o sobie:</StyledH5>
       <div>
-        <label htmlFor="gender">Mężczyzna</label>
-        <input
-          type="radio"
-          name="gender"
-          value="man"
-          checked={formData.gender === "man"}
-          onChange={handleChange}
-        />
-        <label htmlFor="gender">Kobieta</label>
-        <input
-          type="radio"
-          name="gender"
-          value="woman"
-          checked={formData.gender === "woman"}
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="description">Napisz coś o sobie:</label>
-        <textarea
+        <label htmlFor="description"></label>
+        <StyledTextarea
           name="description"
           value={formData.description}
           placeholder="Napisz coś o sobie"
           onChange={handleChange}
         />
       </div>
+
+      <StyledH3>3. Dane do logowania</StyledH3>
+      <StyledH5>Twój adres e-mail</StyledH5>
       <div>
-        <label htmlFor="email">Email:</label>
-        <input
+        <label htmlFor="email"></label>
+        <StyledInput
           type="text"
           name="email"
           value={formData.email}
-          placeholder="Enter your email"
+          placeholder="Wprowadź adres e-mail"
           onChange={handleChange}
         />
       </div>
+
+      <StyledH5>Stwórz hasło</StyledH5>
       <div>
-        <label htmlFor="password">Password:</label>
-        <input
+        <label htmlFor="password"></label>
+        <StyledInput
           type="password"
           name="password"
           value={formData.password}
-          placeholder="Enter your password"
+          placeholder="Stwórz nowe hasło"
           onChange={handleChange}
         />
       </div>
+
+      <StyledH5>Potwierdź hasło</StyledH5>
       <div>
-        <label htmlFor="confirmPassword">Confirm password:</label>
-        <input
+        <label htmlFor="confirmPassword"></label>
+        <StyledInput
           type="password"
           name="confirmPassword"
           value={formData.confirmPassword}
-          placeholder="Confrim your password"
+          placeholder="Potwierdź swoje hasło"
           onChange={handleChange}
         />
       </div>
-      <button type="submit">Zarejestruj się</button>
-    </form>
+
+      <StyledH5>Dodaj zdjęcie profilowe</StyledH5>
+      <div>
+        <label htmlFor="profilePicture"></label>
+        <input type="file" name="profilePicture" onChange={handleChange} />
+      </div>
+
+      <StyledSubmitButton type="submit">Zarejestruj się i poznaj swoje dopasowania</StyledSubmitButton>
+    </StyledForm>
   );
 };
 
