@@ -35,7 +35,7 @@ export const StyledUl = styled.ul`
     align-items: center;
     justify-content: space-between;
     list-style: none;
-    min-width: 420px;
+    min-width: 440px;
     height: 100%;
     padding: 0 20px;
     margin: 0;
