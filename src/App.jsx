@@ -47,8 +47,7 @@ function App() {
     <BrowserRouter>
     <Nav />
       <Routes>
-        <Route index element={role === "guest" ? <Landing /> : <Profiles />} />
-
+        <Route index element={role === "guest" ? <Landing /> : <Profiles uid={user.uid} sports={userData.sports}/>} />
         <Route
           element={
             <ProtectedRoute isAllowed={role === "guest"} redirectPath="/" />

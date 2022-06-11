@@ -2,6 +2,7 @@ import { doc, getDoc } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { db } from "../../api/firebase";
+
 import { ChatContainer, ChatMessagesWrapper, IncommingMessage, OpenChatButton, OutgoingMessage, ProfileContainer, ProfileDetailsWrapper, ProgressBar, TypingInput } from "./ProfileStyle";
 import { FaBirthdayCake, FaMapMarkerAlt } from "react-icons/fa"
 import { sportsIcon } from "../../utils/sportsLabel";
@@ -61,7 +62,6 @@ const Profile = () => {
       {!isActive && <OpenChatButton onClick={openChat}>Zacznij rozmowę</OpenChatButton>}
     </ProfileDetailsWrapper>
     {isActive && <ChatContainer onSubmit={handleSubmit}>
-
       <ChatMessagesWrapper>
         <IncommingMessage>Hello World!</IncommingMessage>
         <IncommingMessage>Hello World!</IncommingMessage>

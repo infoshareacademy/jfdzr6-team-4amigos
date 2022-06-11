@@ -10,6 +10,7 @@ const Register = () => {
         name:"",
         gender: "",
         age: "",
+        description: "",
         email:"",
         password:"",
         city:"",
@@ -43,7 +44,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const {email,password, confirmPassword,...data} = formData
-    const {name,gender, age, sports} = data
+    const {name,gender, age, sports, description} = data
     const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
     if (!reg.test(email)) {
         setError("Podany email jest niepoprawny")
@@ -63,7 +64,7 @@ const Register = () => {
       setError("Jesteś niepełnoletni")
       return
     }
-    if (!name || !gender || !age || !sports.length) {
+    if (!name || !description || !gender || !age || !sports.length) {
       setError("Wszystkie mola muszą być uzupełnione")
       return
     }
