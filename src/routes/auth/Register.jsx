@@ -13,6 +13,7 @@ const Register = () => {
         description: "",
         email:"",
         password:"",
+        city:"",
         confirmPassword:"",
         profilePicture: "",
         sports:[]
