@@ -2,7 +2,10 @@ import styled from "styled-components";
 import {NavLink} from "react-router-dom";
 
 export const StyledNav = styled.nav`
+    width: 100%;
     display: flex;
+    flex-direction: row;
+    flex-grow: 1;
     justify-content: space-between;
     align-items: center;
     padding: 0 20px;
@@ -64,7 +67,7 @@ export const StyledRegister = styled(NavLink)`
     }
     `
     export const StyledLogin = styled(NavLink)`
-    width: 200px;
+    min-width: 200px;
     height: 40px;
     background-color: #FFC524;
     border-radius: 5px;

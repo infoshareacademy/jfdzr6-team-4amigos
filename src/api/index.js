@@ -42,7 +42,7 @@ export const getProfiles = (querySnapshot) => {
   //   })
   // });
   return profiles;
-};
+}; 
 
 export const queryProfiles = (filter, cb) => {
   const q = filter
