@@ -5,6 +5,19 @@ export const StyledForm = styled.form`
   width: 800px;
   background-color: #ffc524;
   padding: 50px 125px;
+  border-radius: 10px;
+  margin-bottom: 50px;
+`;
+
+export const StyledH2 = styled.h2`
+  text-align: center;
+  margin-top: 80px;
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 44px;
+  color: #c5c7c5;
 `;
 
 export const StyledH3 = styled.h3`
@@ -24,6 +37,7 @@ export const StyledH5 = styled.h5`
   letter-spacing: 0em;
   text-align: left;
   color: #fff;
+  margin-bottom: 10px;
 `;
 
 export const StyledSportsInputContainer = styled.div`
@@ -76,8 +90,10 @@ export const StyledSportsLabel = styled.label`
 `;
 
 export const StyledCheckbox = styled.input`
-  width: 22px;
-  height: 23px;
+  width: 20px;
+  height: 20px;
+  margin: 15px;
+  accent-color: #ff8020;
 `;
 
 export const StyledInput = styled.input`
@@ -88,15 +104,27 @@ export const StyledInput = styled.input`
   display: flex;
   justify-content: start;
   align-items: center;
+  border: none;
+  ::placeholder {
+    color: #c5c7c5;
+    padding-left: 15px;
+  }
 `;
 
 export const StyledTextarea = styled.textarea`
   height: 100px;
   width: 400px;
+  border: none;
+  border-radius: 5px;
+  ::placeholder {
+    color: #c5c7c5;
+    padding-left: 10px;
+    padding-top: 5px;
+  }
 `;
 
 export const StyledSubmitButton = styled.button`
-margin-top: 30px;
+  margin-top: 30px;
   background: #ff8020;
   border-radius: 5px;
   width: 550px;
@@ -106,6 +134,26 @@ margin-top: 30px;
   font-weight: 700;
   font-size: 16px;
   line-height: 22px;
-
+  border: none;
   color: #ffffff;
+  transition: 0.2s;
+
+  :hover {
+    background: #fe6e00;
+  }
+`;
+
+export const UploadFileInput = styled.input`
+  ::file-selector-button {
+    border-radius: 5px;
+    background-color: #ff8020;
+    transition: 0.2s;
+    padding: 10px;
+    color: #fff;
+    font-family: "Open Sans";
+    border: none;
+    :hover {
+      background: #fe6e00;
+    }
+  }
 `;
