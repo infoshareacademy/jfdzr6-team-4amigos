@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
+import ForgotPasswordForm from '../../components/forgotPasswordForm/ForgotPasswordForm'
 
 const ForgotPassword = () => {
-  return (
-    <div>ForgotPassword</div>
-  )
+  const [formData, setFormData] = useState({email:""})
+  return (<ForgotPasswordForm formData={formData} setFormData={setFormData} />)
 }
 
 export default ForgotPassword
