@@ -1,19 +1,28 @@
-import React from 'react'
+import React from "react";
+import { Link } from "react-router-dom";
 
-const LoginForm = ({handleLogin}) => {
+// styles
+import { StyledLoginForm, StyledSection, StyledLink } from "./LoginFormStyle";
+
+const LoginForm = ({ handleLogin }) => {
   return (
-    <form onSubmit={handleLogin}>
-        <div>
-          <label htmlFor="email">Email</label>
-          <input type="email" name="email" />
-        </div>
-        <div>
-          <label htmlFor="password">Password</label>
-          <input type="password" name="password" />
-        </div>
-        <button type='submit' >Zaloguj</button>
-      </form>
-  )
-}
+    <StyledSection>
+      <h1>Witaj ponownie!</h1>
+      <StyledLoginForm onSubmit={handleLogin}>
+          <label htmlFor="email">
+            <p>Email</p>
+            <input type="email" name="email" placeholder="Wpisz swój adres email" />
+          </label>
+          <label htmlFor="password">
+            <p>Hasło</p>
+          <input type="password" name="password" placeholder="Wpisz swoje hasło" />
+          </label>
+          
+        <button type="submit">Zaloguj</button>
+        <StyledLink to="/forgot-password">Nie pamiętasz hasła?</StyledLink>
+      </StyledLoginForm>
+    </StyledSection>
+  );
+};
 
-export default LoginForm
+export default LoginForm;

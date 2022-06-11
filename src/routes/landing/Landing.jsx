@@ -1,15 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { Nav } from "../../components/nav/Nav";
+import { Link } from "react-router-dom"
 import logo from "../../assets/img/logoSportAmigo.png";
-
 // styles
 import { StyledSection } from "./LandingStyle";
 
 const Landing = () => {
   return (
     <div>
-      <Nav />
       <StyledSection>
         <h1>Witaj!</h1>
         <p>Dołącz do świata sportowych Amigos!</p>

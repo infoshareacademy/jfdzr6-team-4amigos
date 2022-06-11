@@ -13,13 +13,15 @@ export const StyledSection = styled.section`
     margin: 0 auto;
     margin-top: 100px;
     h1{
-        font-size: 80px;
+        font-size: 128px;
+        font-weight: 400;
         color: #C5C7C5;
         margin: 0;
     }
     p{
-        font-size: 14px;
+        font-size: 32px;
         color: #C5C7C5;
+        margin: 10px 0;
     }   
     img{
         width: 800px;
@@ -28,17 +30,17 @@ export const StyledSection = styled.section`
         border-radius: 5%;
     }
     button{
-        width: 300px;
-        height: 40px;
+        width: 400px;
+        height: 60px;
         background-color: #FFC524;
         border-radius: 5px;
         border: 1px solid #e6e6e6;
         color: #eee;
         text-align: center;
         text-decoration: none;
-        font-size: 14px;
+        font-size: 20px;
         font-weight: bold;
-        margin: 40px 10px;
+        margin: 20px 10px;
         padding: 10px;
         cursor: pointer;
         transition: all 0.3s ease-in-out;
