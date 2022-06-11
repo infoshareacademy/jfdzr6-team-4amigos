@@ -14,13 +14,15 @@ export const StyledSection = styled.section`
   margin: 0 auto;
   margin-top: 100px;
   h1 {
-    font-size: 30px;
+    font-size: 32px;
+    font-weight: 400;
     font-family: "Open Sans", sans-serif;
     color: #c5c7c5;
     margin: 0;
   }
   p {
-    font-size: 14px;
+    font-size: 16px;
+    font-weight: 700;
     font-family: "Open Sans", sans-serif;
     color: #c5c7c5;
   }
@@ -76,7 +78,7 @@ export const StyledLoginForm = styled.form`
     border: 1px solid #e6e6e6;
     color: #eee;
     text-align: center;
-    font-size: 18px;
+    font-size: 400;
     font-weight: bold;
     margin: 0 10px;
     padding: 10px;
@@ -96,7 +98,7 @@ export const StyledLoginForm = styled.form`
     color: #eee;
     text-align: center;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: bold;
     margin: 40px 10px;
     padding: 10px;
