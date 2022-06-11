@@ -1,11 +1,14 @@
+import { collection, getDoc, getDocs, onSnapshot, orderBy, query } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getProfiles, registerDbListener } from "../../api";
+import { db } from "../../api/firebase";
 import { sportsIcon } from "../../utils/sportsLabel";
 import { Container, CardContainer, ProfilesContainer, CardPictureWrapper, CardInfoWrapper } from "./Profiles.styled";
 
 const Profiles = ({ uid, sports }) => {
   const [profiles, setProfiles] = useState([]);
+
 
   useEffect(() => {
     registerDbListener(querySnapshot => {
@@ -32,6 +35,7 @@ const Profiles = ({ uid, sports }) => {
 
     </CardContainer>;
   });
+
   return (
     <Container>
       <ProfilesContainer>
