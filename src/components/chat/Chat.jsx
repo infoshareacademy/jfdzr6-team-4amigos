@@ -22,13 +22,31 @@ const Chat = ({ profileData }) => {
     }
 
     const renderMessages = messages.messages.map(message => {
-        return loggedUserId === message.idAuthor ? <OutgoingMessage>{message.message}</OutgoingMessage> : <IncommingMessage>{message.message}</IncommingMessage>
+        return loggedUserId === message.idAuthor ? <OutgoingMessage>{message.message}</OutgoingMessage> : <OutgoingMessage>{message.message}</OutgoingMessage>
 
     })
 
     return (
         <ChatContainer onSubmit={handleSubmit}>
             <ChatMessagesWrapper>
+                <IncommingMessage>Hello World!</IncommingMessage>
+                <IncommingMessage>Hello World!</IncommingMessage>
+                <IncommingMessage>Hello World!</IncommingMessage>
+                <IncommingMessage>Hello World!</IncommingMessage>
+                <IncommingMessage>Hello World!</IncommingMessage>
+                <IncommingMessage>Hello World!</IncommingMessage>
+                <IncommingMessage>Hello World!</IncommingMessage>
+                <IncommingMessage>Hello World!</IncommingMessage>
+                <IncommingMessage>Hello World!</IncommingMessage>
+                <IncommingMessage>Hello World!</IncommingMessage>
+                <IncommingMessage>Hello World!</IncommingMessage>
+                <IncommingMessage>Hello World!</IncommingMessage>
+                <IncommingMessage>Hello World!</IncommingMessage>
+                <IncommingMessage>Hello World!</IncommingMessage>
+                <IncommingMessage>Hello World!</IncommingMessage>
+                <IncommingMessage>Hello World!</IncommingMessage>
+                <OutgoingMessage>Hello World!</OutgoingMessage>
+                <OutgoingMessage>Hello Karol!</OutgoingMessage>
                 {renderMessages}
             </ChatMessagesWrapper>
             <TypingInput placeholder="Aa..." />
