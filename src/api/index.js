@@ -33,16 +33,14 @@ export const getProfiles = (querySnapshot) => {
   const profiles = querySnapshot.docs.map((doc) => {
     return { id: doc.id, ...doc.data() };
   });
-  /*///Pobieranie chatu użytkownika
-  profiles[0].chatHistory.forEach(document=>{
+  ///Pobieranie chatu użytkownika
+  // profiles[0].chatHistory.forEach(document=>{
     
-    const docRef = doc(db,COLLECTIONS_NAMES.CHATS, document.id)
-    getDoc(docRef).then(snapshot=>{
-      console.log(snapshot.data());
-    })
-  });
-
-  */
+  //   const docRef = doc(db,COLLECTIONS_NAMES.CHATS, document.id)
+  //   getDoc(docRef).then(snapshot=>{
+  //     console.log(snapshot.data());
+  //   })
+  // });
   return profiles;
 }; 
 
@@ -84,6 +82,7 @@ export const loginUser = (email, password, cb) => {
     });
 };
 
-export const registerDbListener = (cb) => {
-  onSnapshot(query(profilesCollection, defaultQueryConstraint), cb);
+export const registerDbListener = (cb,filter) => {
+  // onSnapshot(query(profilesCollection, defaultQueryConstraint), cb);
+  onSnapshot(query(profilesCollection, where("sports", "array-contains-any", filter)), cb);
 };
