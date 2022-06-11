@@ -6,7 +6,7 @@ import { sportsIcon } from "../../utils/sportsLabel";
 
 const Profile = () => {
   const { docId } = useParams();
-  const [profile, setProfile] = useState([]);
+  const [profile, setProfile] = useState({sports: []});
 
   const getProfile = (docId) => {
     const documentRef = doc(db, "users", docId);
@@ -35,7 +35,7 @@ const Profile = () => {
       <li>Wiek: {profile.age}</li>
       <li>Miasto: {profile.city}</li>
       <li>Sporty które uprawiam</li>
-      <ul>{profile.sports}</ul>
+      <ul>{profile.sports.map( sport=><li key={sport}>{sportsIcon[sport]}</li>)}</ul>
       <li>Poziom zaawansowania</li>
       <p>Np. zaawansowany - jakiś pasek?</p>
       <li>O mnie:</li>
