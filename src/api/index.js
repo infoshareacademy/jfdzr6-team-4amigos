@@ -2,6 +2,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
+  sendPasswordResetEmail,
 } from "firebase/auth";
 import {
   collection,
@@ -35,14 +36,14 @@ export const getProfiles = (querySnapshot) => {
   });
   ///Pobieranie chatu użytkownika
   // profiles[0].chatHistory.forEach(document=>{
-    
+
   //   const docRef = doc(db,COLLECTIONS_NAMES.CHATS, document.id)
   //   getDoc(docRef).then(snapshot=>{
   //     console.log(snapshot.data());
   //   })
   // });
   return profiles;
-}; 
+};
 
 export const queryProfiles = (filter, cb) => {
   const q = filter
@@ -53,7 +54,7 @@ export const queryProfiles = (filter, cb) => {
 };
 
 export const registerUser = async (email, password, userData) => {
-  let downloadUrl = null
+  let downloadUrl = null;
   try {
     const jwt = await createUserWithEmailAndPassword(auth, email, password);
 
@@ -69,7 +70,7 @@ export const registerUser = async (email, password, userData) => {
     await setDoc(userRef, { ...userData, profilePicture: downloadUrl });
     await signOut(auth);
   } catch (error) {
-    return firebaseErrors[error.code]
+    return firebaseErrors[error.code];
   }
 };
 
@@ -82,7 +83,18 @@ export const loginUser = (email, password, cb) => {
     });
 };
 
-export const registerDbListener = (cb,filter) => {
+let actionCodeSettings = {
+  url: "http://localhost:3000/login",
+};
+
+export const resetPassword = (email, cb) => {
+  sendPasswordResetEmail(auth, email, actionCodeSettings).then(cb);
+};
+
+export const registerDbListener = (cb, filter) => {
   // onSnapshot(query(profilesCollection, defaultQueryConstraint), cb);
-  onSnapshot(query(profilesCollection, where("sports", "array-contains-any", filter)), cb);
+  onSnapshot(
+    query(profilesCollection, where("sports", "array-contains-any", filter)),
+    cb
+  );
 };
