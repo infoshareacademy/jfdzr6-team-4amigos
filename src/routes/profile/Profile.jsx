@@ -1,12 +1,12 @@
-import { doc, getDoc } from "firebase/firestore";
+import { addDoc, collection, doc, getDoc, serverTimestamp, updateDoc } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { db } from "../../api/firebase";
-
-import { ChatContainer, ChatMessagesWrapper, IncommingMessage, OpenChatButton, OutgoingMessage, ProfileContainer, ProfileDetailsWrapper, ProgressBar, TypingInput } from "./ProfileStyle";
+import { OpenChatButton, ProfileContainer, ProfileDetailsWrapper, ProgressBar } from "./ProfileStyle";
 import { FaBirthdayCake, FaMapMarkerAlt } from "react-icons/fa"
 import { sportsIcon } from "../../utils/sportsLabel";
 import Chat from "../../components/chat/Chat";
+import { chatsCollectionRef } from "../../api";
 
 const Profile = () => {
   const defaultValue = {
@@ -16,6 +16,7 @@ const Profile = () => {
     email: "",
     password: "",
     city: "",
+    chatHistory: null,
     sports: []
   }
   const { docId } = useParams();
@@ -30,7 +31,17 @@ const Profile = () => {
       })
   };
 
-  const openChat = () => {
+  const openChat = async () => {
+    const loggedUserId = "0DQ9iW4Em4MiPXiu0tJkXjRlmzn2"
+    if (!profile.chatHistory[loggedUserId]) {
+      console.log("utwórz chatHistory");
+      const docRef = doc(db, "users", docId)
+      const docChatRef = await addDoc(chatsCollectionRef, { messages: [] })
+      console.log(docChatRef.id);
+      const data = { ...profile, chatHistory: doc(db, "chats", docChatRef.id) }
+      // Zrobic update jeszcze zalogowanemu użytkownikowi
+      updateDoc(docRef, data)
+    }
     setIsActive(true)
   }
 
@@ -58,7 +69,7 @@ const Profile = () => {
       <p>{profile.description}</p>
       {!isActive && <OpenChatButton onClick={openChat}>Zacznij rozmowę</OpenChatButton>}
     </ProfileDetailsWrapper>
-    {isActive && <Chat profileData={profile} />}
+    {/* {isActive && <Chat profileData={profile} />} */}
   </ProfileContainer>;
 };
 
