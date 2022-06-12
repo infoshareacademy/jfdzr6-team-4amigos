@@ -1,9 +1,24 @@
-import React, { useState } from 'react'
-import ForgotPasswordForm from '../../components/forgotPasswordForm/ForgotPasswordForm'
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { resetPassword } from "../../api";
+import ForgotPasswordForm from "../../components/forgotPasswordForm/ForgotPasswordForm";
 
 const ForgotPassword = () => {
-  const [formData, setFormData] = useState({email:""})
-  return (<ForgotPasswordForm formData={formData} setFormData={setFormData} />)
-}
+  // const [formData, setFormData] = useState({email:""})
+  const navigate = useNavigate();
 
-export default ForgotPassword
+  const handleResetPassword = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const { email } = form;
+
+    resetPassword(email.value);
+
+    form.reset();
+    navigate("/login");
+  };
+
+  return <ForgotPasswordForm handleResetPassword={handleResetPassword} />;
+};
+
+export default ForgotPassword;
