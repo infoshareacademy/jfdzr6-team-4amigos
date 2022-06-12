@@ -18,7 +18,7 @@ export const StyledSection = styled.section`
     font-weight: 400;
     font-family: "Open Sans", sans-serif;
     color: #c5c7c5;
-    margin: 0;
+    margin-bottom: 30px;
   }
   p {
     font-size: 16px;
@@ -49,7 +49,6 @@ export const StyledSection = styled.section`
     transition: all 0.3s ease-in-out;
     &:hover {
       background-color: #c5c7c5;
-      color: #000;
     }
   }
 `;
@@ -76,17 +75,18 @@ export const StyledLoginForm = styled.form`
     background-color: #fff;
     border-radius: 5px;
     border: 1px solid #e6e6e6;
-    color: #eee;
-    text-align: center;
-    font-size: 400;
-    font-weight: bold;
     margin: 0 10px;
     padding: 10px;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    &:hover {
-      background-color: #c5c7c5;
-      color: #000;
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    ::placeholder {
+      color: #c5c7c5;
+    }
+    :focus-visible {
+      outline: 3px solid #ff8020;
     }
   }
   button {
@@ -94,32 +94,29 @@ export const StyledLoginForm = styled.form`
     height: 40px;
     background-color: #ff8020;
     border-radius: 5px;
-    border: 1px solid #e6e6e6;
+    border: 1px solid #ff8020;
     color: #eee;
     text-align: center;
     text-decoration: none;
     font-size: 16px;
+    line-height: 22px;
     font-weight: bold;
     margin: 40px 10px;
     padding: 10px;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
     &:hover {
-      background-color: #c5c7c5;
-      color: #000;
+      background-color: #fe5900;
     }
   }
 `;
 
 export const StyledLink = styled(Link)`
-    text-decoration: underline;
-    color: #fff;
-    font-size: 14px;
-    margin: 0 10px;
-    padding: 10px;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    &:hover {
-        color: #000;
-    }
+  text-decoration: underline;
+  color: #fff;
+  font-size: 14px;
+  margin: 0 10px;
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
 `;
