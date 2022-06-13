@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { db } from '../../api/firebase'
 import { updateDoc } from 'firebase/firestore'
 import { ChatContainer, ChatMessagesWrapper, IncommingMessage, OutgoingMessage, TypingInput } from './ChatStyle'
+import { getChat } from '../../api'
 
 const Chat = ({ profileData, uid }) => {
     const loggedUserId = uid
@@ -11,7 +12,10 @@ const Chat = ({ profileData, uid }) => {
     const chatId = profileData.chatHistory[loggedUserId].id
     const docRef = doc(db, "chats", chatId)
     useEffect(() => {
-        onSnapshot(docRef, docSnapshot => {
+        // onSnapshot(docRef, docSnapshot => {
+        //     setChat({ id: docSnapshot.id, ...docSnapshot.data() });
+        // })
+        getChat(chatId, docSnapshot => {
             setChat({ id: docSnapshot.id, ...docSnapshot.data() });
         })
     }, [])

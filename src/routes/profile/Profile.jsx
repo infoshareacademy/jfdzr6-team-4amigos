@@ -1,12 +1,10 @@
-import { doc, onSnapshot } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { db } from "../../api/firebase";
 import { OpenChatButton, ProfileContainer, ProfileDetailsWrapper, ProgressBar } from "./ProfileStyle";
 import { FaBirthdayCake, FaMapMarkerAlt } from "react-icons/fa"
 import { sportsIcon } from "../../utils/sportsLabel";
 import Chat from "../../components/chat/Chat";
-import { createChat, createChatBetweenUsers, getChatRefById } from "../../api";
+import { createChat, createChatBetweenUsers, getChatRefById, getProfile } from "../../api";
 
 const Profile = ({ uid, userData }) => {
   const defaultValue = {
@@ -23,13 +21,6 @@ const Profile = ({ uid, userData }) => {
   const [profile, setProfile] = useState(defaultValue);
   const [isActive, setIsActive] = useState(false)
 
-  const getProfile = (docId) => {
-    const userDocRef = doc(db, "users", docId)
-    onSnapshot(userDocRef, docSnapshot => {
-      setProfile({ id: docSnapshot.id, ...docSnapshot.data() });
-    })
-  };
-
   const openChat = async () => {
     if (!profile.chatHistory[uid]) {
       const docChatRef = await createChat({ messages: [] })
@@ -42,7 +33,9 @@ const Profile = ({ uid, userData }) => {
   }
 
   useEffect(() => {
-    getProfile(docId);
+    getProfile(docId, docSnapshot => {
+      setProfile({ id: docSnapshot.id, ...docSnapshot.data() });
+    })
   }, [docId]);
 
   return <ProfileContainer>

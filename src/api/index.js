@@ -78,13 +78,17 @@ export const loginUser = (email, password, cb) => {
 };
 
 export const registerDbListener = (cb, filter) => {
-  // onSnapshot(query(profilesCollection, defaultQueryConstraint), cb);
   onSnapshot(
     query(profilesCollection, where("sports", "array-contains-any", filter)),
     cb
   );
 };
 
+// Chat
+export const getChat = (chatId, cb) => {
+  const docRef = doc(db, "chats", chatId);
+  onSnapshot(docRef, cb);
+};
 export const createChat = async (data) => {
   const docChatRef = await addDoc(chatsCollectionRef, data);
   return docChatRef;
@@ -104,4 +108,10 @@ export const createChatBetweenUsers = async (
   const docLoggedUser = doc(db, "users", uid);
   await updateDoc(docProfileRef, dataProfile);
   await updateDoc(docLoggedUser, dataLoggedUser);
+};
+
+// Profile
+export const getProfile = (docId, cb) => {
+  const userDocRef = doc(db, "users", docId);
+  onSnapshot(userDocRef, cb);
 };
