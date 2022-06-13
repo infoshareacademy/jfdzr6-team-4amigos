@@ -5,6 +5,7 @@ import { FaBirthdayCake, FaMapMarkerAlt } from "react-icons/fa"
 import { sportsIcon } from "../../utils/sportsLabel";
 import Chat from "../../components/chat/Chat";
 import { createChat, createChatBetweenUsers, getChatRefById, getProfile } from "../../api";
+import defaultPicture from "../../assets/img/defaultPicture.png";
 
 const Profile = ({ uid, userData }) => {
   const defaultValue = {
@@ -39,7 +40,7 @@ const Profile = ({ uid, userData }) => {
   }, [docId]);
 
   return <ProfileContainer>
-    <img src={profile.profilePicture} alt="profile photo" />
+    <img src={profile.profilePicture || defaultPicture} alt="profile photo" />
     <ProfileDetailsWrapper >
       <h3>{profile.name}</h3>
       <div>

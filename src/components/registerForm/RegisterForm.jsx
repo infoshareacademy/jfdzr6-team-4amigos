@@ -14,7 +14,7 @@ import {
   StyledTextarea,
   StyledSubmitButton,
   StyledH2,
-  UploadFileInput,errorMeesageDiv
+  UploadFileInput,
 } from "./RegisterFormStyle";
 
 const RegisterForm = ({
@@ -73,6 +73,17 @@ const RegisterForm = ({
             name="name"
             value={formData.name}
             placeholder="Twoje imię lub pseudonim"
+            onChange={handleChange}
+          />
+        </div>
+        <StyledH5>Gdzie mieszkasz?</StyledH5>
+        <div>
+          <label htmlFor="city"></label>
+          <StyledInput
+            type="text"
+            name="city"
+            value={formData.city}
+            placeholder="Miasto"
             onChange={handleChange}
           />
         </div>

@@ -32,7 +32,6 @@ const Register = () => {
           : [...formData.sports, e.target.value],
       });
     } else if (e.target.type === "file") {
-      console.log(e.target.files[0]);
       setFormData({ ...formData, [e.target.name]: e.target.files[0] });
     } else {
       setFormData({
