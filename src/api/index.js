@@ -2,6 +2,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
+  sendPasswordResetEmail,
 } from "firebase/auth";
 import {
   addDoc,
@@ -76,12 +77,19 @@ export const loginUser = (email, password, cb) => {
     });
 };
 
+let actionCodeSettings = {
+  url: "http://localhost:3000/login",
+};
+
+export const resetPassword = (email, cb) => {
+  sendPasswordResetEmail(auth, email, actionCodeSettings).then(cb);
+};
+
 export const registerDbListener = (cb, filter) => {
   onSnapshot(
     query(profilesCollection, where("sports", "array-contains-any", filter)),
     cb
   );
-};
 
 // Chat
 export const getChat = (chatId, cb) => {
@@ -118,4 +126,5 @@ export const createChatBetweenUsers = async (
 export const getProfile = (docId, cb) => {
   const userDocRef = doc(db, "users", docId);
   onSnapshot(userDocRef, cb);
+
 };

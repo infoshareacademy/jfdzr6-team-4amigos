@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+
 import { OpenChatButton, ProfileContainer, ProfileDetailsWrapper, ProgressBar } from "./ProfileStyle";
 import { FaBirthdayCake, FaMapMarkerAlt } from "react-icons/fa"
 import { sportsIcon } from "../../utils/sportsLabel";
@@ -20,7 +21,8 @@ const Profile = ({ uid, userData }) => {
   }
   const { docId } = useParams();
   const [profile, setProfile] = useState(defaultValue);
-  const [isActive, setIsActive] = useState(false)
+  const [isActive, setIsActive] = useState(false);
+
 
   const openChat = async () => {
     if (!profile.chatHistory[uid]) {

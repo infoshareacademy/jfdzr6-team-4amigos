@@ -129,8 +129,8 @@ const RegisterForm = ({
           <label htmlFor="description"></label>
           <StyledTextarea
             name="description"
+            placeholder="..."
             value={formData.description}
-            placeholder="Napisz coś o sobie"
             onChange={handleChange}
           />
         </div>
