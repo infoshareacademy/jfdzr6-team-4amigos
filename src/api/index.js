@@ -89,6 +89,11 @@ export const getChat = (chatId, cb) => {
   const docRef = doc(db, "chats", chatId);
   onSnapshot(docRef, cb);
 };
+
+export const addMessage = async (chatId, data) => {
+  const docRef = doc(db, "chats", chatId);
+  await updateDoc(docRef, data);
+};
 export const createChat = async (data) => {
   const docChatRef = await addDoc(chatsCollectionRef, data);
   return docChatRef;
