@@ -1,7 +1,5 @@
-import { doc, Timestamp } from 'firebase/firestore'
+import { Timestamp } from 'firebase/firestore'
 import React, { useEffect, useState } from 'react'
-import { db } from '../../api/firebase'
-import { updateDoc } from 'firebase/firestore'
 import { ChatContainer, ChatMessagesWrapper, IncommingMessage, OutgoingMessage, TypingInput } from './ChatStyle'
 import { addMessage, getChat } from '../../api'
 
@@ -10,7 +8,6 @@ const Chat = ({ profileData, uid }) => {
     const [chat, setChat] = useState({ messages: [] })
     const [inputValue, setInputValue] = useState("")
     const chatId = profileData.chatHistory[loggedUserId].id
-    const docRef = doc(db, "chats", chatId)
     useEffect(() => {
         getChat(chatId, docSnapshot => {
             setChat({ id: docSnapshot.id, ...docSnapshot.data() });
@@ -23,7 +20,6 @@ const Chat = ({ profileData, uid }) => {
             return
         }
         const data = { messages: [...chat.messages, { createdAt: Timestamp.fromDate(new Date()), idAuthor: loggedUserId, message: inputValue }] }
-        // updateDoc(docRef, data)
         addMessage(chatId, data)
         setInputValue("")
     }
