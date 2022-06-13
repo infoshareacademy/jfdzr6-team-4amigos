@@ -1,4 +1,4 @@
-import { addDoc, collection, doc, getDoc, serverTimestamp, updateDoc } from "firebase/firestore";
+import { doc, onSnapshot } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { db } from "../../api/firebase";
@@ -6,9 +6,9 @@ import { OpenChatButton, ProfileContainer, ProfileDetailsWrapper, ProgressBar } 
 import { FaBirthdayCake, FaMapMarkerAlt } from "react-icons/fa"
 import { sportsIcon } from "../../utils/sportsLabel";
 import Chat from "../../components/chat/Chat";
-import { chatsCollectionRef } from "../../api";
+import { createChat, createChatBetweenUsers, getChatRefById } from "../../api";
 
-const Profile = () => {
+const Profile = ({ uid, userData }) => {
   const defaultValue = {
     name: "",
     gender: "",
@@ -16,7 +16,7 @@ const Profile = () => {
     email: "",
     password: "",
     city: "",
-    chatHistory: null,
+    chatHistory: {},
     sports: []
   }
   const { docId } = useParams();
@@ -24,23 +24,19 @@ const Profile = () => {
   const [isActive, setIsActive] = useState(false)
 
   const getProfile = (docId) => {
-    getDoc(doc(db, "users", docId))
-      .then(docData => {
-        const data = docData.data();
-        setProfile(data)
-      })
+    const userDocRef = doc(db, "users", docId)
+    onSnapshot(userDocRef, docSnapshot => {
+      setProfile({ id: docSnapshot.id, ...docSnapshot.data() });
+    })
   };
 
   const openChat = async () => {
-    const loggedUserId = "0DQ9iW4Em4MiPXiu0tJkXjRlmzn2"
-    if (!profile.chatHistory[loggedUserId]) {
-      console.log("utwórz chatHistory");
-      const docRef = doc(db, "users", docId)
-      const docChatRef = await addDoc(chatsCollectionRef, { messages: [] })
-      console.log(docChatRef.id);
-      const data = { ...profile, chatHistory: doc(db, "chats", docChatRef.id) }
-      // Zrobic update jeszcze zalogowanemu użytkownikowi
-      updateDoc(docRef, data)
+    if (!profile.chatHistory[uid]) {
+      const docChatRef = await createChat({ messages: [] })
+      const chatHistoryReference = getChatRefById(docChatRef.id)
+      const dataProfile = { ...profile, chatHistory: { ...profile.chatHistory, [uid]: chatHistoryReference } }
+      const dataLoggedUser = { ...userData, chatHistory: { ...userData.chatHistory, [docId]: chatHistoryReference } }
+      await createChatBetweenUsers(docId, uid, dataProfile, dataLoggedUser)
     }
     setIsActive(true)
   }
@@ -69,7 +65,7 @@ const Profile = () => {
       <p>{profile.description}</p>
       {!isActive && <OpenChatButton onClick={openChat}>Zacznij rozmowę</OpenChatButton>}
     </ProfileDetailsWrapper>
-    {/* {isActive && <Chat profileData={profile} />} */}
+    {isActive && <Chat profileData={profile} uid={uid} />}
   </ProfileContainer>;
 };
 

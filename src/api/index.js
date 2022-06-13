@@ -4,6 +4,7 @@ import {
   signOut,
 } from "firebase/auth";
 import {
+  addDoc,
   collection,
   doc,
   getDoc,
@@ -12,6 +13,7 @@ import {
   orderBy,
   query,
   setDoc,
+  updateDoc,
   where,
 } from "firebase/firestore";
 import { auth, db, storage } from "./firebase";
@@ -34,14 +36,6 @@ export const getProfiles = (querySnapshot) => {
   const profiles = querySnapshot.docs.map((doc) => {
     return { id: doc.id, ...doc.data() };
   });
-  ///Pobieranie chatu użytkownika
-  // profiles[0].chatHistory.forEach(document=>{
-
-  //   const docRef = doc(db,COLLECTIONS_NAMES.CHATS, document.id)
-  //   getDoc(docRef).then(snapshot=>{
-  //     console.log(snapshot.data());
-  //   })
-  // });
   return profiles;
 };
 
@@ -89,4 +83,25 @@ export const registerDbListener = (cb, filter) => {
     query(profilesCollection, where("sports", "array-contains-any", filter)),
     cb
   );
+};
+
+export const createChat = async (data) => {
+  const docChatRef = await addDoc(chatsCollectionRef, data);
+  return docChatRef;
+};
+
+export const getChatRefById = (docId) => {
+  return doc(db, "chats", docId);
+};
+
+export const createChatBetweenUsers = async (
+  profileId,
+  uid,
+  dataProfile,
+  dataLoggedUser
+) => {
+  const docProfileRef = doc(db, "users", profileId);
+  const docLoggedUser = doc(db, "users", uid);
+  await updateDoc(docProfileRef, dataProfile);
+  await updateDoc(docLoggedUser, dataLoggedUser);
 };
