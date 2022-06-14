@@ -90,7 +90,7 @@ export const registerDbListener = (cb, filter) => {
     query(profilesCollection, where("sports", "array-contains-any", filter)),
     cb
   );
-
+};
 // Chat
 export const getChat = (chatId, cb) => {
   const docRef = doc(db, "chats", chatId);
@@ -126,5 +126,4 @@ export const createChatBetweenUsers = async (
 export const getProfile = (docId, cb) => {
   const userDocRef = doc(db, "users", docId);
   onSnapshot(userDocRef, cb);
-
 };
