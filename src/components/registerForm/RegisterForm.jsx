@@ -76,6 +76,17 @@ const RegisterForm = ({
             onChange={handleChange}
           />
         </div>
+        <StyledH5>Gdzie mieszkasz?</StyledH5>
+        <div>
+          <label htmlFor="city"></label>
+          <StyledInput
+            type="text"
+            name="city"
+            value={formData.city}
+            placeholder="Miasto"
+            onChange={handleChange}
+          />
+        </div>
 
         <StyledH5>Ile masz lat?</StyledH5>
         <div>
