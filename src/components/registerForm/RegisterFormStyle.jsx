@@ -105,26 +105,35 @@ export const StyledInput = styled.input`
   justify-content: start;
   align-items: center;
   border: none;
+  font-size: 16px;
   ::placeholder {
     color: #c5c7c5;
-    padding-left: 15px;
   }
+  :focus-visible {
+    outline: 3px solid #ff8020;
+  }
+  padding: 10px;
 `;
 
 export const StyledTextarea = styled.textarea`
-  height: 100px;
+  resize: none;
+  height: 150px;
   width: 400px;
   border: none;
   border-radius: 5px;
+  font-size: 16px;
   ::placeholder {
     color: #c5c7c5;
-    padding-left: 10px;
     padding-top: 5px;
   }
+  :focus-visible {
+    outline: 3px solid #ff8020;
+  }
+  padding: 10px;
 `;
 
 export const StyledSubmitButton = styled.button`
-  margin-top: 30px;
+  margin-top: 50px;
   background: #ff8020;
   border-radius: 5px;
   width: 550px;
@@ -137,7 +146,7 @@ export const StyledSubmitButton = styled.button`
   border: none;
   color: #ffffff;
   transition: 0.2s;
-
+  cursor: pointer;
   :hover {
     background: #fe6e00;
   }
@@ -155,5 +164,6 @@ export const UploadFileInput = styled.input`
     :hover {
       background: #fe6e00;
     }
+    cursor: pointer;
   }
 `;
