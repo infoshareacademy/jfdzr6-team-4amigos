@@ -74,7 +74,7 @@ function App() {
         >
           <Route path="profiles" element={<Profiles />} />
           <Route path="profiles/:docId" element={<Profile uid={user?.uid} userData={userData} />} />
-          <Route path="messages" element={<Messages />} />
+          <Route path="messages" element={<Messages uid={user?.uid} userData={userData} />} />
         </Route>
       </Routes>
     </BrowserRouter>

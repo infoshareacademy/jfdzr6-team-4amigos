@@ -62,7 +62,11 @@ export const registerUser = async (email, password, userData) => {
       downloadUrl = await getDownloadURL(snapshot.ref);
     }
     const userRef = doc(db, COLLECTIONS_NAMES.USERS, jwt.user.uid);
-    await setDoc(userRef, { ...userData, profilePicture: downloadUrl });
+    await setDoc(userRef, {
+      ...userData,
+      id: jwt.user.uid,
+      profilePicture: downloadUrl,
+    });
   } catch (error) {
     return firebaseErrors[error.code];
   }
