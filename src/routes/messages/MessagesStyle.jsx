@@ -23,6 +23,11 @@ border-radius: 10px 0 0 10px;
 
         li{
             margin: 20px 0px;
+            transition: all .2s ease;
+            &:hover{
+            background-color: #ff8020;
+            border-radius: 10px;
+    }
         }
     }
 `
@@ -47,12 +52,7 @@ export const Avatar = styled.div`
     display: flex;
     align-items: center;
     gap: 15px;
-    transition: all .2s ease;
-
-    &:hover{
-        background-color: #ff8020;
-        border-radius: 10px;
-    }
+    
     img{
             width: 40px;
             height: 40px;
