@@ -12,7 +12,7 @@ const Chat = ({ profileData, uid }) => {
         getChat(chatId, docSnapshot => {
             setChat({ id: docSnapshot.id, ...docSnapshot.data() });
         })
-    }, [])
+    }, [chatId])
 
     const handleSubmit = (e) => {
         e.preventDefault()

@@ -4,7 +4,7 @@ export const ChatContainer = styled.form`
     flex: 2;
     min-width: 350px;
     height: 500px;
-    border: 2px solid #e8e7e5;
+    border: ${props => props.fullWidth ? "none" : "2px solid #e8e7e5"};
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -29,8 +29,10 @@ export const TypingInput = styled.input`
 `
 export const ChatMessagesWrapper = styled.div`
     padding: 10px;
+    height: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: flex-end;
     overflow-y: scroll;
 `
 

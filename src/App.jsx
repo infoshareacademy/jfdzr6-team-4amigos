@@ -9,8 +9,9 @@ import Register from "./routes/auth/Register";
 import ForgotPassword from "./routes/auth/ForgotPassword";
 import { onAuthStateChanged } from "@firebase/auth";
 import { auth, db } from "./api/firebase";
-import { doc, getDoc, onSnapshot } from "firebase/firestore";
+import { doc, onSnapshot } from "firebase/firestore";
 import { Nav } from "./components/nav/Nav";
+import Messages from "./routes/messages/Messages";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -19,6 +20,7 @@ function App() {
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
+
       if (user) {
         const userRef = doc(db, "users", user.uid);
         onSnapshot(userRef, userSnapshot => {
@@ -73,6 +75,7 @@ function App() {
         >
           <Route path="profiles" element={<Profiles />} />
           <Route path="profiles/:docId" element={<Profile uid={user?.uid} userData={userData} />} />
+          <Route path="messages" element={<Messages uid={user?.uid} userData={userData} />} />
         </Route>
       </Routes>
     </BrowserRouter>
