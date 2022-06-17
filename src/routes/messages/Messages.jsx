@@ -2,9 +2,9 @@ import { Timestamp } from 'firebase/firestore'
 import React, { useEffect, useState } from 'react'
 import { addMessage, getChat } from '../../api'
 import { getChattingUsers } from '../../api/messages'
-import Chat from '../../components/chat/Chat'
-import { IncommingMessage, OutgoingMessage } from '../../components/chat/ChatStyle'
-import { ChatContainer, Container } from './MessagesStyle'
+import { ChatMessagesWrapper, IncommingMessage, OutgoingMessage, TypingInput } from '../../components/chat/ChatStyle'
+import { Avatar, ChatContainer, Container, PeopleList } from './MessagesStyle'
+import defaultPicture from "../../assets/img/defaultPicture.png"
 
 const Messages = ({ uid, userData }) => {
     const [usersWithChat, setUsersWithChat] = useState(null)
@@ -28,19 +28,22 @@ const Messages = ({ uid, userData }) => {
         return <p>ładowanie...</p>
     }
 
-    const renderUsersWithChats = usersWithChat.map(({ id, name, chatHistory }) => {
-        return <li key={id} onClick={() => openChat(chatHistory[uid].id, name)}>
+    const renderUsersWithChats = usersWithChat.map((user) => {
+        return <li key={user.id} onClick={() => openChat(user.chatHistory[uid].id, user)}>
             <div>
-                <div>{name}</div>
+                <Avatar>
+                    <img src={user.profilePicture || defaultPicture} alt={user.name} />
+                    {user.name}
+                </Avatar>
             </div>
 
         </li>
     })
 
-    const openChat = (id, name) => {
+    const openChat = (id, user) => {
         getChat(id, docSnapshot => {
             setChat({ id: docSnapshot.id, ...docSnapshot.data() })
-            setWrittingUser({ name: name, id: id })
+            setWrittingUser({ name: user.name, id: user.id, profilePicture: user.profilePicture })
         })
     }
 
@@ -62,35 +65,23 @@ const Messages = ({ uid, userData }) => {
 
     return (
         <Container >
-            <div>
+            <PeopleList>
                 <ul>
                     {renderUsersWithChats}
                 </ul>
-            </div>
-
-            <ChatContainer >
+            </PeopleList>
+            <ChatContainer onSubmit={sendMessage}>
                 <div>
-
-                    <div>
-                        <div>{writtingUser.name || "Z nikim jeszcze nie otworzyłeś chatu"}</div>
-                    </div>
+                    <Avatar>
+                        <img src={writtingUser.profilePicture || defaultPicture} alt={writtingUser.name} />
+                        {writtingUser.name || "Z nikim jeszcze nie otworzyłeś chatu"}
+                    </Avatar>
                 </div>
-
-                <div>
-                    <ul>
-                        {renderMessages}
-                    </ul>
-
-                </div>
-
-                <form onSubmit={sendMessage}>
-                    <input placeholder="Napisz nową wiadomość" value={inputValue} onChange={(e) => { setInputValue(e.target.value) }}></input>
-                </form>
-
+                <ChatMessagesWrapper>
+                    {renderMessages}
+                </ChatMessagesWrapper>
+                <TypingInput placeholder="Aa..." value={inputValue} onChange={(e) => setInputValue(e.target.value)} />
             </ChatContainer>
-
-
-
         </Container>
 
     )

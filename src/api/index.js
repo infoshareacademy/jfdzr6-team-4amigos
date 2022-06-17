@@ -1,14 +1,12 @@
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  signOut,
   sendPasswordResetEmail,
 } from "firebase/auth";
 import {
   addDoc,
   collection,
   doc,
-  getDoc,
   getDocs,
   onSnapshot,
   orderBy,
@@ -91,7 +89,11 @@ export const resetPassword = (email, cb) => {
 
 export const registerDbListener = (cb, filter) => {
   onSnapshot(
-    query(profilesCollection, where("sports", "array-contains-any", filter)),
+    query(
+      profilesCollection,
+      where("sports", "array-contains-any", filter),
+      orderBy("createdAt", "desc")
+    ),
     cb
   );
 };
