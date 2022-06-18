@@ -43,7 +43,7 @@ const Messages = ({ uid, userData }) => {
     const openChat = (id, user) => {
         getChat(id, docSnapshot => {
             setChat({ id: docSnapshot.id, ...docSnapshot.data() })
-            setWrittingUser({ name: user.name, id: user.id, profilePicture: user.profilePicture })
+            setWrittingUser({ name: user.name, id: user.id, chatId: id, profilePicture: user.profilePicture })
         })
     }
 
@@ -58,8 +58,8 @@ const Messages = ({ uid, userData }) => {
             return
         }
         const data = { messages: [...chat.messages, { createdAt: Timestamp.fromDate(new Date()), idAuthor: uid, message: inputValue }] }
-        const chatId = writtingUser.id
-        addMessage(chatId, data)
+        // const chatId = writtingUser.id
+        addMessage(writtingUser.chatId, data)
         setInputValue("")
     }
 
