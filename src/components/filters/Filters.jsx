@@ -3,6 +3,7 @@ import DoubleSliderInput from './doubleSlider/DoubleSliderInput'
 import { FiltersSection } from './FiltersStyle'
 
 const Filters = () => {
+    const { register, handleSubmit } = useForm()
     return (
         <FiltersSection>
             <form>
