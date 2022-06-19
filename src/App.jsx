@@ -11,6 +11,7 @@ import { onAuthStateChanged } from "@firebase/auth";
 import { auth, db } from "./api/firebase";
 import { doc, getDoc } from "firebase/firestore";
 import { Nav } from "./components/nav/Nav";
+import UserPanel from "./routes/userPanel/UserPanel";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -74,6 +75,7 @@ function App() {
         >
           <Route path="profiles" element={<Profiles />} />
           <Route path="profiles/:docId" element={<Profile />} />
+          <Route path="user-panel" element={<UserPanel />} />
         </Route>
       </Routes>
     </BrowserRouter>
