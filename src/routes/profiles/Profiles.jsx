@@ -10,7 +10,7 @@ import {
   CardInfoWrapper,
 } from "./Profiles.styled";
 import defaultPicture from "../../assets/img/defaultPicture.png";
-import { FilterProfiles } from "../../components/filters/FilterProfiles";
+import Filters from "../../components/filters/Filters";
 
 const Profiles = ({ uid, sports }) => {
   const [profiles, setProfiles] = useState([]);
@@ -57,12 +57,7 @@ const Profiles = ({ uid, sports }) => {
 
   return (
     <Container>
-      {profiles && (
-        <FilterProfiles
-          currentFilter={currentFilter}
-          changeFilter={changeFilter}
-        />
-      )}
+      <Filters />
       <ProfilesContainer>{renderProfiles}</ProfilesContainer>
     </Container>
   );

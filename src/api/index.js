@@ -1,14 +1,12 @@
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  signOut,
   sendPasswordResetEmail,
 } from "firebase/auth";
 import {
   addDoc,
   collection,
   doc,
-  getDoc,
   getDocs,
   onSnapshot,
   orderBy,
@@ -62,7 +60,11 @@ export const registerUser = async (email, password, userData) => {
       downloadUrl = await getDownloadURL(snapshot.ref);
     }
     const userRef = doc(db, COLLECTIONS_NAMES.USERS, jwt.user.uid);
-    await setDoc(userRef, { ...userData, profilePicture: downloadUrl });
+    await setDoc(userRef, {
+      ...userData,
+      id: jwt.user.uid,
+      profilePicture: downloadUrl,
+    });
   } catch (error) {
     return firebaseErrors[error.code];
   }
@@ -87,11 +89,14 @@ export const resetPassword = (email, cb) => {
 
 export const registerDbListener = (cb, filter) => {
   onSnapshot(
-    query(profilesCollection, where("sports", "array-contains-any", filter)),
+    query(
+      profilesCollection,
+      where("sports", "array-contains-any", filter),
+      orderBy("createdAt", "desc")
+    ),
     cb
   );
 };
-
 // Chat
 export const getChat = (chatId, cb) => {
   const docRef = doc(db, "chats", chatId);

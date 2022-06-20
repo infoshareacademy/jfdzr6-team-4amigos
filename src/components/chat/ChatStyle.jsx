@@ -4,7 +4,7 @@ export const ChatContainer = styled.form`
     flex: 2;
     min-width: 350px;
     height: 500px;
-    border: 2px solid #e8e7e5;
+    border: ${props => props.fullWidth ? "none" : "2px solid #e8e7e5"};
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -16,21 +16,22 @@ export const TypingInput = styled.input`
     border: none;
     padding: 10px 10px;
     background-color: #EDECE8;
-    border-radius: 10px;
+    border-radius: 0 5px 5px 0;
     border: 1px solid #EDECE8;
     color: #262f40;
     font-size: 16px;
 
     &:focus-visible{
-        border: 1px solid #262f40;
-        outline: none;
+        outline: 1px solid #ffc524;
     }
     
 `
 export const ChatMessagesWrapper = styled.div`
     padding: 10px;
+    height: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: flex-end;
     overflow-y: scroll;
 `
 
