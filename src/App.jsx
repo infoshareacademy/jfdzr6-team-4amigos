@@ -12,6 +12,7 @@ import { auth, db } from "./api/firebase";
 import { doc, onSnapshot } from "firebase/firestore";
 import { Nav } from "./components/nav/Nav";
 import Messages from "./routes/messages/Messages";
+import Filters from "./components/filters/Filters";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -66,6 +67,7 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
           <Route path="forgot-password" element={<ForgotPassword />} />
+          <Route path="filters" element={<Filters />} />
         </Route>
 
         <Route

@@ -16,14 +16,13 @@ export const TypingInput = styled.input`
     border: none;
     padding: 10px 10px;
     background-color: #EDECE8;
-    border-radius: 10px;
+    border-radius: 0 5px 5px 0;
     border: 1px solid #EDECE8;
     color: #262f40;
     font-size: 16px;
 
     &:focus-visible{
-        border: 1px solid #262f40;
-        outline: none;
+        outline: 1px solid #ffc524;
     }
     
 `
