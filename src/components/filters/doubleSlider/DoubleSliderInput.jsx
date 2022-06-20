@@ -1,23 +1,26 @@
 import React, { useState } from 'react'
 import styled from "styled-components"
 
+const AgeDiv = styled.div`
+    span{
+        font-size: 12px;
+    }
+`
+
 const MultiRangeSpan = styled.div`
     position: relative;
-   height: 50px;
+   height: 30px;
 
    input[type=range] {
    box-sizing: border-box;
    appearance: none;
    width: 200px;
-   margin: 10px;
    padding: 0 2px;
-   /* Add some L/R padding to ensure box shadow of handle is shown */
    overflow: hidden;
    border: 0;
-   border-radius: 1px;
+   border-radius: 5px;
    outline: none;
-   background: linear-gradient(grey, grey) no-repeat center;
-   /* Use a linear gradient to generate only the 2px height background */
+   background: linear-gradient(#FF8020, #FF8020) no-repeat center;
    background-size: 100% 2px;
    pointer-events: none;
 
@@ -68,44 +71,43 @@ const MultiRangeSpan = styled.div`
    }
 `
 
-const DoubleSliderInput = () => {
+const DoubleSliderInput = ({ register }) => {
     const [upper, setUpper] = useState(30)
     const [lower, setLower] = useState(20)
-    const [formData, setFormData] = useState({})
 
     const handleUpperSlider = (e) => {
         setUpper(parseInt(e.target.value))
-        if (upper < lower + 4) {
-            setLower(upper - 4)
+        if (upper < lower + 1) {
+            setLower(upper - 1)
             if (lower === e.target.min) {
-                setLower(0)
-                setUpper(8)
+                setLower(18)
             }
         }
     }
 
     const handleLowerSlider = (e) => {
         setLower(parseInt(e.target.value))
-        if (lower > upper - 4) {
-            setUpper(lower + 4)
+        if (lower > upper - 1) {
+            setUpper(lower + 1)
 
             if (upper === e.target.max) {
                 setUpper(parseInt(e.target.max))
-                setLower(parseInt(e.target.max - 5))
             }
 
         }
     }
     return (
-        <MultiRangeSpan>
-            <div>
-                <input name='lower' type="range" min="18" max="78" value={lower} onChange={handleLowerSlider} />
-                <input type="range" min="19" max="80" value={upper} onChange={handleUpperSlider} />
-            </div>
-            <div>
+        <>
+            <AgeDiv>
                 <span>od {lower} do {upper} lat</span>
-            </div>
-        </MultiRangeSpan>
+            </AgeDiv>
+            <MultiRangeSpan>
+                <div>
+                    <input name='lower' type="range" min="18" max="78" value={lower} {...register("lower")} onChange={handleLowerSlider} />
+                    <input type="range" min="19" max="80" value={upper} {...register("upper")} onChange={handleUpperSlider} />
+                </div>
+            </MultiRangeSpan>
+        </>
     )
 }
 
