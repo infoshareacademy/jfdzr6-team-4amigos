@@ -6,18 +6,19 @@ import RegisterForm from "../../components/registerForm/RegisterForm";
 
 const Register = () => {
 
-    const defaultValue = {
-        name:"",
-        gender: "",
-        age: "",
-        description: "",
-        email:"",
-        password:"",
-        city:"",
-        confirmPassword:"",
-        profilePicture: "",
-        sports:[]
-    }
+  const defaultValue = {
+    name: "",
+    gender: "",
+    age: "",
+    description: "",
+    email: "",
+    password: "",
+    city: "",
+    confirmPassword: "",
+    profilePicture: "",
+    chatHistory: null,
+    sports: []
+  }
   const [formData, setFormData] = useState(defaultValue);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
@@ -31,7 +32,6 @@ const Register = () => {
           : [...formData.sports, e.target.value],
       });
     } else if (e.target.type === "file") {
-      console.log(e.target.files[0]);
       setFormData({ ...formData, [e.target.name]: e.target.files[0] });
     } else {
       setFormData({

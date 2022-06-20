@@ -1,16 +1,6 @@
-import {
-  collection,
-  getDoc,
-  getDocs,
-  onSnapshot,
-  orderBy,
-  query,
-} from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getProfiles, registerDbListener } from "../../api";
-import { db } from "../../api/firebase";
-import { FilterProfiles } from "../../components/filters/FilterProfiles";
 import { sportsIcon } from "../../utils/sportsLabel";
 import {
   Container,
@@ -19,9 +9,16 @@ import {
   CardPictureWrapper,
   CardInfoWrapper,
 } from "./Profiles.styled";
+import defaultPicture from "../../assets/img/defaultPicture.png";
+import { FilterProfiles } from "../../components/filters/FilterProfiles";
 
 const Profiles = ({ uid, sports }) => {
   const [profiles, setProfiles] = useState([]);
+  const [currentFilter, setCurrentFilter] = useState("all");
+
+  const changeFilter = (newFilter) => {
+    setCurrentFilter(newFilter);
+  };
 
   useEffect(() => {
     registerDbListener((querySnapshot) => {
@@ -38,13 +35,7 @@ const Profiles = ({ uid, sports }) => {
         <CardContainer key={id}>
           <Link to={`/profiles/${id}`}>
             <CardPictureWrapper>
-              <img
-                src={
-                  profilePicture ||
-                  "https://images.unsplash.com/photo-1653953547304-9f434ab5cd6d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
-                }
-                alt={name}
-              />
+              <img src={profilePicture || defaultPicture} alt={name} />
               <span>{name}</span>
             </CardPictureWrapper>
             <CardInfoWrapper>
@@ -66,7 +57,12 @@ const Profiles = ({ uid, sports }) => {
 
   return (
     <Container>
-      <FilterProfiles profiles={profiles} />
+      {profiles && (
+        <FilterProfiles
+          currentFilter={currentFilter}
+          changeFilter={changeFilter}
+        />
+      )}
       <ProfilesContainer>{renderProfiles}</ProfilesContainer>
     </Container>
   );

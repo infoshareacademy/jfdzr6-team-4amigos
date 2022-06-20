@@ -9,7 +9,7 @@ import Register from "./routes/auth/Register";
 import ForgotPassword from "./routes/auth/ForgotPassword";
 import { onAuthStateChanged } from "@firebase/auth";
 import { auth, db } from "./api/firebase";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, onSnapshot } from "firebase/firestore";
 import { Nav } from "./components/nav/Nav";
 
 function App() {
@@ -21,16 +21,15 @@ function App() {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         const userRef = doc(db, "users", user.uid);
-
-        getDoc(userRef).then((docData) => {
-          const data = docData.data();
+        onSnapshot(userRef, userSnapshot => {
+          const data = userSnapshot.data();
           if (!data) {
             return;
           }
           setUser(user);
           setUserData(data);
           data.isAdmin ? setRole("admin") : setRole("user");
-        });
+        })
       } else {
         setRole("guest");
         setUser(null);
@@ -73,7 +72,7 @@ function App() {
           }
         >
           <Route path="profiles" element={<Profiles />} />
-          <Route path="profiles/:docId" element={<Profile />} />
+          <Route path="profiles/:docId" element={<Profile uid={user?.uid} userData={userData} />} />
         </Route>
       </Routes>
     </BrowserRouter>

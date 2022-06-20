@@ -5,6 +5,7 @@ import {
   sendPasswordResetEmail,
 } from "firebase/auth";
 import {
+  addDoc,
   collection,
   doc,
   getDoc,
@@ -13,6 +14,7 @@ import {
   orderBy,
   query,
   setDoc,
+  updateDoc,
   where,
 } from "firebase/firestore";
 import { auth, db, storage } from "./firebase";
@@ -26,6 +28,7 @@ export const COLLECTIONS_NAMES = {
 };
 
 export const profilesCollection = collection(db, COLLECTIONS_NAMES.USERS);
+export const chatsCollectionRef = collection(db, COLLECTIONS_NAMES.CHATS);
 export const getProfileDocRef = (docId) =>
   doc(db, COLLECTIONS_NAMES.PROFILES, docId);
 export const defaultQueryConstraint = orderBy("name", "desc");
@@ -34,14 +37,6 @@ export const getProfiles = (querySnapshot) => {
   const profiles = querySnapshot.docs.map((doc) => {
     return { id: doc.id, ...doc.data() };
   });
-  ///Pobieranie chatu użytkownika
-  // profiles[0].chatHistory.forEach(document=>{
-
-  //   const docRef = doc(db,COLLECTIONS_NAMES.CHATS, document.id)
-  //   getDoc(docRef).then(snapshot=>{
-  //     console.log(snapshot.data());
-  //   })
-  // });
   return profiles;
 };
 
@@ -68,7 +63,6 @@ export const registerUser = async (email, password, userData) => {
     }
     const userRef = doc(db, COLLECTIONS_NAMES.USERS, jwt.user.uid);
     await setDoc(userRef, { ...userData, profilePicture: downloadUrl });
-    await signOut(auth);
   } catch (error) {
     return firebaseErrors[error.code];
   }
@@ -92,9 +86,45 @@ export const resetPassword = (email, cb) => {
 };
 
 export const registerDbListener = (cb, filter) => {
-  // onSnapshot(query(profilesCollection, defaultQueryConstraint), cb);
   onSnapshot(
     query(profilesCollection, where("sports", "array-contains-any", filter)),
     cb
   );
+};
+
+// Chat
+export const getChat = (chatId, cb) => {
+  const docRef = doc(db, "chats", chatId);
+  onSnapshot(docRef, cb);
+};
+
+export const addMessage = async (chatId, data) => {
+  const docRef = doc(db, "chats", chatId);
+  await updateDoc(docRef, data);
+};
+export const createChat = async (data) => {
+  const docChatRef = await addDoc(chatsCollectionRef, data);
+  return docChatRef;
+};
+
+export const getChatRefById = (docId) => {
+  return doc(db, "chats", docId);
+};
+
+export const createChatBetweenUsers = async (
+  profileId,
+  uid,
+  dataProfile,
+  dataLoggedUser
+) => {
+  const docProfileRef = doc(db, "users", profileId);
+  const docLoggedUser = doc(db, "users", uid);
+  await updateDoc(docProfileRef, dataProfile);
+  await updateDoc(docLoggedUser, dataLoggedUser);
+};
+
+// Profile
+export const getProfile = (docId, cb) => {
+  const userDocRef = doc(db, "users", docId);
+  onSnapshot(userDocRef, cb);
 };
