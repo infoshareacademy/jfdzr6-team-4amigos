@@ -97,6 +97,41 @@ export const registerDbListener = (cb, filter) => {
     cb
   );
 };
+
+export const registerFilterProfiles = (
+  cb,
+  filter,
+  ageLower,
+  ageUpper,
+  gender,
+  onlyPicture
+) => {
+  const picture = JSON.parse(onlyPicture) ? "dziala" : null;
+  console.log(picture);
+  // const q =
+  //   gender != "all"
+  //     ? query(
+  //         profilesCollection,
+  //         where("sports", "array-contains-any", filter),
+  //         where("profilePicture", "==", JSON.parse(onlyPicture)),
+  //         where("gender", "==", gender),
+  //         where("age", ">", ageLower),
+  //         where("age", "<", ageUpper)
+  //       )
+  //     : query(
+  //         profilesCollection,
+  //         where("sports", "array-contains-any", filter),
+  //         where("profilePicture", "==", JSON.parse(onlyPicture)),
+  //         where("age", ">", ageLower),
+  //         where("age", "<", ageUpper)
+  //       );
+  const q = query(
+    profilesCollection,
+    where("sports", "array-contains-any", filter),
+    where("profilePicture", "==", picture)
+  );
+  onSnapshot(q, cb);
+};
 // Chat
 export const getChat = (chatId, cb) => {
   const docRef = doc(db, "chats", chatId);

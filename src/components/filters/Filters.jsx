@@ -1,14 +1,21 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
+import { getProfiles, registerFilterProfiles } from '../../api'
 import DoubleSliderInput from './doubleSlider/DoubleSliderInput'
 import { FiltersSection, RadioLabel } from './FiltersStyle'
 
-const Filters = () => {
+const Filters = ({ setFilteredProfiles, sports }) => {
     const { register, handleSubmit } = useForm()
 
     const onSubmit = (data) => {
         console.log(data);
+
+        registerFilterProfiles(querySnapshot => {
+            const retriveFilteredProfiles = getProfiles(querySnapshot)
+            setFilteredProfiles(retriveFilteredProfiles)
+        }, sports, data.lower, data.upper, data.gender, data.onlyPicture)
     }
+
     return (
         <FiltersSection>
             <form onSubmit={handleSubmit(onSubmit)}>
