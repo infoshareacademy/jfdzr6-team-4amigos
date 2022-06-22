@@ -13,6 +13,7 @@ import {
   orderBy,
   query,
   setDoc,
+  updateDoc,
   where,
 } from "firebase/firestore";
 import { auth, db, storage } from "./firebase";
@@ -89,6 +90,12 @@ let actionCodeSettings = {
 
 export const resetPassword = (email, cb) => {
   sendPasswordResetEmail(auth, email, actionCodeSettings).then(cb);
+};
+
+export const updateUser = (data, docId) => {
+  updateDoc(getProfileDocRef(docId), {
+    data,
+  });
 };
 
 export const registerDbListener = (cb, filter) => {

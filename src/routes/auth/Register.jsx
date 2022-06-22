@@ -5,19 +5,18 @@ import { registerUser } from "../../api";
 import RegisterForm from "../../components/registerForm/RegisterForm";
 
 const Register = () => {
-
-    const defaultValue = {
-        name:"",
-        gender: "",
-        age: "",
-        description: "",
-        email:"",
-        password:"",
-        city:"",
-        confirmPassword:"",
-        profilePicture: "",
-        sports:[]
-    }
+  const defaultValue = {
+    name: "",
+    gender: "",
+    age: "",
+    description: "",
+    email: "",
+    password: "",
+    city: "",
+    confirmPassword: "",
+    profilePicture: "",
+    sports: [],
+  };
   const [formData, setFormData] = useState(defaultValue);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
@@ -65,7 +64,7 @@ const Register = () => {
       return;
     }
     if (!name || !description || !gender || !age || !sports.length) {
-      setError("Wszystkie mola muszą być uzupełnione");
+      setError("Wszystkie pola muszą być uzupełnione");
       return;
     }
     registerUser(email, password, {

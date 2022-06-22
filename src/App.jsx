@@ -73,9 +73,9 @@ function App() {
             <ProtectedRoute isAllowed={role === "user"} redirectPath="/" />
           }
         >
+          <Route path="userpanel" element={<UserPanel />} />
           <Route path="profiles" element={<Profiles />} />
           <Route path="profiles/:docId" element={<Profile />} />
-          <Route path="user-panel" element={<UserPanel />} />
         </Route>
       </Routes>
     </BrowserRouter>

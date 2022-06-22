@@ -36,6 +36,9 @@ export const Nav = ({ role }) => {
           </>
         ) : (
           <>
+            <li>
+              <StyledRegister to="/userpanel">Panel użytkownika</StyledRegister>
+            </li>
             <li onClick={() => signOut(auth)}>
               <StyledRegister to="/">Wyloguj się</StyledRegister>
             </li>
