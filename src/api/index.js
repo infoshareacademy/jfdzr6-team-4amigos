@@ -87,6 +87,11 @@ export const resetPassword = (email, cb) => {
   sendPasswordResetEmail(auth, email, actionCodeSettings).then(cb);
 };
 
+export const updateUser = async (data, docId) => {
+  const docRef = doc(db, "users", docId);
+  await updateDoc(docRef, data);
+};
+
 export const registerDbListener = (cb, filter) => {
   onSnapshot(
     query(

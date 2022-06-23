@@ -4,7 +4,6 @@ import { resetPassword } from "../../api";
 import ForgotPasswordForm from "../../components/forgotPasswordForm/ForgotPasswordForm";
 
 const ForgotPassword = () => {
-  // const [formData, setFormData] = useState({email:""})
   const navigate = useNavigate();
 
   const handleResetPassword = (e) => {
