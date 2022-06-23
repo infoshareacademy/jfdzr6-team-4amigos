@@ -14,7 +14,7 @@ import Filters from "../../components/filters/Filters";
 
 const Profiles = ({ uid, sports }) => {
   const [profiles, setProfiles] = useState([]);
-  const [currentFilter, setCurrentFilter] = useState("all");
+  const [filteredProfiles, setFilteredProfiles] = useState("all");
 
   const changeFilter = (newFilter) => {
     setCurrentFilter(newFilter);

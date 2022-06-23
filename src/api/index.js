@@ -97,6 +97,18 @@ export const registerDbListener = (cb, filter) => {
     cb
   );
 };
+
+export const registerFilterProfiles = (cb, filter, gender) => {
+  onSnapshot(
+    query(
+      profilesCollection,
+      where("sports", "array-contains-any", filter),
+      where("gender", "==", gender),
+      orderBy("createdAt", "desc")
+    ),
+    cb
+  );
+};
 // Chat
 export const getChat = (chatId, cb) => {
   const docRef = doc(db, "chats", chatId);
