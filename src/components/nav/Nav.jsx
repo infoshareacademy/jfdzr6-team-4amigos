@@ -28,10 +28,10 @@ export const Nav = ({ role }) => {
               <p>Nie masz konta?</p>
             </li>
             <li>
-              <StyledLogin to="/login">Zaloguj się</StyledLogin>
+              <StyledRegister to="/register">Zarejestruj się</StyledRegister>
             </li>
             <li>
-              <StyledRegister to="/register">Zarejestruj się</StyledRegister>
+              <StyledLogin to="/login">Zaloguj się</StyledLogin>
             </li>
           </>
         ) : (
