@@ -36,26 +36,13 @@ export const Nav = ({ role }) => {
           </>
         ) : (
           <>
-            <StyledRegister to="/messages">Wiadomości</StyledRegister>
+            <StyledRegister to="/events">Wydarzenia</StyledRegister>
             <li onClick={() => signOut(auth)}>
               <StyledRegister to="/">Wyloguj się</StyledRegister>
             </li>
           </>
         )}
       </StyledUl>
-      {/* <li>
-          <p>Nie masz konta?</p>
-        </li>
-        <li>
-          <StyledRegister to="/register">Zarejestruj się</StyledRegister>
-        </li>
-        <li>
-          <StyledLogin to="/login">Zaloguj się</StyledLogin>
-        </li>
-        <li onClick={() => signOut(auth)}>
-          <StyledLogin to="/">Wyloguj się</StyledLogin>
-        </li>
-      </StyledUl> */}
     </StyledNav>
   );
 };
