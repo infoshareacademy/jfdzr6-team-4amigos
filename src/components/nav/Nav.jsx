@@ -19,8 +19,6 @@ export const Nav = ({ role }) => {
   const context = useContext(AuthContext);
   const { dispatch } = context;
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
   return (
     <StyledNav>
       <Link to="/">
@@ -46,6 +44,12 @@ export const Nav = ({ role }) => {
               onClick={() =>
                 signOut(auth).then(() => {
                   dispatch({ type: "LOGOUT" });
+                  if (!context) {
+                    throw Error(
+                      "useAuthContext must be used within a AuthProvider"
+                    );
+                  }
+                  return context;
                 })
               }
             >

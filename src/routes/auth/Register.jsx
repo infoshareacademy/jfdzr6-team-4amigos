@@ -76,7 +76,7 @@ const Register = () => {
       isAdmin: false,
     });
     if (!context) {
-      throw Error("useAuthContext must be used within a AuthProvider");
+      throw Error("AuthContext must be used within a AuthProvider");
     }
 
     setFormData(defaultValue);
