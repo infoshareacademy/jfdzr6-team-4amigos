@@ -4,6 +4,7 @@ import { getProfiles, registerDbListener } from "../../api";
 import { sportsIcon } from "../../utils/sportsLabel";
 import { Container, CardContainer, ProfilesContainer, CardPictureWrapper, CardInfoWrapper } from "./Profiles.styled";
 import defaultPicture from "../../assets/img/defaultPicture.png";
+import Filters from "../../components/filters/Filters";
 
 const Profiles = ({ uid, sports }) => {
   const [profiles, setProfiles] = useState([]);
@@ -37,6 +38,7 @@ const Profiles = ({ uid, sports }) => {
 
   return (
     <Container>
+      <Filters />
       <ProfilesContainer>
         {renderProfiles}
       </ProfilesContainer>

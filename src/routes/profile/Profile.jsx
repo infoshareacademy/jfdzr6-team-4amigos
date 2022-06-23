@@ -42,7 +42,7 @@ const Profile = ({ uid, userData }) => {
   }, [docId]);
 
   return <ProfileContainer>
-    <img src={profile.profilePicture || defaultPicture} alt="profile photo" />
+    <img src={profile.profilePicture || defaultPicture} alt={profile.name} />
     <ProfileDetailsWrapper >
       <h3>{profile.name}</h3>
       <div>
