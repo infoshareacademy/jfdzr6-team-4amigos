@@ -16,8 +16,6 @@ const UserPanel = ({ uid }) => {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  console.log(uid);
-
   const handleChange = (e) => {
     if (e.target.type === "checkbox") {
       setFormData({
@@ -43,6 +41,8 @@ const UserPanel = ({ uid }) => {
       setError("Wszystkie pola muszą być uzupełnione");
       return;
     }
+
+    updateUser(formData, uid);
 
     setFormData(defaultValue);
     navigate("/");

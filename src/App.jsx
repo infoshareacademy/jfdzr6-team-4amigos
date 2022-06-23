@@ -73,7 +73,7 @@ function App() {
             <ProtectedRoute isAllowed={role === "user"} redirectPath="/" />
           }
         >
-          <Route path="userpanel" element={<UserPanel />} />
+          <Route path="userpanel" element={<UserPanel uid={user?.uid} />} />
           <Route path="profiles" element={<Profiles />} />
           <Route path="profiles/:docId" element={<Profile />} />
         </Route>

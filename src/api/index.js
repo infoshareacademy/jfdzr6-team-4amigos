@@ -27,8 +27,9 @@ export const COLLECTIONS_NAMES = {
 };
 
 export const profilesCollection = collection(db, COLLECTIONS_NAMES.USERS);
-export const getProfileDocRef = (docId) =>
-  doc(db, COLLECTIONS_NAMES.PROFILES, docId);
+export const getProfileDocRef = (docId) => {
+  return doc(db, COLLECTIONS_NAMES.PROFILES, docId);
+};
 export const defaultQueryConstraint = orderBy("name", "desc");
 
 export const getProfiles = (querySnapshot) => {
@@ -92,10 +93,9 @@ export const resetPassword = (email, cb) => {
   sendPasswordResetEmail(auth, email, actionCodeSettings).then(cb);
 };
 
-export const updateUser = (data, docId) => {
-  updateDoc(getProfileDocRef(docId), {
-    data,
-  });
+export const updateUser = async (data, docId) => {
+  const docRef = doc(db, "users", docId);
+  await updateDoc(docRef, data);
 };
 
 export const registerDbListener = (cb, filter) => {
