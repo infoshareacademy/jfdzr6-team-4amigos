@@ -1,11 +1,24 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { displayEvents } from '../../api/events'
+import { AuthContext } from '../../context/Auth';
+import EditEventElement from './eventElement/EditEventElement';
+import EventElement from './eventElement/EventElement';
 
 const EventsList = () => {
+    const { userData } = useContext(AuthContext);
     const [events, setEvents] = useState(null)
+    const [draftId, setDraftId] = useState(null)
+
+    const enterEditMode = (id) => {
+        setDraftId(id)
+    }
+
+    const cancelEditMode = () => {
+        setDraftId(null)
+    }
 
     useEffect(() => {
-        displayEvents("bike", querySnapshot => {
+        displayEvents(userData.sports, querySnapshot => {
             setEvents(querySnapshot.docs.map(doc => {
                 return { id: doc.id, ...doc.data() }
             }))
@@ -16,14 +29,8 @@ const EventsList = () => {
         return <p>Trwa ładowanie strony...</p>
     }
 
-    const renderEvents = events.map(({ id, title, city, startDate, description, category }) => {
-        return <div style={{ border: "1px solid tomato" }}>
-            <h2 key={id}>{title}</h2>
-            <p>{city}</p>
-            <p>{startDate}</p>
-            <p>{category}</p>
-            <p>{description}</p>
-        </div>
+    const renderEvents = events.map((event) => {
+        return event.id === draftId ? <EditEventElement event={event} cancelEditMode={cancelEditMode} /> : <EventElement event={event} uid={userData?.id} enterEditMode={enterEditMode} />
     })
 
     return <div>{renderEvents}</div>
