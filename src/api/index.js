@@ -19,6 +19,8 @@ import { auth, db, storage } from "./firebase";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { v4 as uuidv4 } from "uuid";
 import { firebaseErrors } from "../utils/firebaseErrors";
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
 
 export const COLLECTIONS_NAMES = {
   CHATS: "chats",
@@ -46,10 +48,16 @@ export const queryProfiles = (filter, cb) => {
   getDocs(q).then(cb);
 };
 
-export const registerUser = async (email, password, userData) => {
+export const registerUser = async (email, password, userData, dispatch) => {
   let downloadUrl = null;
   try {
-    const jwt = await createUserWithEmailAndPassword(auth, email, password);
+    const jwt = await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password
+    ).then((res) => {
+      dispatch({ type: "LOGIN", payload: res.user });
+    });
 
     if (userData.profilePicture) {
       const storageRef = ref(
@@ -70,9 +78,11 @@ export const registerUser = async (email, password, userData) => {
   }
 };
 
-export const loginUser = (email, password, cb) => {
+export const loginUser = (email, password, dispatch) => {
   signInWithEmailAndPassword(auth, email, password)
-    .then(cb)
+    .then((res) => {
+      dispatch({ type: "LOGIN", payload: res.user });
+    })
     .catch((e) => {
       console.log(e.code);
       alert(e.code);
@@ -92,6 +102,18 @@ export const registerDbListener = (cb, filter) => {
     query(
       profilesCollection,
       where("sports", "array-contains-any", filter),
+      orderBy("createdAt", "desc")
+    ),
+    cb
+  );
+};
+
+export const registerFilterProfiles = (cb, filter, gender) => {
+  onSnapshot(
+    query(
+      profilesCollection,
+      where("sports", "array-contains-any", filter),
+      where("gender", "==", gender),
       orderBy("createdAt", "desc")
     ),
     cb

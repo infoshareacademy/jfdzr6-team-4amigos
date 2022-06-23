@@ -3,9 +3,10 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { registerUser } from "../../api";
 import RegisterForm from "../../components/registerForm/RegisterForm";
+import { AuthContext } from "../../context/AuthContext";
+import { useContext } from "react";
 
 const Register = () => {
-
   const defaultValue = {
     name: "",
     gender: "",
@@ -17,11 +18,12 @@ const Register = () => {
     confirmPassword: "",
     profilePicture: "",
     chatHistory: null,
-    sports: []
-  }
+    sports: [],
+  };
   const [formData, setFormData] = useState(defaultValue);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const context = useContext(AuthContext);
 
   const handleChange = (e) => {
     if (e.target.type === "checkbox") {
@@ -73,9 +75,14 @@ const Register = () => {
       createdAt: serverTimestamp(),
       isAdmin: false,
     });
+    if (!context) {
+      throw Error("useAuthContext must be used within a AuthProvider");
+    }
 
     setFormData(defaultValue);
     navigate("/login");
+
+    return context;
   };
   return (
     <div>
