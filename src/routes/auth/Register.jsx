@@ -15,6 +15,7 @@ const Register = () => {
     city: "",
     confirmPassword: "",
     profilePicture: "",
+    chatHistory: null,
     sports: [],
   };
   const [formData, setFormData] = useState(defaultValue);
@@ -30,7 +31,6 @@ const Register = () => {
           : [...formData.sports, e.target.value],
       });
     } else if (e.target.type === "file") {
-      console.log(e.target.files[0]);
       setFormData({ ...formData, [e.target.name]: e.target.files[0] });
     } else {
       setFormData({

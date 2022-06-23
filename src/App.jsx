@@ -9,9 +9,11 @@ import Register from "./routes/auth/Register";
 import ForgotPassword from "./routes/auth/ForgotPassword";
 import { onAuthStateChanged } from "@firebase/auth";
 import { auth, db } from "./api/firebase";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, onSnapshot } from "firebase/firestore";
 import { Nav } from "./components/nav/Nav";
 import UserPanel from "./routes/userPanel/UserPanel";
+import Messages from "./routes/messages/Messages";
+import Filters from "./components/filters/Filters";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -22,9 +24,8 @@ function App() {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         const userRef = doc(db, "users", user.uid);
-
-        getDoc(userRef).then((docData) => {
-          const data = docData.data();
+        onSnapshot(userRef, (userSnapshot) => {
+          const data = userSnapshot.data();
           if (!data) {
             return;
           }
@@ -66,6 +67,7 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
           <Route path="forgot-password" element={<ForgotPassword />} />
+          <Route path="filters" element={<Filters />} />
         </Route>
 
         <Route
@@ -75,7 +77,14 @@ function App() {
         >
           <Route path="userpanel" element={<UserPanel uid={user?.uid} />} />
           <Route path="profiles" element={<Profiles />} />
-          <Route path="profiles/:docId" element={<Profile />} />
+          <Route
+            path="profiles/:docId"
+            element={<Profile uid={user?.uid} userData={userData} />}
+          />
+          <Route
+            path="messages"
+            element={<Messages uid={user?.uid} userData={userData} />}
+          />
         </Route>
       </Routes>
     </BrowserRouter>
