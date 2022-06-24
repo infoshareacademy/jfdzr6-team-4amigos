@@ -21,13 +21,12 @@ const EventDetail = () => {
 
     const handleClick= () =>{
         setIsPending(true)
-        const userRef = getUserRef(userData.id)
         if (eventData.members.includes(userData.id)) {
             setError("uzytkownik dołączył juz do wydarzenia")
             setIsPending(false)
             return
         }
-        updateEvent(id, {members: [userData.id]})
+        updateEvent(id, {members: [...eventData.members,userData.id]})
         .then( ()=>{
             setIsPending(false)
         })
@@ -37,8 +36,20 @@ const EventDetail = () => {
         })
     }
 
+    const leaveEvent = (id) => {
+        updateEvent(eventData.id, {members: eventData.members.filter(memberId=> memberId!== id)})
+    }
+
+    const renderJoinButton = () => {
+        if (eventData.members.includes(userData.id)) {
+            return <button onClick={()=>leaveEvent(userData.id)} disabled={isPending}>Zrezygnuj</button>
+        }
+        return <button onClick={handleClick} disabled={isPending}>{isPending ? "Dołączam..." : "Dołącz"}</button>
+    }
+
   return (
-    <div >
+      <div >
+          {error && <h2>{ error}</h2>}
         {!eventData && <h2>Trwa ładowanie strony</h2>}
         {eventData && (<div>
             <div>EventDetail - {id}</div>
@@ -50,7 +61,7 @@ const EventDetail = () => {
         <p>{eventData.city}</p>
         <p>{eventData.category}</p>
         <p>{eventData.description}</p>
-        <button onClick={handleClick} disabled={isPending}>{isPending ? "Dołączam..." : "Dołącz"}</button>
+        {renderJoinButton()}
         </div>)}
     </div>
   )

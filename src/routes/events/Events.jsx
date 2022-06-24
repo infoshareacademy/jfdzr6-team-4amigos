@@ -16,7 +16,7 @@ const Events = () => {
             <ul>
                 <li>
                     <Link to="/events">Wydarzenia</Link>
-            </li>
+                </li>
             <li>
                 <Link to="my-events">Moje wydarzenia</Link>
             </li>
