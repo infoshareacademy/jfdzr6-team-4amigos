@@ -1,9 +1,14 @@
+import { doc } from 'firebase/firestore'
 import React, { useState } from 'react'
+import { useContext } from 'react'
 import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { getEvent } from '../../../api/events'
+import { getUserRef } from '../../../api'
+import { getEvent,updateEvent} from '../../../api/events'
+import { AuthContext } from '../../../context/Auth'
 
 const EventDetail = () => {
+    const {userData} =useContext(AuthContext)
     const {id} = useParams()
     const [eventData, setEventData] = useState(null)
 
@@ -13,10 +18,10 @@ const EventDetail = () => {
         })
     },[])
 
-    // if (!eventData) {
-    //     return <h2>Trwa ładowanie strony</h2>
-    // }
-
+    const handleClick= () =>{
+        const userRef = getUserRef(userData.id)
+        updateEvent(id, {members: {[userData.id]: userRef}})
+    }
 
   return (
     <div>
@@ -31,7 +36,7 @@ const EventDetail = () => {
         <p>{eventData.city}</p>
         <p>{eventData.category}</p>
         <p>{eventData.description}</p>
-        <button>Dołącz</button>
+        <button onClick={handleClick}>Dołącz</button>
         </div>)}
     </div>
   )
