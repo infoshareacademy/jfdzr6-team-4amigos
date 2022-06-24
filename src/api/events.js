@@ -51,3 +51,8 @@ export const addEvent = async (data) => {
 export const displayEvents = (category, cb) => {
   onSnapshot(query(collectionRef, where("category", "in", category)), cb);
 };
+
+export const getEvent = (idEvent,cb) =>{
+  const docRef = getEventDocRef(idEvent)
+  onSnapshot(docRef, cb)
+}
