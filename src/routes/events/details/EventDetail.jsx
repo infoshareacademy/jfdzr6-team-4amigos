@@ -1,4 +1,3 @@
-import { doc } from 'firebase/firestore'
 import React, { useState } from 'react'
 import { useContext } from 'react'
 import { useEffect } from 'react'
@@ -11,6 +10,8 @@ const EventDetail = () => {
     const {userData} =useContext(AuthContext)
     const {id} = useParams()
     const [eventData, setEventData] = useState(null)
+    const [error,setError] =useState(null)
+    const [isPending,setIsPending] =useState(false)
 
     useEffect( ()=>{
         getEvent(id, docEvent=>{
@@ -19,12 +20,25 @@ const EventDetail = () => {
     },[])
 
     const handleClick= () =>{
+        setIsPending(true)
         const userRef = getUserRef(userData.id)
-        updateEvent(id, {members: {[userData.id]: userRef}})
+        if (eventData.members.includes(userData.id)) {
+            setError("uzytkownik dołączył juz do wydarzenia")
+            setIsPending(false)
+            return
+        }
+        updateEvent(id, {members: [userData.id]})
+        .then( ()=>{
+            setIsPending(false)
+        })
+        .catch( (error)=>{
+            setIsPending(false)
+            setError(error)
+        })
     }
 
   return (
-    <div>
+    <div >
         {!eventData && <h2>Trwa ładowanie strony</h2>}
         {eventData && (<div>
             <div>EventDetail - {id}</div>
@@ -36,7 +50,7 @@ const EventDetail = () => {
         <p>{eventData.city}</p>
         <p>{eventData.category}</p>
         <p>{eventData.description}</p>
-        <button onClick={handleClick}>Dołącz</button>
+        <button onClick={handleClick} disabled={isPending}>{isPending ? "Dołączam..." : "Dołącz"}</button>
         </div>)}
     </div>
   )

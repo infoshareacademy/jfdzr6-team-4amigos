@@ -16,6 +16,7 @@ import Filters from "./components/filters/Filters";
 import Events from "./routes/events/Events";
 import Auth from "./context/Auth";
 import EventDetail from "./routes/events/details/EventDetail";
+import MyEvents from "./routes/events/myEvents/MyEvents";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -83,6 +84,7 @@ function App() {
             <Route path="profiles/:docId" element={<Profile uid={user?.uid} userData={userData} />} />
             <Route path="events" element={<Events />} />
             <Route path="events/:id" element={<EventDetail />} />
+            <Route path="events/my-events" element={<MyEvents />} />
           </Route>
         </Routes>
       </Auth>

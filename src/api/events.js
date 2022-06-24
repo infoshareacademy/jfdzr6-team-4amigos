@@ -56,3 +56,13 @@ export const getEvent = (idEvent,cb) =>{
   const docRef = getEventDocRef(idEvent)
   onSnapshot(docRef, cb)
 }
+
+export const registerListenerMyEvents = (uid,cb) =>{
+  onSnapshot(query(collectionRef, where("members", "array-contains", uid)), cb)
+}
+
+export const getEvents = (querySnapshot) =>{
+  return querySnapshot.docs.map( doc=> {
+    return {id:doc.id, ...doc.data()}
+  })
+}
