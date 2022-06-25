@@ -1,23 +1,33 @@
 import React, { useState } from 'react'
 import { useContext } from 'react'
 import { useEffect } from 'react'
-import { useParams } from 'react-router-dom'
-import { getUserRef } from '../../../api'
-import { getEvent,updateEvent} from '../../../api/events'
+import { useNavigate, useParams } from 'react-router-dom'
+import { deleteEvent, getEvent,updateEvent} from '../../../api/events'
 import { AuthContext } from '../../../context/Auth'
+import EditEventElement from '../eventElement/EditEventElement'
 
 const EventDetail = () => {
     const {userData} =useContext(AuthContext)
     const {id} = useParams()
     const [eventData, setEventData] = useState(null)
     const [error,setError] =useState(null)
-    const [isPending,setIsPending] =useState(false)
+    const [isPending, setIsPending] = useState(false)
+    const [draftId, setDraftId] = useState(null)
+    const navigate = useNavigate()
+
+    const enterEditMode = (id) => {
+        setDraftId(id)
+    }
+
+    const cancelEditMode = () => {
+        setDraftId(null)
+    }
 
     useEffect( ()=>{
         getEvent(id, docEvent=>{
             setEventData({id:docEvent.id, ...docEvent.data()})
         })
-    },[])
+    }, [id])
 
     const handleClick= () =>{
         setIsPending(true)
@@ -40,6 +50,15 @@ const EventDetail = () => {
         updateEvent(eventData.id, {members: eventData.members.filter(memberId=> memberId!== id)})
     }
 
+    const deleteEventById = (id) => {
+        deleteEvent(id)
+        navigate("/events", { replace: true });
+    }
+
+    if (!eventData) {
+        return <h2>Trwa ładowanie strony...</h2>
+    }
+
     const renderJoinButton = () => {
         if (eventData.members.includes(userData.id)) {
             return <button onClick={()=>leaveEvent(userData.id)} disabled={isPending}>Zrezygnuj</button>
@@ -47,11 +66,7 @@ const EventDetail = () => {
         return <button onClick={handleClick} disabled={isPending}>{isPending ? "Dołączam..." : "Dołącz"}</button>
     }
 
-  return (
-      <div >
-          {error && <h2>{ error}</h2>}
-        {!eventData && <h2>Trwa ładowanie strony</h2>}
-        {eventData && (<div>
+    const renderEvent = eventData.id === draftId ? <EditEventElement event={eventData} cancelEditMode={cancelEditMode } /> : (<div>
             <div>EventDetail - {id}</div>
         <div>EventDetail - {id}</div>
         <div>EventDetail - {id}</div>
@@ -61,8 +76,17 @@ const EventDetail = () => {
         <p>{eventData.city}</p>
         <p>{eventData.category}</p>
         <p>{eventData.description}</p>
-        {renderJoinButton()}
-        </div>)}
+              {renderJoinButton()}
+              {userData.id === eventData.idAdmin && <button onClick={() => deleteEventById(eventData.id)}>Usuń</button>}
+            {userData.id === eventData.idAdmin && <button onClick={() => enterEditMode(eventData.id)}>Edytuj</button>}
+        </div>)
+
+  return (
+      <div >
+          {error && <h2>{error}</h2>}
+          {renderEvent}
+        {!eventData && <h2>Trwa ładowanie strony</h2>}
+        
     </div>
   )
 }

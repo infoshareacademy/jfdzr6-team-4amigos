@@ -39,8 +39,6 @@ export const deleteEvent = async (idEvent) => {
 
 export const addEvent = async (data) => {
   try {
-    // const ref = await addDoc(collectionRef, data);
-    console.log("Dodano event", data);
     await addDoc(collectionRef, data);
   } catch (error) {
     console.dir(error);
