@@ -111,30 +111,10 @@ export const registerFilterProfiles = (
   gender,
   onlyPicture
 ) => {
-  const picture = JSON.parse(onlyPicture) ? "dziala" : null;
-  console.log(picture);
-  // const q =
-  //   gender != "all"
-  //     ? query(
-  //         profilesCollection,
-  //         where("sports", "array-contains-any", filter),
-  //         where("profilePicture", "==", JSON.parse(onlyPicture)),
-  //         where("gender", "==", gender),
-  //         where("age", ">", ageLower),
-  //         where("age", "<", ageUpper)
-  //       )
-  //     : query(
-  //         profilesCollection,
-  //         where("sports", "array-contains-any", filter),
-  //         where("profilePicture", "==", JSON.parse(onlyPicture)),
-  //         where("age", ">", ageLower),
-  //         where("age", "<", ageUpper)
-  //       );
-  const q = query(
-    profilesCollection,
-    where("sports", "array-contains-any", filter),
-    where("profilePicture", "==", picture)
-  );
+  // Dodać filtorwanie profili tylko ze zdjęciem
+  let q = query(profilesCollection)
+  if (gender !== "all") q = query(q, where("gender", "==", gender))
+  q = query(q, where("sports", "array-contains-any", filter),where("age", ">=", ageLower), where("age", "<=", ageUpper))
   onSnapshot(q, cb);
 };
 // Chat
