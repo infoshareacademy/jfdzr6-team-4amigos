@@ -17,6 +17,7 @@ import Events from "./routes/events/Events";
 import Auth from "./context/Auth";
 import EventDetail from "./routes/events/details/EventDetail";
 import MyEvents from "./routes/events/myEvents/MyEvents";
+import UserPanel from "./routes/userPanel/UserPanel";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -28,7 +29,7 @@ function App() {
 
       if (user) {
         const userRef = doc(db, "users", user.uid);
-        onSnapshot(userRef, userSnapshot => {
+        onSnapshot(userRef, (userSnapshot) => {
           const data = userSnapshot.data();
           if (!data) {
             return;
@@ -36,7 +37,7 @@ function App() {
           setUser(user);
           setUserData(data);
           data.isAdmin ? setRole("admin") : setRole("user");
-        })
+        });
       } else {
         setRole("guest");
         setUser(null);

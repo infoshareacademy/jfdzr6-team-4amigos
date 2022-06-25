@@ -1,35 +1,35 @@
-import React, { useState } from 'react'
-import styled from "styled-components"
+import React, { useState } from "react";
+import styled from "styled-components";
 
 const AgeDiv = styled.div`
-    span{
-        font-size: 12px;
-    }
-`
+  span {
+    font-size: 12px;
+  }
+`;
 
 const MultiRangeSpan = styled.div`
-    position: relative;
-   height: 30px;
+  position: relative;
+  height: 30px;
 
-   input[type=range] {
-   box-sizing: border-box;
-   appearance: none;
-   width: 200px;
-   padding: 0 2px;
-   overflow: hidden;
-   border: 0;
-   border-radius: 5px;
-   outline: none;
-   background: linear-gradient(#FF8020, #FF8020) no-repeat center;
-   background-size: 100% 2px;
-   pointer-events: none;
+  input[type="range"] {
+    box-sizing: border-box;
+    appearance: none;
+    width: 200px;
+    padding: 0 2px;
+    overflow: hidden;
+    border: 0;
+    border-radius: 5px;
+    outline: none;
+    background: linear-gradient(#ff8020, #ff8020) no-repeat center;
+    background-size: 100% 2px;
+    pointer-events: none;
 
-   &:active,
-   &:focus {
+    &:active,
+    &:focus {
       outline: none;
-   }
+    }
 
-   &::-webkit-slider-thumb {
+    &::-webkit-slider-thumb {
       height: 18px;
       width: 18px;
       border-radius: 28px;
