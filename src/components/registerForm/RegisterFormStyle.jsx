@@ -11,7 +11,7 @@ export const StyledForm = styled.form`
 
 export const StyledH2 = styled.h2`
   text-align: center;
-  margin-top: 80px;
+  margin-top: 100px;
   font-family: "Open Sans";
   font-style: normal;
   font-weight: 400;

@@ -9,14 +9,14 @@ export const StyledNav = styled.nav`
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
-  background-color: #fff;
+  background-color: #ffc524;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1;
-  height: 60px;
+  height: 80px;
   border-bottom: 1px solid #e6e6e6;
 `;
 
@@ -27,7 +27,7 @@ export const StyledLogo = styled.img`
   width: 40px;
   height: 100%;
   background-color: #fff;
-  border-radius: 5%;
+  border-radius: 5px;
 `;
 
 export const StyledUl = styled.ul`
@@ -42,7 +42,7 @@ export const StyledUl = styled.ul`
 
   p {
     font-size: 14px;
-    color: #c5c7c5;
+    color: #fff;
   }
 `;
 export const StyledRegister = styled(NavLink)`
@@ -50,13 +50,12 @@ export const StyledRegister = styled(NavLink)`
   height: 40px;
   background-color: #ff8020;
   border-radius: 5px;
-  border: 1px solid #e6e6e6;
   color: #eee;
   text-align: center;
   text-decoration: none;
   font-size: 14px;
   font-weight: bold;
-  margin: 0 10px;
+  margin: 0 20px;
   padding: 10px;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
@@ -68,9 +67,8 @@ export const StyledRegister = styled(NavLink)`
 export const StyledLogin = styled(NavLink)`
   min-width: 200px;
   height: 40px;
-  background-color: #ffc524;
+  background-color: #ff8020;
   border-radius: 5px;
-  border: 1px solid #e6e6e6;
   color: #eee;
   text-align: center;
   text-decoration: none;
