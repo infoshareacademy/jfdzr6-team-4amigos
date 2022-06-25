@@ -28,14 +28,17 @@ export const Nav = ({ role }) => {
               <p>Nie masz konta?</p>
             </li>
             <li>
-              <StyledLogin to="/login">Zaloguj się</StyledLogin>
+              <StyledRegister to="/register">Zarejestruj się</StyledRegister>
             </li>
             <li>
-              <StyledRegister to="/register">Zarejestruj się</StyledRegister>
+              <StyledLogin to="/login">Zaloguj się</StyledLogin>
             </li>
           </>
         ) : (
           <>
+            <li>
+              <StyledRegister to="/userpanel">Panel użytkownika</StyledRegister>
+            </li>
             <StyledRegister to="/messages">Wiadomości</StyledRegister>
             <li onClick={() => signOut(auth)}>
               <StyledRegister to="/">Wyloguj się</StyledRegister>

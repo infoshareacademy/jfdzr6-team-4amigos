@@ -7,12 +7,11 @@ export const StyledSection = styled.section`
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 100%;
+  height: 90vh;
   background-color: #fff;
-  border-radius: 5%;
   padding: 0 20px;
   margin: 0 auto;
-  margin-top: 100px;
+  margin-top: 80px;
   h1 {
     font-size: 32px;
     font-weight: 400;
@@ -58,8 +57,8 @@ export const StyledLoginForm = styled.form`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 400px;
-  height: 100%;
+  width: 500px;
+  height: 400px;
   background-color: #ffc524;
   padding: 0 20px;
   margin: 5px auto;

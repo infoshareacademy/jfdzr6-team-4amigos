@@ -11,6 +11,7 @@ import { onAuthStateChanged } from "@firebase/auth";
 import { auth, db } from "./api/firebase";
 import { doc, onSnapshot } from "firebase/firestore";
 import { Nav } from "./components/nav/Nav";
+import UserPanel from "./routes/userPanel/UserPanel";
 import Messages from "./routes/messages/Messages";
 import Filters from "./components/filters/Filters";
 
@@ -21,10 +22,9 @@ function App() {
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
-
       if (user) {
         const userRef = doc(db, "users", user.uid);
-        onSnapshot(userRef, userSnapshot => {
+        onSnapshot(userRef, (userSnapshot) => {
           const data = userSnapshot.data();
           if (!data) {
             return;
@@ -32,7 +32,7 @@ function App() {
           setUser(user);
           setUserData(data);
           data.isAdmin ? setRole("admin") : setRole("user");
-        })
+        });
       } else {
         setRole("guest");
         setUser(null);
@@ -75,9 +75,16 @@ function App() {
             <ProtectedRoute isAllowed={role === "user"} redirectPath="/" />
           }
         >
+          <Route path="userpanel" element={<UserPanel uid={user?.uid} />} />
           <Route path="profiles" element={<Profiles />} />
-          <Route path="profiles/:docId" element={<Profile uid={user?.uid} userData={userData} />} />
-          <Route path="messages" element={<Messages uid={user?.uid} userData={userData} />} />
+          <Route
+            path="profiles/:docId"
+            element={<Profile uid={user?.uid} userData={userData} />}
+          />
+          <Route
+            path="messages"
+            element={<Messages uid={user?.uid} userData={userData} />}
+          />
         </Route>
       </Routes>
     </BrowserRouter>
