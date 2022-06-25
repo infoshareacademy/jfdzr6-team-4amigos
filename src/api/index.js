@@ -138,3 +138,7 @@ export const getProfile = (docId, cb) => {
   const userDocRef = doc(db, "users", docId);
   onSnapshot(userDocRef, cb);
 };
+
+export const getUserRef = (id) =>{
+  return doc(db, COLLECTIONS_NAMES.USERS, id)
+}
