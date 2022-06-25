@@ -31,25 +31,6 @@ export const StyledSection = styled.section`
     background-color: #fff;
     border-radius: 5%;
   }
-  button {
-    width: 300px;
-    height: 40px;
-    background-color: #ffc524;
-    border-radius: 5px;
-    border: 1px solid #e6e6e6;
-    color: #eee;
-    text-align: center;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: bold;
-    margin: 40px 10px;
-    padding: 10px;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    &:hover {
-      background-color: #c5c7c5;
-    }
-  }
 `;
 
 export const StyledLoginForm = styled.form`
@@ -74,7 +55,6 @@ export const StyledLoginForm = styled.form`
     background-color: #fff;
     border-radius: 5px;
     border: 1px solid #e6e6e6;
-    margin: 0 10px;
     padding: 10px;
     font-family: "Open Sans";
     font-style: normal;
@@ -87,25 +67,32 @@ export const StyledLoginForm = styled.form`
     :focus-visible {
       outline: 3px solid #ff8020;
     }
+    transition: 0.2s;
+    border: 3px solid #ffc524;
+    :hover {
+      border: 3px solid #fe6e00;
+    }
   }
   button {
+    margin-top: 50px;
+    background: #ff8020;
+    border-radius: 5px;
     width: 300px;
     height: 40px;
-    background-color: #ff8020;
-    border-radius: 5px;
-    border: 1px solid #ff8020;
-    color: #eee;
-    text-align: center;
-    text-decoration: none;
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 700;
     font-size: 16px;
     line-height: 22px;
-    font-weight: bold;
-    margin: 40px 10px;
-    padding: 10px;
+    border: none;
+    color: #ffffff;
+    margin: 40px 0px;
+    transition: 0.3s;
     cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    &:hover {
-      background-color: #fe5900;
+    border: 1px solid #ffc524;
+    :hover {
+      background: #fe6e00;
+      border: 1px solid #fe6e00;
     }
   }
 `;
