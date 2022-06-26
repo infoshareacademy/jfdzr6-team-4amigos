@@ -53,8 +53,8 @@ export const Avatar = styled.div`
   gap: 15px;
 
   img {
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     clip-path: circle();
     object-fit: cover;
   }
