@@ -11,8 +11,11 @@ import {
   StyledLogin,
   StyledLogo,
 } from "./NavStyle";
+import { useContext } from "react";
+import { AuthContext } from "../../context/Auth";
 
-export const Nav = ({ role }) => {
+export const Nav = () => {
+  const { role } = useContext(AuthContext);
   return (
     <StyledNav>
       <Link to="/">
