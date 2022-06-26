@@ -102,6 +102,21 @@ export const registerDbListener = (cb, filter) => {
     cb
   );
 };
+
+export const registerFilterProfiles = (
+  cb,
+  filter,
+  ageLower,
+  ageUpper,
+  gender,
+  onlyPicture
+) => {
+  // Dodać filtorwanie profili tylko ze zdjęciem
+  let q = query(profilesCollection)
+  if (gender !== "all") q = query(q, where("gender", "==", gender))
+  q = query(q,where("sports", "array-contains-any", filter),where("age", ">=", ageLower), where("age", "<=", ageUpper))
+  onSnapshot(q, cb);
+};
 // Chat
 export const getChat = (chatId, cb) => {
   const docRef = doc(db, "chats", chatId);
@@ -138,3 +153,7 @@ export const getProfile = (docId, cb) => {
   const userDocRef = doc(db, "users", docId);
   onSnapshot(userDocRef, cb);
 };
+
+export const getUserRef = (id) =>{
+  return doc(db, COLLECTIONS_NAMES.USERS, id)
+}

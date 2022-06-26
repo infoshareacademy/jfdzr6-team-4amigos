@@ -1,21 +1,28 @@
-import React, { useState } from "react";
+import React from "react";
+import {
+  StyledSportsDiv,
+  StyledForm,
+  StyledSection,
+  StyledSportsDivContainer,
+  StyledSubmitButton,
+  StyledGenderDivContainer,
+} from "./UserPanelFormStyle";
+
 const UserPanelForm = ({ handleChange, formData, error, handleSubmit }) => {
   const sportsLabel = [
     { label: "Jazda na rowerze", value: "bike" },
     { label: "Spacer", value: "walk" },
-    { label: "Taniec", value: "dance" },
     { label: "Jazda na rolkach", value: "rollerSkating" },
     { label: "Bieganie", value: "running" },
     { label: "Siłownia", value: "gym" },
     { label: "Wędkowanie", value: "fishing" },
-    { label: "Badminton", value: "badminton" },
-    { label: "Piłka nożna", value: "football" },
-    { label: "Koszykówka", value: "basketball" },
+    { label: "Tenis", value: "tennis" },
+    { label: "Nordic Walking", value: "nordicWalking" },
   ];
 
   const renderSportsInput = sportsLabel.map((sportEl) => {
     return (
-      <div key={sportEl.value}>
+      <StyledSportsDiv key={sportEl.value}>
         <input
           type="checkbox"
           name={sportEl.value}
@@ -23,43 +30,49 @@ const UserPanelForm = ({ handleChange, formData, error, handleSubmit }) => {
           onChange={handleChange}
         />
         <label htmlFor="sports">{sportEl.label}</label>
-      </div>
+      </StyledSportsDiv>
     );
   });
 
   return (
-    <div>
-      <h1>User Panel</h1>
-      <form onSubmit={handleSubmit}>
-        <p>Twoje imię lub pseudonim</p>
-        <label htmlFor="name"></label>
-        <input
-          type="text"
-          name="name"
-          value={formData.name}
-          placeholder="Twoje imię lub pseudonim"
-          onChange={handleChange}
-        ></input>
-
-        <p>Jesteś kobietą czy mężczyzną?</p>
-        <label htmlFor="gender">Kobieta</label>
-        <input
-          type="radio"
-          name="gender"
-          value="woman"
-          checked={formData.gender === "woman"}
-          onChange={handleChange}
-        />
-
-        <label htmlFor="gender">Mężczyzna</label>
-        <input
-          type="radio"
-          name="gender"
-          value="man"
-          checked={formData.gender === "man"}
-          onChange={handleChange}
-        />
-        <p>Ile masz lat?</p>
+    <StyledSection>
+      <h2>Panel Użytkownika</h2>
+      <StyledForm onSubmit={handleSubmit}>
+        <div>
+          <h5>Twoje imię lub pseudonim</h5>
+          <label htmlFor="name"></label>
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
+            placeholder="Twoje imię lub pseudonim"
+            onChange={handleChange}
+          ></input>
+        </div>
+        <h5>Jesteś kobietą czy mężczyzną?</h5>
+        <StyledGenderDivContainer>
+          <div>
+            <input
+              type="radio"
+              name="gender"
+              value="woman"
+              checked={formData.gender === "woman"}
+              onChange={handleChange}
+            />
+            <label htmlFor="gender">Kobieta</label>
+          </div>
+          <div>
+            <input
+              type="radio"
+              name="gender"
+              value="man"
+              checked={formData.gender === "man"}
+              onChange={handleChange}
+            />
+            <label htmlFor="gender">Mężczyzna</label>
+          </div>
+        </StyledGenderDivContainer>
+        <h5>Ile masz lat?</h5>
         <div>
           <label htmlFor="age"></label>
           <input
@@ -70,8 +83,7 @@ const UserPanelForm = ({ handleChange, formData, error, handleSubmit }) => {
             onChange={handleChange}
           />
         </div>
-
-        <p>Twoje miasto</p>
+        <h5>Twoje miasto</h5>
         <div>
           <label htmlFor="city"></label>
           <input
@@ -82,24 +94,21 @@ const UserPanelForm = ({ handleChange, formData, error, handleSubmit }) => {
             onChange={handleChange}
           />
         </div>
-        <p>Napisz coś o sobie:</p>
+        <h5>Napisz coś o sobie:</h5>
         <div>
           <label htmlFor="description"></label>
-          <input
-            type="textarea"
+          <textarea
             name="description"
             placeholder="..."
             value={formData.description}
             onChange={handleChange}
           />
         </div>
-        <p>Jakie sporty Cię interesują?</p>
-
-        <div>{renderSportsInput}</div>
-
-        <button type="submit">Zapisz</button>
-      </form>
-    </div>
+        <h5>Jakie sporty Cię interesują?</h5>
+        <StyledSportsDivContainer>{renderSportsInput}</StyledSportsDivContainer>
+        <StyledSubmitButton type="submit">Zapisz</StyledSubmitButton>
+      </StyledForm>
+    </StyledSection>
   );
 };
 

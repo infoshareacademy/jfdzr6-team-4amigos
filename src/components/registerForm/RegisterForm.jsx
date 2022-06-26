@@ -1,19 +1,12 @@
 import React from "react";
 import Error from "../error/Error";
 import {
-  StyledInputDiv,
+  StyledSportsDiv,
   StyledForm,
-  StyledH3,
-  StyledCheckbox,
-  StyledH5,
-  StyledSportsInputContainer,
-  StyledSportsLabel,
-  StyledInput,
-  StyledGenderInputDiv,
-  StyledGenderInputContainer,
-  StyledTextarea,
+  StyledSection,
+  StyledSportsDivContainer,
   StyledSubmitButton,
-  StyledH2,
+  StyledGenderDivContainer,
   UploadFileInput,
 } from "./RegisterFormStyle";
 
@@ -26,49 +19,45 @@ const RegisterForm = ({
   const sportsLabel = [
     { label: "Jazda na rowerze", value: "bike" },
     { label: "Spacer", value: "walk" },
-    { label: "Taniec", value: "dance" },
     { label: "Jazda na rolkach", value: "rollerSkating" },
     { label: "Bieganie", value: "running" },
     { label: "Siłownia", value: "gym" },
     { label: "Wędkowanie", value: "fishing" },
-    { label: "Badminton", value: "badminton" },
-    { label: "Piłka nożna", value: "football" },
-    { label: "Koszykówka", value: "basketball" },
+    { label: "Tenis", value: "tennis" },
+    { label: "Nordic Walking", value: "nordicWalking" },
   ];
 
   const renderSportsInput = sportsLabel.map((sportEl) => {
     return (
-      <StyledInputDiv key={sportEl.value}>
-        <StyledCheckbox
+      <StyledSportsDiv key={sportEl.value}>
+        <input
           type="checkbox"
           name={sportEl.value}
           value={sportEl.value}
           onChange={handleChange}
         />
-        <StyledSportsLabel htmlFor="sports">{sportEl.label}</StyledSportsLabel>
-      </StyledInputDiv>
+        <label htmlFor="sports">{sportEl.label}</label>
+      </StyledSportsDiv>
     );
   });
 
   return (
-    <div>
-      <StyledH2>Witaj! Dołącz do społeczności SportAmigos!</StyledH2>
+    <StyledSection>
+      <h2>Witaj! Dołącz do społeczności SportAmigos!</h2>
 
       <StyledForm onSubmit={handleSubmit}>
-        <StyledH3>1. Jakie sporty Cię interesują?</StyledH3>
-        <StyledH5>Wybierz tyle dyscyplin ile chcesz</StyledH5>
-        <StyledSportsInputContainer>
-          {renderSportsInput}
-        </StyledSportsInputContainer>
+        <h3>1. Jakie sporty Cię interesują?</h3>
+        <h5>Wybierz tyle dyscyplin ile chcesz</h5>
+        <StyledSportsDivContainer>{renderSportsInput}</StyledSportsDivContainer>
 
-        <StyledH3>
+        <h3>
           2. Żeby znaleźć dla Ciebie dopasowania, potrzebujemy trochę informacji
-        </StyledH3>
+        </h3>
 
-        <StyledH5>Jak masz na imię?</StyledH5>
+        <h5>Jak masz na imię?</h5>
         <div>
           <label htmlFor="name"></label>
-          <StyledInput
+          <input
             type="text"
             name="name"
             value={formData.name}
@@ -76,10 +65,10 @@ const RegisterForm = ({
             onChange={handleChange}
           />
         </div>
-        <StyledH5>Gdzie mieszkasz?</StyledH5>
+        <h5>Gdzie mieszkasz?</h5>
         <div>
           <label htmlFor="city"></label>
-          <StyledInput
+          <input
             type="text"
             name="city"
             value={formData.city}
@@ -88,10 +77,10 @@ const RegisterForm = ({
           />
         </div>
 
-        <StyledH5>Ile masz lat?</StyledH5>
+        <h5>Ile masz lat?</h5>
         <div>
           <label htmlFor="age"></label>
-          <StyledInput
+          <input
             type="number"
             name="age"
             value={formData.age}
@@ -100,34 +89,34 @@ const RegisterForm = ({
           />
         </div>
 
-        <StyledH5>Jesteś kobietą czy mężczyzną?</StyledH5>
-        <StyledGenderInputContainer>
-          <StyledGenderInputDiv>
-            <StyledCheckbox
+        <h5>Jesteś kobietą czy mężczyzną?</h5>
+        <StyledGenderDivContainer>
+          <div>
+            <input
               type="radio"
               name="gender"
               value="man"
               checked={formData.gender === "man"}
               onChange={handleChange}
             />
-            <StyledSportsLabel htmlFor="gender">Mężczyzna</StyledSportsLabel>
-          </StyledGenderInputDiv>
-          <StyledGenderInputDiv>
-            <StyledCheckbox
+            <label htmlFor="gender">Mężczyzna</label>
+          </div>
+          <div>
+            <input
               type="radio"
               name="gender"
               value="woman"
               checked={formData.gender === "woman"}
               onChange={handleChange}
             />
-            <StyledSportsLabel htmlFor="gender">Kobieta</StyledSportsLabel>
-          </StyledGenderInputDiv>
-        </StyledGenderInputContainer>
+            <label htmlFor="gender">Kobieta</label>
+          </div>
+        </StyledGenderDivContainer>
 
-        <StyledH5>Napisz coś o sobie:</StyledH5>
+        <h5>Napisz coś o sobie:</h5>
         <div>
           <label htmlFor="description"></label>
-          <StyledTextarea
+          <textarea
             name="description"
             placeholder="..."
             value={formData.description}
@@ -135,12 +124,12 @@ const RegisterForm = ({
           />
         </div>
 
-        <StyledH3>3. Dane do logowania</StyledH3>
-        <StyledH5>Twój adres e-mail</StyledH5>
-        {errorMessage && <Error message={errorMessage} />}
+        <h3>3. Dane do logowania</h3>
+        <h5>Twój adres e-mail</h5>
+        <p> {errorMessage && <Error message={errorMessage} />}</p>
         <div>
           <label htmlFor="email"></label>
-          <StyledInput
+          <input
             type="text"
             name="email"
             value={formData.email}
@@ -149,10 +138,10 @@ const RegisterForm = ({
           />
         </div>
 
-        <StyledH5>Stwórz hasło</StyledH5>
+        <h5>Stwórz hasło</h5>
         <div>
           <label htmlFor="password"></label>
-          <StyledInput
+          <input
             type="password"
             name="password"
             value={formData.password}
@@ -161,10 +150,10 @@ const RegisterForm = ({
           />
         </div>
 
-        <StyledH5>Potwierdź hasło</StyledH5>
+        <h5>Potwierdź hasło</h5>
         <div>
           <label htmlFor="confirmPassword"></label>
-          <StyledInput
+          <input
             type="password"
             name="confirmPassword"
             value={formData.confirmPassword}
@@ -173,7 +162,7 @@ const RegisterForm = ({
           />
         </div>
 
-        <StyledH5>Dodaj zdjęcie profilowe</StyledH5>
+        <h5>Dodaj zdjęcie profilowe</h5>
         <div>
           <label htmlFor="profilePicture"></label>
           <UploadFileInput
@@ -187,7 +176,7 @@ const RegisterForm = ({
           Zarejestruj się i poznaj swoje dopasowania
         </StyledSubmitButton>
       </StyledForm>
-    </div>
+    </StyledSection>
   );
 };
 

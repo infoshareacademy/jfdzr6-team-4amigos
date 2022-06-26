@@ -39,8 +39,6 @@ export const deleteEvent = async (idEvent) => {
 
 export const addEvent = async (data) => {
   try {
-    // const ref = await addDoc(collectionRef, data);
-    console.log("Dodano event", data);
     await addDoc(collectionRef, data);
   } catch (error) {
     console.dir(error);
@@ -55,4 +53,14 @@ export const displayEvents = (category, cb) => {
 export const getEvent = (idEvent,cb) =>{
   const docRef = getEventDocRef(idEvent)
   onSnapshot(docRef, cb)
+}
+
+export const registerListenerMyEvents = (uid,cb) =>{
+  onSnapshot(query(collectionRef, where("members", "array-contains", uid)), cb)
+}
+
+export const getEvents = (querySnapshot) =>{
+  return querySnapshot.docs.map( doc=> {
+    return {id:doc.id, ...doc.data()}
+  })
 }

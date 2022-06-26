@@ -1,8 +1,10 @@
 import { signOut } from "@firebase/auth";
 import { auth } from "../../api/firebase";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 import logo from "../../assets/img/logoOrange.png";
+import { useContext } from "react";
+import { AuthContext } from "../../context/Auth";
+import { Avatar } from "../../routes/messages/MessagesStyle";
 
 // styles
 import {
@@ -12,9 +14,11 @@ import {
   StyledLogin,
   StyledLogo,
 } from "./NavStyle";
+import { useContext } from "react";
+import { AuthContext } from "../../context/Auth";
 
 export const Nav = ({ role }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const { userData, role } = useContext(AuthContext);
 
   return (
     <StyledNav>
@@ -28,21 +32,32 @@ export const Nav = ({ role }) => {
               <p>Nie masz konta?</p>
             </li>
             <li>
-              <StyledLogin to="/login">Zaloguj się</StyledLogin>
+              <StyledRegister to="/register">Zarejestruj się</StyledRegister>
             </li>
             <li>
-              <StyledRegister to="/register">Zarejestruj się</StyledRegister>
+              <StyledLogin to="/login">Zaloguj się</StyledLogin>
             </li>
           </>
         ) : (
           <>
             <li>
-              <StyledRegister to="/userpanel">Panel użytkownika</StyledRegister>
+              <StyledRegister to="/events">Wydarzenia</StyledRegister>
             </li>
-            <StyledRegister to="/messages">Wiadomości</StyledRegister>
-            <StyledRegister to="/events">Wydarzenia</StyledRegister>
+            {/* <li>
+              <StyledRegister to="/userpanel">Panel użytkownika</StyledRegister>
+            </li> */}
+            <li>
+              <StyledRegister to="/messages">Wiadomości</StyledRegister>
+            </li>
             <li onClick={() => signOut(auth)}>
               <StyledRegister to="/">Wyloguj się</StyledRegister>
+            </li>
+            <li>
+              <Link to="/userpanel">
+                <Avatar>
+                  <img src={userData.profilePicture} alt={userData.name} />
+                </Avatar>
+              </Link>
             </li>
           </>
         )}

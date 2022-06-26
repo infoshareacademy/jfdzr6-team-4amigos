@@ -15,7 +15,7 @@ const Register = () => {
     city: "",
     confirmPassword: "",
     profilePicture: "",
-    chatHistory: null,
+    chatHistory: {},
     sports: [],
   };
   const [formData, setFormData] = useState(defaultValue);
