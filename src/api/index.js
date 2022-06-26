@@ -114,7 +114,7 @@ export const registerFilterProfiles = (
   // Dodać filtorwanie profili tylko ze zdjęciem
   let q = query(profilesCollection)
   if (gender !== "all") q = query(q, where("gender", "==", gender))
-  q = query(q, where("sports", "array-contains-any", filter),where("age", ">=", ageLower), where("age", "<=", ageUpper))
+  q = query(q, where("id", "not-in", ["0DQ9iW4Em4MiPXiu0tJkXjRlmzn2"], filter),where("sports", "array-contains-any", filter),where("age", ">=", ageLower), where("age", "<=", ageUpper))
   onSnapshot(q, cb);
 };
 // Chat

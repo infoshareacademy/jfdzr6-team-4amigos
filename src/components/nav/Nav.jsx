@@ -2,7 +2,6 @@ import { signOut } from "@firebase/auth";
 import { auth } from "../../api/firebase";
 import { Link } from "react-router-dom";
 import logo from "../../assets/img/logoOrange.png";
-
 // styles
 import {
   StyledNav,
