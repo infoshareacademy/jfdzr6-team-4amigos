@@ -54,7 +54,11 @@ const Profiles = () => {
 
   return (
     <Container>
-      <Filters setProfiles={setProfiles} sports={userData.sports} />
+      <Filters
+        setProfiles={setProfiles}
+        sports={userData.sports}
+        uid={userData.id}
+      />
       <ProfilesContainer>{renderProfiles}</ProfilesContainer>
     </Container>
   );
