@@ -13,6 +13,7 @@ export const StyledSection = styled.section`
   margin: 0 auto;
   margin-top: 100px;
   font-family: Open Sans;
+  color: #fff;
   h2 {
     color: #c5c7c5;
   }
@@ -25,6 +26,10 @@ export const StyledForm = styled.form`
   padding: 50px 125px;
   border-radius: 10px;
   margin-bottom: 50px;
+  p {
+    font-size: 14px;
+    color: red;
+  }
   h5 {
     font-size: 16px;
     font-weight: 700;
@@ -45,6 +50,30 @@ export const StyledForm = styled.form`
     border: none;
     font-size: 16px;
     padding: 10px;
+    outline: 3px solid #ffc524;
+    ::placeholder {
+      color: #c5c7c5;
+    }
+    :focus-visible {
+      outline: 3px solid #ff8020;
+    }
+    transition: 0.2s;
+    :hover {
+      outline: 3px solid #ff8020;
+    }
+  }
+  input[type="password"] {
+    background-color: #fff;
+    height: 50px;
+    width: 250px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    border: none;
+    font-size: 16px;
+    padding: 10px;
+    outline: 3px solid #ffc524;
     ::placeholder {
       color: #c5c7c5;
     }
@@ -67,6 +96,7 @@ export const StyledForm = styled.form`
     border: none;
     font-size: 16px;
     padding: 10px;
+    outline: 3px solid #ffc524;
     ::placeholder {
       color: #c5c7c5;
     }
@@ -78,6 +108,7 @@ export const StyledForm = styled.form`
       outline: 3px solid #ff8020;
     }
   }
+
   textarea {
     resize: none;
     height: 150px;
@@ -86,6 +117,7 @@ export const StyledForm = styled.form`
     border-radius: 5px;
     font-size: 16px;
     padding: 10px;
+    outline: 3px solid #ffc524;
     ::placeholder {
       color: #c5c7c5;
       padding-top: 5px;
@@ -179,7 +211,9 @@ export const StyledSubmitButton = styled.button`
   color: #ffffff;
   transition: 0.3s;
   cursor: pointer;
+  border: 1px solid #ffc524;
   :hover {
     background: #fe6e00;
+    border: 1px solid #fe6e00;
   }
 `;
