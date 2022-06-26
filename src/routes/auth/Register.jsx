@@ -5,17 +5,22 @@ import { registerUser } from "../../api";
 import RegisterForm from "../../components/registerForm/RegisterForm";
 
 const Register = () => {
-    const defaultValue = {
-        name:"",
-        gender: "",
-        age: "",
-        email:"",
-        password:"",
-        confirmPassword:"",
-        sports:[]
-    }
+  const defaultValue = {
+    name: "",
+    gender: "",
+    age: "",
+    description: "",
+    email: "",
+    password: "",
+    city: "",
+    confirmPassword: "",
+    profilePicture: "",
+    chatHistory: null,
+    sports: [],
+  };
   const [formData, setFormData] = useState(defaultValue);
-  const navigate = useNavigate()
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     if (e.target.type === "checkbox") {
@@ -25,8 +30,8 @@ const Register = () => {
           ? formData.sports.filter((el) => el !== e.target.value)
           : [...formData.sports, e.target.value],
       });
-    } else if(e.target.type === "file") {
-      setFormData({...formData, [e.target.name]: e.target.files[0]})
+    } else if (e.target.type === "file") {
+      setFormData({ ...formData, [e.target.name]: e.target.files[0] });
     } else {
       setFormData({
         ...formData,
@@ -37,15 +42,44 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const {email,password, confirmPassword,...data} = formData
-    registerUser(email,password,{...data, createdAt: serverTimestamp(), isAdmin: false})
-    setFormData(defaultValue)
-    navigate("/login")
+    const { email, password, confirmPassword, ...data } = formData;
+    const { name, gender, age, sports, description } = data;
+    const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if (!reg.test(email)) {
+      setError("Podany email jest niepoprawny");
+      return;
+    }
+    if (!password.trim()) {
+      setError("Pole hasło nie może być puste");
+      return;
+    } else if (password.length < 6) {
+      setError("Hasło musi zawierać co najmniej 6 znaków");
+    }
+    if (password !== confirmPassword) {
+      setError("Hasła nie są takie same");
+      return;
+    }
+    if (+age < 18) {
+      setError("Jesteś niepełnoletni");
+      return;
+    }
+    if (!name || !description || !gender || !age || !sports.length) {
+      setError("Wszystkie pola muszą być uzupełnione");
+      return;
+    }
+    registerUser(email, password, {
+      ...data,
+      createdAt: serverTimestamp(),
+      isAdmin: false,
+    });
+
+    setFormData(defaultValue);
+    navigate("/login");
   };
   return (
     <div>
-      <h2>Register</h2>
       <RegisterForm
+        errorMessage={error}
         handleChange={handleChange}
         formData={formData}
         handleSubmit={handleSubmit}

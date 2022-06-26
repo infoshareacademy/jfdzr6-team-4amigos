@@ -9,7 +9,15 @@ import Register from "./routes/auth/Register";
 import ForgotPassword from "./routes/auth/ForgotPassword";
 import { onAuthStateChanged } from "@firebase/auth";
 import { auth, db } from "./api/firebase";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, onSnapshot } from "firebase/firestore";
+import { Nav } from "./components/nav/Nav";
+import Messages from "./routes/messages/Messages";
+import Filters from "./components/filters/Filters";
+import Events from "./routes/events/Events";
+import Auth from "./context/Auth";
+import EventDetail from "./routes/events/details/EventDetail";
+import MyEvents from "./routes/events/myEvents/MyEvents";
+import UserPanel from "./routes/userPanel/UserPanel";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -18,11 +26,11 @@ function App() {
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
+
       if (user) {
         const userRef = doc(db, "users", user.uid);
-
-        getDoc(userRef).then((docData) => {
-          const data = docData.data();
+        onSnapshot(userRef, (userSnapshot) => {
+          const data = userSnapshot.data();
           if (!data) {
             return;
           }
@@ -44,28 +52,43 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Routes>
-        <Route index element={role === "guest" ? <Landing /> : <Profiles />} />
+      <Auth>
 
-        <Route
-          element={
-            <ProtectedRoute isAllowed={role === "guest"} redirectPath="/" />
-          }
-        >
-          <Route path="login" element={<Login />} />
-          <Route path="register" element={<Register />} />
-          <Route path="forgot-password" element={<ForgotPassword />} />
-        </Route>
+        <Nav role={role} />
+        <Routes>
+          <Route
+            index
+            element={
+              role === "guest" ? (
+                <Landing />
+              ) : (
+                <Profiles uid={user.uid} sports={userData.sports} />
+              )
+            }
+          />
+          <Route
+            element={
+              <ProtectedRoute isAllowed={role === "guest"} redirectPath="/" />
+            }
+          >
+            <Route path="login" element={<Login />} />
+            <Route path="register" element={<Register />} />
+            <Route path="forgot-password" element={<ForgotPassword />} />
+          </Route>
 
-        <Route
-          element={
-            <ProtectedRoute isAllowed={role === "user"} redirectPath="/" />
-          }
-        >
-          <Route path="profiles" element={<Profiles />} />
-          <Route path="profiles/:docId" element={<Profile />} />
-        </Route>
-      </Routes>
+          <Route
+            element={
+              <ProtectedRoute isAllowed={role === "user"} redirectPath="/" />
+            }
+          >
+            <Route path="profiles" element={<Profiles />} />
+            <Route path="profiles/:docId" element={<Profile uid={user?.uid} userData={userData} />} />
+            <Route path="events" element={<Events />} />
+            <Route path="events/:id" element={<EventDetail />} />
+            <Route path="events/my-events" element={<MyEvents />} />
+          </Route>
+        </Routes>
+      </Auth>
     </BrowserRouter>
   );
 }
