@@ -1,7 +1,6 @@
 import { signOut } from "@firebase/auth";
 import { auth } from "../../api/firebase";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 import logo from "../../assets/img/logoOrange.png";
 
 // styles
@@ -14,8 +13,6 @@ import {
 } from "./NavStyle";
 
 export const Nav = ({ role }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
   return (
     <StyledNav>
       <Link to="/">

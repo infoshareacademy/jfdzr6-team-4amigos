@@ -12,7 +12,6 @@ import { auth, db } from "./api/firebase";
 import { doc, onSnapshot } from "firebase/firestore";
 import { Nav } from "./components/nav/Nav";
 import Messages from "./routes/messages/Messages";
-import Filters from "./components/filters/Filters";
 import Events from "./routes/events/Events";
 import Auth from "./context/Auth";
 import EventDetail from "./routes/events/details/EventDetail";
@@ -80,7 +79,7 @@ function App() {
             }
           >
             <Route path="profiles" element={<Profiles />} />
-            <Route path="userpanel" element={<UserPanel uid={user?.uid} />} />
+            <Route path="userpanel" element={<UserPanel />} />
             <Route
               path="profiles/:docId"
               element={<Profile uid={user?.uid} userData={userData} />}
