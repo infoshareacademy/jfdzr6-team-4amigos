@@ -1,9 +1,11 @@
+import { useContext } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { updateUser } from "../../api";
 import UserPanelForm from "../../components/userPanel/UserPanelForm";
+import { AuthContext } from "../../context/Auth";
 
-const UserPanel = ({ uid }) => {
+const UserPanel = () => {
   const defaultValue = {
     name: "",
     gender: "",
@@ -15,6 +17,7 @@ const UserPanel = ({ uid }) => {
   const [formData, setFormData] = useState(defaultValue);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const { userData } = useContext(AuthContext);
 
   const handleChange = (e) => {
     if (e.target.type === "checkbox") {
@@ -42,7 +45,7 @@ const UserPanel = ({ uid }) => {
       return;
     }
 
-    updateUser(formData, uid);
+    updateUser(formData, userData.id);
 
     setFormData(defaultValue);
     navigate("/");

@@ -12,7 +12,6 @@ import { auth, db } from "./api/firebase";
 import { doc, onSnapshot } from "firebase/firestore";
 import { Nav } from "./components/nav/Nav";
 import Messages from "./routes/messages/Messages";
-import Filters from "./components/filters/Filters";
 import Events from "./routes/events/Events";
 import Auth from "./context/Auth";
 import EventDetail from "./routes/events/details/EventDetail";
@@ -26,7 +25,6 @@ function App() {
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
-
       if (user) {
         const userRef = doc(db, "users", user.uid);
         onSnapshot(userRef, (userSnapshot) => {
@@ -53,7 +51,6 @@ function App() {
   return (
     <BrowserRouter>
       <Auth>
-
         <Nav role={role} />
         <Routes>
           <Route
@@ -82,10 +79,18 @@ function App() {
             }
           >
             <Route path="profiles" element={<Profiles />} />
-            <Route path="profiles/:docId" element={<Profile uid={user?.uid} userData={userData} />} />
+            <Route path="userpanel" element={<UserPanel />} />
+            <Route
+              path="profiles/:docId"
+              element={<Profile uid={user?.uid} userData={userData} />}
+            />
             <Route path="events" element={<Events />} />
             <Route path="events/:id" element={<EventDetail />} />
             <Route path="events/my-events" element={<MyEvents />} />
+            <Route
+              path="messages"
+              element={<Messages uid={user?.uid} userData={userData} />}
+            />
           </Route>
         </Routes>
       </Auth>
