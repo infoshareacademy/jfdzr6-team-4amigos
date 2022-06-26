@@ -6,7 +6,7 @@ export const StyledError = styled.div`
   justify-self: center;
   position: fixed;
   width: fit-content;
-  top: 50%;
+  top: 80px;
   color: red;
   font-size: 1.2rem;
   margin-bottom: 1rem;
@@ -17,5 +17,5 @@ export const StyledError = styled.div`
   border: 1px solid red;
   padding: 0.5rem;
   border-radius: 0.5rem;
-  background-color: #fff;
+  background-color: #c5c7c5;
 `;

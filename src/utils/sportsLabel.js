@@ -1,14 +1,17 @@
-import { MdDirectionsBike, MdDirectionsWalk } from 'react-icons/md';
+import { MdDirectionsBike, MdDirectionsWalk, MdOutlineNordicWalking } from 'react-icons/md';
 import { BiRun } from 'react-icons/bi';
 import { CgGym } from 'react-icons/cg';
-import { GiFishingPole } from 'react-icons/gi';
+import { GiShuttlecock, GiRollerSkate, GiFishingPole } from 'react-icons/gi';
 
 export const sportsIcon = {
-    bike:  <MdDirectionsBike />,
+    bike: <MdDirectionsBike />,
     walk: <MdDirectionsWalk />,
     running: <BiRun />,
     gym: <CgGym />,
-    fishing: <GiFishingPole />
+    rollerSkating: <GiRollerSkate />,
+    fishing: <GiFishingPole />,
+    tennis: <GiShuttlecock />,
+    nordicWalking:<MdOutlineNordicWalking/>
 }
 
 export const sportExperience = {
