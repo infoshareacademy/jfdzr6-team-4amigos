@@ -136,7 +136,7 @@ export const StyledSportsDivContainer = styled.div`
   display: flex;
   width: 550px;
   border: 1px solid #ffc524;
-  height: 300px;
+  height: 250px;
   flex-direction: column;
   justify-content: space-between;
   flex-wrap: wrap;
