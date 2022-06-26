@@ -19,14 +19,12 @@ const RegisterForm = ({
   const sportsLabel = [
     { label: "Jazda na rowerze", value: "bike" },
     { label: "Spacer", value: "walk" },
-    { label: "Taniec", value: "dance" },
     { label: "Jazda na rolkach", value: "rollerSkating" },
     { label: "Bieganie", value: "running" },
     { label: "Siłownia", value: "gym" },
     { label: "Wędkowanie", value: "fishing" },
-    { label: "Badminton", value: "badminton" },
-    { label: "Piłka nożna", value: "football" },
-    { label: "Koszykówka", value: "basketball" },
+    { label: "Tenis", value: "tennis" },
+    { label: "Nordic Walking", value: "nordicWalking" },
   ];
 
   const renderSportsInput = sportsLabel.map((sportEl) => {
