@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getProfiles, registerDbListener } from "../../api";
 import { sportsIcon } from "../../utils/sportsLabel";
@@ -11,18 +11,20 @@ import {
 } from "./Profiles.styled";
 import defaultPicture from "../../assets/img/defaultPicture.png";
 import Filters from "../../components/filters/Filters";
+import { AuthContext } from "../../context/Auth";
 
-const Profiles = ({ uid, sports }) => {
+const Profiles = () => {
   const [profiles, setProfiles] = useState([]);
+  const { userData } = useContext(AuthContext);
 
   useEffect(() => {
     registerDbListener((querySnapshot) => {
       const retriveProfiles = getProfiles(querySnapshot).filter(
-        (user) => user.id !== uid
+        (user) => user.id !== userData.id
       );
       setProfiles(retriveProfiles);
-    }, sports);
-  }, [uid, sports]);
+    }, userData.sports);
+  }, [userData.id, userData.sports]);
 
   const renderProfiles = profiles.map(
     ({ id, name, sports, profilePicture, description }) => {
@@ -52,7 +54,11 @@ const Profiles = ({ uid, sports }) => {
 
   return (
     <Container>
-      <Filters setProfiles={setProfiles} sports={sports} />
+      <Filters
+        setProfiles={setProfiles}
+        sports={userData.sports}
+        uid={userData.id}
+      />
       <ProfilesContainer>{renderProfiles}</ProfilesContainer>
     </Container>
   );

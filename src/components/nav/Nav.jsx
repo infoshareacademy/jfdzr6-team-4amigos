@@ -14,9 +14,12 @@ import {
   StyledLogin,
   StyledLogo,
 } from "./NavStyle";
+import { useContext } from "react";
+import { AuthContext } from "../../context/Auth";
+
 
 export const Nav = ({ role }) => {
-  const { userData } = useContext(AuthContext);
+  const { userData,role } = useContext(AuthContext);
 
   return (
     <StyledNav>

@@ -13,7 +13,7 @@ import defaultPicture from "../../assets/img/defaultPicture.png";
 import { useContext } from "react";
 import { AuthContext } from "../../context/Auth";
 
-const Messages = ({ uid }) => {
+const Messages = () => {
   const { userData } = useContext(AuthContext);
   const [usersWithChat, setUsersWithChat] = useState(null);
   const [chat, setChat] = useState({ messages: [] });
@@ -67,7 +67,7 @@ const Messages = ({ uid }) => {
   };
 
   const renderMessages = chat.messages.map((chatElement) => {
-    return uid === chatElement.idAuthor ? (
+    return userData.id === chatElement.idAuthor ? (
       <OutgoingMessage key={chatElement.createdAt}>
         {chatElement.message}
       </OutgoingMessage>
@@ -88,7 +88,7 @@ const Messages = ({ uid }) => {
         ...chat.messages,
         {
           createdAt: Timestamp.fromDate(new Date()),
-          idAuthor: uid,
+          idAuthor: userData.id,
           message: inputValue,
         },
       ],
