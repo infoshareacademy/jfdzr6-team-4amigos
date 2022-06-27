@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getProfiles, registerDbListener } from "../../api";
-import { sportsIcon } from "../../utils/sportsLabel";
+import { sportsIcon, sportsTooltip } from "../../utils/sportsLabel";
 import {
   Container,
   CardContainer,
@@ -12,6 +12,8 @@ import {
 import defaultPicture from "../../assets/img/defaultPicture.png";
 import Filters from "../../components/filters/Filters";
 import { AuthContext } from "../../context/Auth";
+import Tippy from "@tippyjs/react";
+import "tippy.js/dist/tippy.css";
 
 const Profiles = () => {
   const [profiles, setProfiles] = useState([]);
@@ -28,9 +30,11 @@ const Profiles = () => {
 
   const renderProfiles = profiles.map(
     ({ id, name, sports, profilePicture, description }) => {
-      const renderSportsIcon = sports
-        .sort()
-        .map((sport) => <li key={sport}>{sportsIcon[sport]}</li>);
+      const renderSportsIcon = sports.sort().map((sport) => (
+        <Tippy content={sportsTooltip[sport]}>
+          <li key={sport}>{sportsIcon[sport]}</li>
+        </Tippy>
+      ));
 
       return (
         <CardContainer key={id}>

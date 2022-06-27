@@ -6,7 +6,7 @@ import {
   ProfileDetailsWrapper,
 } from "./ProfileStyle";
 import { FaBirthdayCake, FaMapMarkerAlt } from "react-icons/fa";
-import { sportsIcon } from "../../utils/sportsLabel";
+import { sportsIcon, sportsTooltip } from "../../utils/sportsLabel";
 import Chat from "../../components/chat/Chat";
 import {
   createChat,
@@ -17,6 +17,8 @@ import {
 import defaultPicture from "../../assets/img/defaultPicture.png";
 import { useContext } from "react";
 import { AuthContext } from "../../context/Auth";
+import Tippy from "@tippyjs/react";
+import "tippy.js/dist/tippy.css";
 
 const Profile = () => {
   const defaultValue = {
@@ -81,7 +83,9 @@ const Profile = () => {
         <h4>Sporty, które uprawiam</h4>
         <ul>
           {profile.sports.map((sport) => (
-            <li key={sport}>{sportsIcon[sport]}</li>
+            <Tippy content={sportsTooltip[sport]}>
+              <li key={sport}>{sportsIcon[sport]}</li>
+            </Tippy>
           ))}
         </ul>
         <h4>O mnie</h4>
