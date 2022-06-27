@@ -28,6 +28,10 @@ const Profiles = () => {
 
   const renderProfiles = profiles.map(
     ({ id, name, sports, profilePicture, description }) => {
+      const renderSportsIcon = sports
+        .sort()
+        .map((sport) => <li key={sport}>{sportsIcon[sport]}</li>);
+
       return (
         <CardContainer key={id}>
           <Link to={`/profiles/${id}`}>
@@ -36,12 +40,12 @@ const Profiles = () => {
               <span>{name}</span>
             </CardPictureWrapper>
             <CardInfoWrapper>
-              <ul>
-                {sports.map((sport) => (
-                  <li key={sport}>{sportsIcon[sport]}</li>
-                ))}
-              </ul>
-              <p>{`${description.slice(0, 50)}...`}</p>
+              <ul>{renderSportsIcon}</ul>
+              <p>
+                {description.length > 75
+                  ? `${description.slice(0, 75)}...`
+                  : description}
+              </p>
               <span className="separator"></span>
             </CardInfoWrapper>
 

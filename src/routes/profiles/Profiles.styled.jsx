@@ -11,13 +11,13 @@ export const ProfilesContainer = styled.div`
   max-width: 1440px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 25px;
+  justify-content: center;
+  gap: 30px;
   margin: 20px auto;
 `;
 
 export const CardContainer = styled.div`
-  width: 240px;
+  width: 260px;
   border-radius: 10px 10px 0 0;
   background-color: #fff;
   border-radius: 10px;
@@ -81,4 +81,14 @@ export const CardPictureWrapper = styled.div`
 
 export const CardInfoWrapper = styled.div`
   margin: 10px;
+  height: 110px;
+  ul {
+    width: 90%;
+    overflow: hidden;
+  }
+  p {
+    height: 50px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+  }
 `;
