@@ -41,9 +41,6 @@ export const Nav = () => {
             <li>
               <StyledRegister to="/events">Wydarzenia</StyledRegister>
             </li>
-            {/* <li>
-              <StyledRegister to="/userpanel">Panel użytkownika</StyledRegister>
-            </li> */}
             <li>
               <StyledRegister to="/messages">Wiadomości</StyledRegister>
             </li>
@@ -53,7 +50,7 @@ export const Nav = () => {
             <li>
               <Link to="/userpanel">
                 <Avatar>
-                  <img src={userData.profilePicture} alt={userData.name} />
+                  <img src={userData?.profilePicture} alt={userData?.name} />
                 </Avatar>
               </Link>
             </li>
