@@ -14,12 +14,9 @@ import {
   StyledLogin,
   StyledLogo,
 } from "./NavStyle";
-import { useContext } from "react";
-import { AuthContext } from "../../context/Auth";
-
 
 export const Nav = ({ role }) => {
-  const { userData,role } = useContext(AuthContext);
+  const { userData } = useContext(AuthContext);
 
   return (
     <StyledNav>
@@ -44,9 +41,6 @@ export const Nav = ({ role }) => {
             <li>
               <StyledRegister to="/events">Wydarzenia</StyledRegister>
             </li>
-            {/* <li>
-              <StyledRegister to="/userpanel">Panel użytkownika</StyledRegister>
-            </li> */}
             <li>
               <StyledRegister to="/messages">Wiadomości</StyledRegister>
             </li>
@@ -56,7 +50,7 @@ export const Nav = ({ role }) => {
             <li>
               <Link to="/userpanel">
                 <Avatar>
-                  <img src={userData.profilePicture} alt={userData.name} />
+                  <img src={userData?.profilePicture} alt={userData?.name} />
                 </Avatar>
               </Link>
             </li>

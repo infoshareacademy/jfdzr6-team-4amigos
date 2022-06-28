@@ -14,6 +14,7 @@ import EventDetail from "./routes/events/details/EventDetail";
 import MyEvents from "./routes/events/myEvents/MyEvents";
 import UserPanel from "./routes/userPanel/UserPanel";
 import { useContext } from "react";
+import { Footer } from "./components/footer/Footer";
 
 function App() {
   const { role } = useContext(AuthContext);
@@ -47,6 +48,7 @@ function App() {
           <Route path="messages" element={<Messages />} />
         </Route>
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }
