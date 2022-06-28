@@ -9,6 +9,7 @@ export const Container = styled.div`
 export const ProfilesContainer = styled.div`
   width: 100%;
   max-width: 1440px;
+  height: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
