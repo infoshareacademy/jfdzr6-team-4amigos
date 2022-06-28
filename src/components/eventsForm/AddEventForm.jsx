@@ -15,10 +15,7 @@ const AddEventForm = ({ onSubmit }) => {
 
   return (
     <div>
-      <StyledForm
-        style={{ marginTop: "100px" }}
-        onSubmit={handleSubmit(onSubmit)}
-      >
+      <StyledForm onSubmit={handleSubmit(onSubmit)}>
         <h3>Dodaj swoje wydarzenie</h3>
         <StyledInputDiv>
           <label>Nazwa wydarzenia</label>
@@ -66,7 +63,7 @@ const AddEventForm = ({ onSubmit }) => {
             {...register("description", {
               required: true,
               minLength: 4,
-              maxLength: 100,
+              maxLength: 200,
             })}
           />
           {errors.description?.type === "required" && "Opis jest wymagany"}

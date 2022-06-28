@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 export const StyledForm = styled.form`
-  width: 400px;
+  width: 500px;
   background-color: #ffc524;
   padding: 50px 50px;
-  margin-bottom: 50px;
+  margin: 150px auto 50px auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -15,7 +15,7 @@ export const StyledForm = styled.form`
 `;
 
 export const StyledInputDiv = styled.div`
-  width: 300px;
+  width: 400px;
   display: flex;
   flex-direction: column;
   border: none;
@@ -23,7 +23,7 @@ export const StyledInputDiv = styled.div`
     margin: 10px 0;
   }
   textarea {
-    height: 80px;
+    height: 100px;
     border: none;
     border-radius: 5px;
     :focus-visible {
@@ -49,7 +49,7 @@ export const StyledAddButton = styled.button`
   margin-top: 30px;
   background: #ff8020;
   border-radius: 5px;
-  width: 300px;
+  width: 400px;
   height: 50px;
   font-family: "Open Sans";
   font-style: normal;
