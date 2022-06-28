@@ -83,6 +83,7 @@ const RegisterForm = ({
           <input
             type="number"
             name="age"
+            min={0}
             value={formData.age}
             placeholder="Podaj swój wiek"
             onChange={handleChange}

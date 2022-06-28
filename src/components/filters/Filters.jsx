@@ -32,10 +32,10 @@ const Filters = ({ setProfiles, sports, uid }) => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <h5>Wiek osób, których szukasz</h5>
         <DoubleSliderInput register={register} />
-        <div>
-          <StyledCheckbox type="checkbox" {...register("onlyPicture")} />
-          <label>Tylko ze zdjęciem</label>
-        </div>
+        <StyledCheckbox>
+          <input id="option1" type="checkbox" {...register("onlyPicture")} />
+          <label for="option1">Tylko ze zdjęciami</label>
+        </StyledCheckbox>
         <div>
           <h5>Z kim chcesz trenować?</h5>
           <select {...register("gender")}>
