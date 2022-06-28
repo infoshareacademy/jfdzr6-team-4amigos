@@ -37,5 +37,7 @@ export const StyledUl = styled.ul`
     width: 1.5rem;
     height: 1.5rem;
     margin-right: 0.5rem;
+    background-color: #ff8020;
+    border-radius: 50%;
   }
 `;
