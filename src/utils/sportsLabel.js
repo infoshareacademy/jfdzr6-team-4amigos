@@ -14,6 +14,17 @@ export const sportsIcon = {
     nordicWalking:<MdOutlineNordicWalking/>
 }
 
+export const sportsTooltip = {
+    bike: "Jazda rowerem",
+    walk: "Spacer",
+    running: "Bieganie",
+    gym: "Siłownia",
+    rollerSkating: "Jazda na rolkach",
+    fishing: "Wędkowanie",
+    tennis: "Tenis",
+    nordicWalking: "Nordic walking"
+}
+
 export const sportExperience = {
     amateur: "10%",
     intermediate: "50%",

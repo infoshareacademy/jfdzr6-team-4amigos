@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const ChatContainer = styled.form`
   flex: 2;
   min-width: 350px;
+  max-width: 650px;
   height: 500px;
   border: ${(props) => (props.fullWidth ? "none" : "2px solid #e8e7e5")};
   border-radius: 10px;

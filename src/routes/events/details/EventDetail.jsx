@@ -33,7 +33,7 @@ const EventDetail = () => {
   const handleClick = () => {
     setIsPending(true);
     if (eventData.members.includes(userData.id)) {
-      setError("uzytkownik dołączył juz do wydarzenia");
+      setError("Uzytkownik dołączył juz do wydarzenia");
       setIsPending(false);
       return;
     }
@@ -63,7 +63,9 @@ const EventDetail = () => {
   }
 
   const renderJoinButton = () => {
-    if (eventData.members.includes(userData.id)) {
+    if (eventData.idAdmin === userData.id) {
+      return;
+    } else if (eventData.members.includes(userData.id)) {
       return (
         <StyledBtn onClick={() => leaveEvent(userData.id)} disabled={isPending}>
           Zrezygnuj

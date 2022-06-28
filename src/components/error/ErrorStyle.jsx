@@ -1,21 +1,20 @@
 import styled from "styled-components";
 
 export const StyledError = styled.div`
-  display: flex;
-  justify-content: center;
-  justify-self: center;
+  width: 350px;
   position: fixed;
-  width: fit-content;
-  top: 80px;
-  color: red;
-  font-size: 1.2rem;
+  top: 90px;
+  left: 50%;
+  transform: translateX(-50%);
   margin-bottom: 1rem;
   text-align: center;
-  font-weight: bold;
   letter-spacing: 0.1rem;
+  font-weight: 400;
+  font-size: 1rem;
   font-family: "Open Sans", sans-serif;
-  border: 1px solid red;
   padding: 0.5rem;
-  border-radius: 0.5rem;
-  background-color: #c5c7c5;
+  border-radius: 0.4rem;
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
 `;
