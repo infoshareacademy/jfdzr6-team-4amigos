@@ -1,25 +1,20 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { addEvent } from "../../api/events";
-import AddEventForm from "../../components/form/eventsForm/AddEventForm";
+import AddEventForm from "../../components/eventsForm/AddEventForm";
 import { AuthContext } from "../../context/Auth";
 import EventsList from "./EventsList";
+import { StyledContainer } from "./EventsStyle";
 
 const Events = () => {
   const { userData } = useContext(AuthContext);
   const onSubmit = (data) => {
     addEvent({ ...data, members: [userData.id], idAdmin: userData.id });
   };
+
   return (
     <div style={{ display: "flex" }}>
-      <div
-        style={{
-          backgroundColor: "lightgray",
-          height: "100vh",
-          width: "200px",
-          marginTop: "60px",
-        }}
-      >
+      <StyledContainer>
         <ul>
           <li>
             <Link to="/events">Wydarzenia</Link>
@@ -31,7 +26,7 @@ const Events = () => {
             <Link to="add-events">Dodaj wydarzenie</Link>
           </li>
         </ul>
-      </div>
+      </StyledContainer>
       <div>
         <button>Dodaj wydarzenie</button>
         <AddEventForm onSubmit={onSubmit} />

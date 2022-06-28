@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { deleteEvent, getEvent, updateEvent } from "../../../api/events";
 import { AuthContext } from "../../../context/Auth";
 import EditEventElement from "../eventElement/EditEventElement";
+import { StyledBtn, StyledEventDetail } from "./EventDetailStyle";
 
 const EventDetail = () => {
   const { userData } = useContext(AuthContext);
@@ -66,15 +67,15 @@ const EventDetail = () => {
       return;
     } else if (eventData.members.includes(userData.id)) {
       return (
-        <button onClick={() => leaveEvent(userData.id)} disabled={isPending}>
+        <StyledBtn onClick={() => leaveEvent(userData.id)} disabled={isPending}>
           Zrezygnuj
-        </button>
+        </StyledBtn>
       );
     }
     return (
-      <button onClick={handleClick} disabled={isPending}>
+      <StyledBtn onClick={handleClick} disabled={isPending}>
         {isPending ? "Dołączam..." : "Dołącz"}
-      </button>
+      </StyledBtn>
     );
   };
 
@@ -83,31 +84,32 @@ const EventDetail = () => {
       <EditEventElement event={eventData} cancelEditMode={cancelEditMode} />
     ) : (
       <div>
-        <div>EventDetail - {id}</div>
-        <div>EventDetail - {id}</div>
-        <div>EventDetail - {id}</div>
         <h2>{eventData.title}</h2>
-        <p>{eventData.startDate}</p>
-        <p>{eventData.startTime}</p>
-        <p>{eventData.city}</p>
-        <p>{eventData.category}</p>
-        <p>{eventData.description}</p>
+        <p>Data: {eventData.startDate}</p>
+        <p>Godzina: {eventData.startTime}</p>
+        <p>Miasto: {eventData.city}</p>
+        <p>Sport: {eventData.category}</p>
+        <p>Opis :{eventData.description}</p>
         {renderJoinButton()}
         {userData.id === eventData.idAdmin && (
-          <button onClick={() => deleteEventById(eventData.id)}>Usuń</button>
+          <StyledBtn onClick={() => deleteEventById(eventData.id)}>
+            Usuń
+          </StyledBtn>
         )}
         {userData.id === eventData.idAdmin && (
-          <button onClick={() => enterEditMode(eventData.id)}>Edytuj</button>
+          <StyledBtn onClick={() => enterEditMode(eventData.id)}>
+            Edytuj
+          </StyledBtn>
         )}
       </div>
     );
 
   return (
-    <div>
+    <StyledEventDetail>
       {error && <h2>{error}</h2>}
       {renderEvent}
       {!eventData && <h2>Trwa ładowanie strony</h2>}
-    </div>
+    </StyledEventDetail>
   );
 };
 

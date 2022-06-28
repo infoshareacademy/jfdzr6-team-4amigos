@@ -14,6 +14,8 @@ import EventDetail from "./routes/events/details/EventDetail";
 import MyEvents from "./routes/events/myEvents/MyEvents";
 import UserPanel from "./routes/userPanel/UserPanel";
 import { useContext } from "react";
+import AddEventForm from "./components/eventsForm/AddEventForm";
+import AddEvent from "./routes/events/AddEvent";
 
 function App() {
   const { role } = useContext(AuthContext);
@@ -42,6 +44,7 @@ function App() {
           <Route path="userpanel" element={<UserPanel />} />
           <Route path="profiles/:docId" element={<Profile />} />
           <Route path="events" element={<Events />} />
+          <Route path="events/add-events" element={<AddEvent />} />
           <Route path="events/:id" element={<EventDetail />} />
           <Route path="events/my-events" element={<MyEvents />} />
           <Route path="messages" element={<Messages />} />
