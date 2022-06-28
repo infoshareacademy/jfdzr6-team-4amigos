@@ -5,6 +5,7 @@ import {
   deleteDoc,
   doc,
   onSnapshot,
+  orderBy,
   query,
   updateDoc,
   where,
@@ -47,7 +48,7 @@ export const addEvent = async (data) => {
 };
 
 export const displayEvents = (category, cb) => {
-  onSnapshot(query(collectionRef, where("category", "in", category)), cb);
+  onSnapshot(query(collectionRef, where("category", "in", category), orderBy("startDate", "desc")), cb);
 };
 
 export const getEvent = (idEvent,cb) =>{

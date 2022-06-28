@@ -7,7 +7,6 @@ export const StyledSection = styled.section`
   justify-content: center;
   width: 100%;
   height: 100%;
-  background-color: #fff;
   border-radius: 5%;
   padding: 0 20px;
   margin: 0 auto;
