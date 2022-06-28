@@ -1,16 +1,34 @@
-import { Link } from "react-router-dom";
 import githubLogo from "../../assets/img/githubLogo.png";
+
+// styles
+import { StyledFooter } from "./FooterStyle";
+import { StyledUl } from "./FooterStyle";
 
 export const Footer = () => {
   return (
-    <footer>
-      <ul>
+    <StyledFooter>
+      <StyledUl>
         <li>
-          <Link to="/">
-            <img src={githubLogo} alt="Logo" />
-          </Link>
+          <a href="https://github.com/mar-kalinowski" target="_blank">
+            <img src={githubLogo} alt="GitHub" /> Marcin Kalinowski
+          </a>
         </li>
-      </ul>
-    </footer>
+        <li>
+          <a href="https://github.com/mlesiak" target="_blank">
+            <img src={githubLogo} alt="GitHub" /> Michał Lesiak
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/krzysztof-lyczko" target="_blank">
+            <img src={githubLogo} alt="GitHub" /> Krzysztof Łyczko
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/karol-zakrzewski" target="_blank">
+            <img src={githubLogo} alt="GitHub" /> Karol Zakrzewski
+          </a>
+        </li>
+      </StyledUl>
+    </StyledFooter>
   );
 };
