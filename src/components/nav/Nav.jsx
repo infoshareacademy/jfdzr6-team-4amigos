@@ -42,9 +42,6 @@ export const Nav = () => {
             <li>
               <StyledRegister to="/events">Wydarzenia</StyledRegister>
             </li>
-            {/* <li>
-              <StyledRegister to="/userpanel">Panel użytkownika</StyledRegister>
-            </li> */}
             <li>
               <StyledRegister to="/messages">Wiadomości</StyledRegister>
             </li>

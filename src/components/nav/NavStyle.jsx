@@ -17,7 +17,6 @@ export const StyledNav = styled.nav`
   right: 0;
   z-index: 1;
   height: 80px;
-  border-bottom: 1px solid #e6e6e6;
 `;
 
 export const StyledLogo = styled.img`

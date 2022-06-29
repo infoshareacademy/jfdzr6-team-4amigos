@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { displayEvents } from "../../api/events";
 import { AuthContext } from "../../context/Auth";
 import EventElement from "./eventElement/EventElement";
+import { StyledEventsList } from "./EventsListStyle";
 
 const EventsList = () => {
   const { userData } = useContext(AuthContext);
@@ -25,7 +26,14 @@ const EventsList = () => {
     return <EventElement event={event} uid={userData?.id} key={event.id} />;
   });
 
-  return <div>{renderEvents}</div>;
+  return (
+    <>
+      <StyledEventsList>
+        <h1>Lista wydarzeń</h1>
+        {renderEvents}
+      </StyledEventsList>
+    </>
+  );
 };
 
 export default EventsList;

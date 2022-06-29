@@ -40,7 +40,7 @@ export const deleteEvent = async (idEvent) => {
 
 export const addEvent = async (data) => {
   try {
-    await addDoc(collectionRef, data);
+    return await addDoc(collectionRef, data);
   } catch (error) {
     console.dir(error);
     return firebaseErrors[error.code];
