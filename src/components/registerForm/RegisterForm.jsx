@@ -76,6 +76,8 @@ const RegisterForm = ({
             onChange={handleChange}
           />
         </div>
+        <h5>Twoje województwo</h5>
+        <div></div>
 
         <h5>Ile masz lat?</h5>
         <div>

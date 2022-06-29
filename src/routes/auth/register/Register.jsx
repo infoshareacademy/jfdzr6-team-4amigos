@@ -15,6 +15,7 @@ const Register = () => {
     email: "",
     password: "",
     city: "",
+    province: "",
     confirmPassword: "",
     profilePicture: "",
     chatHistory: {},
@@ -68,6 +69,7 @@ const Register = () => {
         [e.target.name]: e.target.value,
       });
     }
+    console.log(formData);
   };
 
   const handleSubmit = async (e) => {

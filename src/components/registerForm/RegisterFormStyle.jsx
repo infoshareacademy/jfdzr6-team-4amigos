@@ -248,3 +248,14 @@ export const UploadFileInput = styled.input`
     cursor: pointer;
   }
 `;
+
+export const ProvinceSelect = styled.select`
+  width: 250px;
+  height: 50px;
+  background: white;
+  border-radius: 5px;
+  color: gray;
+  padding-left: 5px;
+  font-size: 14px;
+  border: none;
+`;

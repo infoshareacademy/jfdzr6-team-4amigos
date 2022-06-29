@@ -2,6 +2,7 @@ import React from "react";
 import Error from "../../../components/error/Error";
 import {
   ButtonContainer,
+  ProvinceSelect,
   StyledForm,
   StyledGenderDivContainer,
   StyledSection,
@@ -16,6 +17,29 @@ const RegisterStepTwo = ({
   errorMessage,
   prevStep,
 }) => {
+  const provinces = [
+    "dolnośląskie",
+    "kujawsko-pomorskie",
+    "lubelskie",
+    "lubuskie",
+    "łódzkie",
+    "małopolskie",
+    "mazowieckie",
+    "opolskie",
+    "podkarpackie",
+    "podlaskie",
+    "pomorskie",
+    "śląskie",
+    "świętokrzyskie",
+    "warmińsko-mazurskie",
+    "zachodniopomorskie",
+  ];
+
+  const renderProvinence = provinces.map((province) => (
+    <option key={province} value={province}>
+      {province}
+    </option>
+  ));
   return (
     <StyledSection>
       <h2>Witaj! Dołącz do społeczności SportAmigos!</h2>
@@ -46,6 +70,13 @@ const RegisterStepTwo = ({
             placeholder="Miasto"
             onChange={handleChange}
           />
+        </div>
+        <div>
+          <h5>Twoje województwo</h5>
+          <label htmlFor="province"></label>
+          <ProvinceSelect name="province" onChange={handleChange}>
+            {renderProvinence}
+          </ProvinceSelect>
         </div>
 
         <div>
