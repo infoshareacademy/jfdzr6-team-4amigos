@@ -4,7 +4,7 @@ import Profiles from "./routes/profiles/Profiles";
 import Landing from "./routes/landing/Landing";
 import ProtectedRoute from "./routes/auth/ProtectedRoute";
 import Login from "./routes/auth/Login";
-import Register from "./routes/auth/Register";
+import Register from "./routes/auth/register/Register";
 import ForgotPassword from "./routes/auth/ForgotPassword";
 import { Nav } from "./components/nav/Nav";
 import Messages from "./routes/messages/Messages";

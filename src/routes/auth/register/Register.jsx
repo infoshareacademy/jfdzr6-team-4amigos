@@ -1,8 +1,10 @@
 import { serverTimestamp } from "firebase/firestore";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { registerUser } from "../../api";
-import RegisterForm from "../../components/registerForm/RegisterForm";
+import { registerUser } from "../../../api";
+import RegisterFirstStep from "./RegisterFirstStep";
+import RegisterStepTwo from "./RegisterStepTwo";
+import RegisterStepThree from "./RegisterStepThree";
 
 const Register = () => {
   const defaultValue = {
@@ -20,7 +22,35 @@ const Register = () => {
   };
   const [formData, setFormData] = useState(defaultValue);
   const [error, setError] = useState(null);
+  const [step, setStep] = useState(1);
   const navigate = useNavigate();
+
+  const prevStep = () => {
+    setStep(step - 1);
+  };
+
+  const nextStep = (e) => {
+    e.preventDefault();
+    const { email, password, confirmPassword, ...data } = formData;
+    const { name, gender, age, sports, description } = data;
+    if (!sports.length) {
+      setError("Wybierz przynajmniej jeden sport");
+      return;
+    }
+    if (step === 2) {
+      if (!name || !description || !gender || !age) {
+        setError("Wszystkie pola muszą być uzupełnione");
+        return;
+      }
+      if (+age < 18) {
+        setError("Jesteś niepełnoletni");
+        return;
+      }
+    }
+
+    setStep(step + 1);
+    setError("");
+  };
 
   const handleChange = (e) => {
     if (e.target.type === "checkbox") {
@@ -43,7 +73,6 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { email, password, confirmPassword, ...data } = formData;
-    const { name, gender, age, sports, description } = data;
     const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     if (!reg.test(email)) {
       setError("Podany email jest niepoprawny");
@@ -59,31 +88,60 @@ const Register = () => {
       setError("Hasła nie są takie same");
       return;
     }
-    if (+age < 18) {
-      setError("Jesteś niepełnoletni");
-      return;
-    }
-    if (!name || !description || !gender || !age || !sports.length) {
-      setError("Wszystkie pola muszą być uzupełnione");
-      return;
-    }
     registerUser(email, password, {
       ...data,
       createdAt: serverTimestamp(),
       isAdmin: false,
     });
+    console.log(data);
 
     setFormData(defaultValue);
     navigate("/login");
   };
+
+  const steppingByForm = () => {
+    switch (step) {
+      case 1:
+        return (
+          <RegisterFirstStep
+            errorMessage={error}
+            handleChange={handleChange}
+            formData={formData}
+            nextStep={nextStep}
+          />
+        );
+      case 2:
+        return (
+          <RegisterStepTwo
+            errorMessage={error}
+            handleChange={handleChange}
+            formData={formData}
+            prevStep={prevStep}
+            nextStep={nextStep}
+          />
+        );
+      case 3:
+        return (
+          <RegisterStepThree
+            errorMessage={error}
+            handleChange={handleChange}
+            formData={formData}
+            prevStep={prevStep}
+            handleSubmit={handleSubmit}
+          />
+        );
+      default:
+    }
+  };
   return (
     <div>
-      <RegisterForm
+      {/* <RegisterForm
         errorMessage={error}
         handleChange={handleChange}
         formData={formData}
         handleSubmit={handleSubmit}
-      />
+      /> */}
+      <form>{steppingByForm()}</form>
     </div>
   );
 };

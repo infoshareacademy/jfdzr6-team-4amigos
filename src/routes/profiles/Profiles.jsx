@@ -31,8 +31,8 @@ const Profiles = () => {
   const renderProfiles = profiles.map(
     ({ id, name, sports, profilePicture, description }) => {
       const renderSportsIcon = sports.sort().map((sport) => (
-        <Tippy content={sportsTooltip[sport]}>
-          <li key={sport}>{sportsIcon[sport]}</li>
+        <Tippy content={sportsTooltip[sport]} key={sport}>
+          <li>{sportsIcon[sport]}</li>
         </Tippy>
       ));
 

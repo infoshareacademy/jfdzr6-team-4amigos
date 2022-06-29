@@ -18,20 +18,29 @@ export const StyledSection = styled.section`
   }
 `;
 
-export const StyledForm = styled.form`
+export const StyledForm = styled.div`
   margin: 0 auto;
   width: 800px;
   background-color: #ffc524;
   padding: 50px 125px;
   border-radius: 10px;
   margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   p {
     font-size: 14px;
     color: red;
   }
+
+  h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    text-align: center;
+  }
   h5 {
     font-size: 16px;
-    font-weight: 700;
+    font-weight: 600;
     line-height: 22px;
     letter-spacing: 0em;
     text-align: left;
@@ -195,11 +204,18 @@ export const StyledGenderDivContainer = styled.div`
   }
 `;
 
+export const ButtonContainer = styled.div`
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+`;
+
 export const StyledSubmitButton = styled.button`
   background: #ff8020;
   margin-top: 40px;
   border-radius: 5px;
-  width: 525px;
+  width: 30%;
   height: 50px;
   font-family: "Open Sans";
   font-style: normal;

@@ -34,7 +34,7 @@ const Filters = ({ setProfiles, sports, uid }) => {
         <DoubleSliderInput register={register} />
         <StyledCheckbox>
           <input id="option1" type="checkbox" {...register("onlyPicture")} />
-          <label for="option1">Tylko ze zdjęciami</label>
+          <label htmlFor="option1">Tylko ze zdjęciami</label>
         </StyledCheckbox>
         <div>
           <h5>Z kim chcesz trenować?</h5>
