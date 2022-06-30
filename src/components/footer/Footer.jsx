@@ -4,9 +4,12 @@ import githubLogo from "../../assets/img/githubLogo.png";
 import { StyledFooter } from "./FooterStyle";
 import { StyledUl } from "./FooterStyle";
 
+const currentYear = new Date().getFullYear();
+
 export const Footer = () => {
   return (
     <StyledFooter>
+      <p>Copyright © 4Amigos {currentYear}</p>
       <StyledUl>
         <li>
           <a href="https://github.com/mar-kalinowski" target="_blank">
