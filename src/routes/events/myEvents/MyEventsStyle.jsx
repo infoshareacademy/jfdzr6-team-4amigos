@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 export const StyledMyEventsList = styled.div`
   width: 800px;
+  height: 100%;
+  max-height: 100%;
   margin-top: 115px;
   margin-left: 50px;
   color: grey;
