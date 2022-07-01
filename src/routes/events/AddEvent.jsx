@@ -7,10 +7,13 @@ import { AuthContext } from "../../context/Auth";
 const AddEvent = () => {
   const { userData } = useContext(AuthContext);
   const navigate = useNavigate();
-  const onSubmit = (data) => {
-    addEvent({ ...data, members: [], idAdmin: userData.id });
-
-    navigate("/events");
+  const onSubmit = async (data) => {
+    const ref = await addEvent({
+      ...data,
+      members: [userData.id],
+      idAdmin: userData.id,
+    });
+    navigate(`/events/${ref.id}`);
   };
 
   return <AddEventForm onSubmit={onSubmit} />;

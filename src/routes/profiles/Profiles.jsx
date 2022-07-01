@@ -20,19 +20,23 @@ const Profiles = () => {
   const { userData } = useContext(AuthContext);
 
   useEffect(() => {
-    registerDbListener((querySnapshot) => {
-      const retriveProfiles = getProfiles(querySnapshot).filter(
-        (user) => user.id !== userData.id
-      );
-      setProfiles(retriveProfiles);
-    }, userData.sports);
+    registerDbListener(
+      (querySnapshot) => {
+        const retriveProfiles = getProfiles(querySnapshot).filter(
+          (user) => user.id !== userData.id
+        );
+        setProfiles(retriveProfiles);
+      },
+      userData.sports,
+      userData.province
+    );
   }, [userData.id, userData.sports]);
 
   const renderProfiles = profiles.map(
-    ({ id, name, sports, profilePicture, description }) => {
+    ({ id, name, sports, profilePicture, description, city }) => {
       const renderSportsIcon = sports.sort().map((sport) => (
-        <Tippy content={sportsTooltip[sport]}>
-          <li key={sport}>{sportsIcon[sport]}</li>
+        <Tippy content={sportsTooltip[sport]} key={sport}>
+          <li>{sportsIcon[sport]}</li>
         </Tippy>
       ));
 
@@ -41,7 +45,10 @@ const Profiles = () => {
           <Link to={`/profiles/${id}`}>
             <CardPictureWrapper>
               <img src={profilePicture || defaultPicture} alt={name} />
-              <span>{name}</span>
+              <div>
+                <span>{name}</span>
+                <p>{city}</p>
+              </div>
             </CardPictureWrapper>
             <CardInfoWrapper>
               <ul>{renderSportsIcon}</ul>
@@ -66,6 +73,7 @@ const Profiles = () => {
         setProfiles={setProfiles}
         sports={userData.sports}
         uid={userData.id}
+        userProvince={userData.province}
       />
       <ProfilesContainer>{renderProfiles}</ProfilesContainer>
     </Container>

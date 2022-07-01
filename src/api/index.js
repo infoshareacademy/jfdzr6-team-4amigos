@@ -92,11 +92,12 @@ export const updateUser = async (data, docId) => {
   await updateDoc(docRef, data);
 };
 
-export const registerDbListener = (cb, filter) => {
+export const registerDbListener = (cb, filter,userProvince) => {
   onSnapshot(
     query(
       profilesCollection,
       where("sports", "array-contains-any", filter),
+      where("province", "==", userProvince),
       orderBy("createdAt", "desc")
     ),
     cb
@@ -109,12 +110,12 @@ export const registerFilterProfiles = (
   ageLower,
   ageUpper,
   gender,
-  onlyPicture
+  userProvince
 ) => {
   // Dodać filtorwanie profili tylko ze zdjęciem
   let q = query(profilesCollection)
   if (gender !== "all") q = query(q, where("gender", "==", gender))
-  q = query(q,where("sports", "array-contains-any", filter),where("age", ">=", ageLower), where("age", "<=", ageUpper))
+  q = query(q,where("sports", "array-contains-any", filter),where("province", "==", userProvince),where("age", ">=", ageLower), where("age", "<=", ageUpper))
   onSnapshot(q, cb);
 };
 // Chat

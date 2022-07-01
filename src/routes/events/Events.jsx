@@ -7,11 +7,6 @@ import EventsList from "./EventsList";
 import { StyledContainer } from "./EventsStyle";
 
 const Events = () => {
-  const { userData } = useContext(AuthContext);
-  const onSubmit = (data) => {
-    addEvent({ ...data, members: [userData.id], idAdmin: userData.id });
-  };
-
   return (
     <div style={{ display: "flex" }}>
       <StyledContainer>
@@ -29,7 +24,7 @@ const Events = () => {
       </StyledContainer>
       <div>
         <button>Dodaj wydarzenie</button>
-        <AddEventForm onSubmit={onSubmit} />
+        {/* <AddEventForm onSubmit={onSubmit} /> */}
         <EventsList />
       </div>
     </div>

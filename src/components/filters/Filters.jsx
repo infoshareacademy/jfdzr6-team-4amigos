@@ -4,7 +4,7 @@ import { getProfiles, registerFilterProfiles } from "../../api";
 import DoubleSliderInput from "./doubleSlider/DoubleSliderInput";
 import { FiltersSection, StyledCheckbox } from "./FiltersStyle";
 
-const Filters = ({ setProfiles, sports, uid }) => {
+const Filters = ({ setProfiles, sports, uid, userProvince }) => {
   const { register, handleSubmit } = useForm();
 
   const onSubmit = (data) => {
@@ -24,7 +24,7 @@ const Filters = ({ setProfiles, sports, uid }) => {
       data.lower,
       data.upper,
       data.gender,
-      data.onlyPicture
+      userProvince
     );
   };
   return (
@@ -34,7 +34,7 @@ const Filters = ({ setProfiles, sports, uid }) => {
         <DoubleSliderInput register={register} />
         <StyledCheckbox>
           <input id="option1" type="checkbox" {...register("onlyPicture")} />
-          <label for="option1">Tylko ze zdjęciami</label>
+          <label htmlFor="option1">Tylko ze zdjęciami</label>
         </StyledCheckbox>
         <div>
           <h5>Z kim chcesz trenować?</h5>
