@@ -2,9 +2,9 @@ import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
 export const StyledNav = styled.nav`
-  width: 100%;
+  min-width: 100%;
+  height: 80px;
   display: flex;
-  flex-direction: row;
   flex-grow: 1;
   justify-content: space-between;
   align-items: center;
@@ -16,7 +16,7 @@ export const StyledNav = styled.nav`
   left: 0;
   right: 0;
   z-index: 1;
-  height: 80px;
+  border-bottom: 1px solid #e6e6e6;
 `;
 
 export const StyledLogo = styled.img`
@@ -45,7 +45,7 @@ export const StyledUl = styled.ul`
   }
 `;
 export const StyledRegister = styled(NavLink)`
-  width: 200px;
+  min-width: 200px;
   height: 40px;
   background-color: #ff8020;
   border-radius: 5px;

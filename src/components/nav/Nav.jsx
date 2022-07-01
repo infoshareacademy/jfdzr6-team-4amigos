@@ -34,7 +34,7 @@ export const Nav = () => {
               <StyledRegister to="/register">Zarejestruj się</StyledRegister>
             </li>
             <li>
-              <StyledLogin to="/login">Zaloguj się</StyledLogin>
+              <StyledRegister to="/login">Zaloguj się</StyledRegister>
             </li>
           </>
         ) : (
