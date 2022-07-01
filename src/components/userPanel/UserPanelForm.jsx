@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "../../context/Auth";
 import {
   StyledSportsDiv,
   StyledForm,
@@ -9,6 +10,8 @@ import {
 } from "./UserPanelFormStyle";
 
 const UserPanelForm = ({ handleChange, formData, error, handleSubmit }) => {
+  const { userData } = useContext(AuthContext);
+
   const sportsLabel = [
     { label: "Jazda na rowerze", value: "bike" },
     { label: "Spacer", value: "walk" },
@@ -45,7 +48,6 @@ const UserPanelForm = ({ handleChange, formData, error, handleSubmit }) => {
             type="text"
             name="name"
             value={formData.name}
-            placeholder="Twoje imię lub pseudonim"
             onChange={handleChange}
           ></input>
         </div>
@@ -79,7 +81,6 @@ const UserPanelForm = ({ handleChange, formData, error, handleSubmit }) => {
             type="number"
             name="age"
             value={formData.age}
-            placeholder="Podaj swój wiek"
             onChange={handleChange}
           />
         </div>
@@ -90,7 +91,6 @@ const UserPanelForm = ({ handleChange, formData, error, handleSubmit }) => {
             type="text"
             name="city"
             value={formData.city}
-            placeholder="Wpisz swoje miasto"
             onChange={handleChange}
           />
         </div>
@@ -99,7 +99,6 @@ const UserPanelForm = ({ handleChange, formData, error, handleSubmit }) => {
           <label htmlFor="description"></label>
           <textarea
             name="description"
-            placeholder="..."
             value={formData.description}
             onChange={handleChange}
           />
