@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { deleteEvent, getEvent, updateEvent } from "../../../api/events";
+import Comments from "../../../components/comments/Comments";
 import { AuthContext } from "../../../context/Auth";
 import EditEventElement from "../eventElement/EditEventElement";
 import { StyledBtn, StyledEventDetail } from "./EventDetailStyle";
@@ -107,8 +108,14 @@ const EventDetail = () => {
   return (
     <StyledEventDetail>
       {error && <h2>{error}</h2>}
-      {renderEvent}
       {!eventData && <h2>Trwa ładowanie strony</h2>}
+      {renderEvent}
+      <Comments
+        uid={userData.id}
+        userName={userData.name}
+        eventId={id}
+        eventData={eventData}
+      />
     </StyledEventDetail>
   );
 };

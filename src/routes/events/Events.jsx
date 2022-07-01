@@ -1,8 +1,5 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { addEvent } from "../../api/events";
-import AddEventForm from "../../components/eventsForm/AddEventForm";
-import { AuthContext } from "../../context/Auth";
 import EventsList from "./EventsList";
 import { StyledContainer } from "./EventsStyle";
 
@@ -23,8 +20,6 @@ const Events = () => {
         </ul>
       </StyledContainer>
       <div>
-        <button>Dodaj wydarzenie</button>
-        {/* <AddEventForm onSubmit={onSubmit} /> */}
         <EventsList />
       </div>
     </div>

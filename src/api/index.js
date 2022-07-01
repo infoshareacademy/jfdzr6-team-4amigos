@@ -23,6 +23,7 @@ import { firebaseErrors } from "../utils/firebaseErrors";
 export const COLLECTIONS_NAMES = {
   CHATS: "chats",
   USERS: "users",
+  COMMENTS: "comments"
 };
 
 export const profilesCollection = collection(db, COLLECTIONS_NAMES.USERS);

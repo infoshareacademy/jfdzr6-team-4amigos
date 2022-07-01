@@ -12,6 +12,7 @@ const AddEvent = () => {
       ...data,
       members: [userData.id],
       idAdmin: userData.id,
+      comments: null,
     });
     navigate(`/events/${ref.id}`);
   };
