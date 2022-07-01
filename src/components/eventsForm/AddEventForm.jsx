@@ -18,8 +18,6 @@ const AddEventForm = ({ onSubmit }) => {
     minDate[0] = `0${minDate[0]}`;
   }
   minDate = minDate.reverse().join("-");
-
-  console.log(minDate);
   return (
     <div>
       <StyledForm onSubmit={handleSubmit(onSubmit)}>

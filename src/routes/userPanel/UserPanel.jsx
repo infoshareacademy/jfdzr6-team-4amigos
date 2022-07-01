@@ -43,7 +43,6 @@ const UserPanel = () => {
 
     if (!name || !description || !gender || !age || !sports.length) {
       setError("Wszystkie pola muszą być uzupełnione");
-      console.log(error);
       return;
     }
 

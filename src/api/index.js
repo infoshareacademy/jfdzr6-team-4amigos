@@ -75,7 +75,6 @@ export const loginUser = (email, password, cb) => {
   signInWithEmailAndPassword(auth, email, password)
     .then(cb)
     .catch((e) => {
-      console.log(e.code);
       alert(e.code);
     });
 };

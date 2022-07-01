@@ -15,17 +15,6 @@ const Comments = ({ uid, userName, eventId, eventData }) => {
       <h1>ładowanie storny</h1>;
     }
   }, [eventData]);
-
-  //   if (!comments) {
-  //     return (
-  //       <AddComment
-  //         uid={uid}
-  //         userName={userName}
-  //         eventId={eventId}
-  //         comments={comments}
-  //       />
-  //     );
-  //   }
   return (
     <div>
       <div>
