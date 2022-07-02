@@ -7,6 +7,7 @@ import {
   StyledSportsDivContainer,
   StyledSubmitButton,
 } from "./UserPanelFormStyle";
+import { sportsIcon } from "../../utils/sportsLabel";
 
 const UserPanelForm = ({
   handleChange,
@@ -35,6 +36,7 @@ const UserPanelForm = ({
           onChange={handleChange}
         />
         <label htmlFor="sports">{sportEl.label}</label>
+        <i> {sportsIcon[sportEl.value]}</i>
       </StyledSportsDiv>
     );
   });

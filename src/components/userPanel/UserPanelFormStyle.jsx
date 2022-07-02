@@ -147,7 +147,6 @@ export const StyledSportsDiv = styled.div`
   width: 250px;
   border-radius: 5px;
   display: flex;
-  justify-content: start;
   align-items: center;
   font-family: "Open Sans";
   font-style: normal;
@@ -155,11 +154,22 @@ export const StyledSportsDiv = styled.div`
   font-size: 16px;
   line-height: 22px;
   color: #c5c7c5;
+  position: relative;
   input[type="checkbox"] {
     width: 20px;
     height: 20px;
     margin: 15px;
-    accent-color: #ff8020;
+    accent-color: #fefdfb;
+  }
+  i {
+    position: absolute;
+    right: 10px;
+    height: 30px;
+    width: 30px;
+  }
+  svg {
+    height: 30px;
+    width: 30px;
   }
 `;
 
