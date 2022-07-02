@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import EventsList from "./EventsList";
-import { StyledContainer } from "./EventsStyle";
+import { Container, EventsListContainer, StyledContainer } from "./EventsStyle";
 
 const Events = () => {
   return (
-    <div style={{ display: "flex" }}>
+    <Container>
       <StyledContainer>
         <ul>
           <li>
@@ -19,10 +19,10 @@ const Events = () => {
           </li>
         </ul>
       </StyledContainer>
-      <div>
+      <EventsListContainer>
         <EventsList />
-      </div>
-    </div>
+      </EventsListContainer>
+    </Container>
   );
 };
 

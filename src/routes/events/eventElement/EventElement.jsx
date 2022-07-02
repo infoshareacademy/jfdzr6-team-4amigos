@@ -1,17 +1,33 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { sportsIcon } from "../../../utils/sportsLabel";
+import { CardContainer, DateWrapper, Icon, InfoWrapper } from "../EventsStyle";
+import { FcOvertime, FcConferenceCall } from "react-icons/fc";
 
 const EventElement = ({ event }) => {
-  const { id, title, city, startDate, description, category } = event;
+  const { id, title, city, startDate, description, category, members } = event;
+
+  const date = startDate.split("-").reverse().join(".");
   return (
-    <Link to={`/events/${id}`}>
-      <h2 key={id}>{title}</h2>
-      <p>Miejsce: {city}</p>
-      <p>Data: {startDate}</p>
-      <p>Sport: {category}</p>
-      <p>Opis: {description}</p>
-      <p>Kliknij by wziąć udział!</p>
-    </Link>
+    <CardContainer>
+      <Icon>{sportsIcon[category]}</Icon>
+      <h2>{title}</h2>
+
+      <DateWrapper>
+        <FcOvertime />
+        <span>{city},</span>
+        <span>{date}</span>
+      </DateWrapper>
+      <InfoWrapper>
+        <p>{description}</p>
+        <span>
+          <FcConferenceCall />
+          {members.length} osób weźmie udział
+        </span>
+      </InfoWrapper>
+
+      <Link to={`/events/${id}`}>Wyświetl szczegóły</Link>
+    </CardContainer>
   );
 };
 

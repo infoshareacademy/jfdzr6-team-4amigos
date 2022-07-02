@@ -11,6 +11,9 @@ const AddComment = ({ uid, userName, eventId, comments }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!commentText.trim() || commentText.length > 100) {
+      return;
+    }
     if (!comments) {
       const commentRef = await createCommentsHistory({
         body: commentText,
@@ -31,6 +34,7 @@ const AddComment = ({ uid, userName, eventId, comments }) => {
         ],
       });
     }
+    setCommentText("");
   };
   return (
     <div>

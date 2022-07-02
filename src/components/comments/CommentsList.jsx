@@ -1,8 +1,7 @@
-import React, { useEffect } from "react";
-import { registerCommentsListener } from "../../api/events";
+import React from "react";
 
-const CommentsList = ({ commentsRef, setComments, comments }) => {
-  const renderComments = comments.commentsHistory?.map((comment) => {
+const CommentsList = ({ comments }) => {
+  const renderComments = comments.commentsHistory.map((comment) => {
     return (
       <div key={comment.createdAt}>
         <h5>{comment.author}</h5>

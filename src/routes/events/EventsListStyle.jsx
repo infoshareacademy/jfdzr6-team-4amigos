@@ -15,11 +15,6 @@ export const StyledEventsList = styled.div`
     margin: 10px 0;
     font-size: 20px;
   }
-  a {
-    margin: 10px;
-    padding: 20px;
-    background-color: #fff;
-  }
   h1 {
     margin: 0 20px;
   }
