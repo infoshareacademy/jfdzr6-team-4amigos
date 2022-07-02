@@ -90,7 +90,7 @@ const EventDetail = () => {
         <p>Godzina: {eventData.startTime}</p>
         <p>Miasto: {eventData.city}</p>
         <p>Sport: {eventData.category}</p>
-        <p>Opis :{eventData.description}</p>
+        <p>Opis: {eventData.description}</p>
         {renderJoinButton()}
         {userData.id === eventData.idAdmin && (
           <StyledBtn onClick={() => deleteEventById(eventData.id)}>

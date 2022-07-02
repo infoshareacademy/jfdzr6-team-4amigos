@@ -37,7 +37,6 @@ export const StyledLink = styled(NavLink)`
 
 export const Container = styled.div`
   width: 100%;
-  min-height: 100vh;
   margin-top: 100px;
   display: flex;
   gap: 40px;
