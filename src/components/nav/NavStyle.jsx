@@ -5,7 +5,6 @@ export const StyledNav = styled.nav`
   min-width: 100%;
   height: 80px;
   display: flex;
-  flex-grow: 1;
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
@@ -17,6 +16,33 @@ export const StyledNav = styled.nav`
   right: 0;
   z-index: 1;
   border-bottom: 1px solid #e6e6e6;
+  @media (max-width: 412px) {
+    height: 80px;
+    padding: 0 10px;
+  }
+`;
+
+export const StyledNavLinks = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  @media (max-width: 412px) {
+    display: none;
+  }
+`;
+
+export const StyledMobileNavLinks = styled.div`
+  display: none;
+  @media (max-width: 412px) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: red;
+    width: 100%;
+    height: 100%;
+  }
 `;
 
 export const StyledLogo = styled.img`
@@ -27,6 +53,10 @@ export const StyledLogo = styled.img`
   height: 100%;
   background-color: #fff;
   border-radius: 5px;
+
+  @media (max-width: 412px) {
+    width: 40px;
+  }
 `;
 
 export const StyledUl = styled.ul`
@@ -42,6 +72,9 @@ export const StyledUl = styled.ul`
   p {
     font-size: 14px;
     color: #fff;
+  }
+  @media (max-width: 412px) {
+    display: flex;
   }
 `;
 export const StyledRegister = styled(NavLink)`

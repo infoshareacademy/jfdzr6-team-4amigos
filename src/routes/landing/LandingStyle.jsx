@@ -54,4 +54,36 @@ export const StyledSection = styled.section`
       color: #000;
     }
   }
+
+  @media (max-width: 412px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 89vh;
+    background-color: #fff;
+    padding: 0 20px;
+    margin: 0 auto;
+    margin-top: 5rem;
+    margin-bottom: 4rem;
+    h1 {
+      font-size: 64px;
+    }
+    p {
+      font-size: 24px;
+      text-align: center;
+    }
+    img {
+      width: 400px;
+      height: 100%;
+      background-color: #fff;
+      border-radius: 5%;
+    }
+    button {
+      width: 200px;
+      height: 60px;
+      font-size: 14px;
+    }
+  }
 `;
