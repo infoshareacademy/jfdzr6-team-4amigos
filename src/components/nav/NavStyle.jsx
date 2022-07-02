@@ -25,8 +25,9 @@ export const StyledNav = styled.nav`
 export const StyledNavLinks = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   width: 100%;
+  min-width: 440px;
   height: 100%;
   @media (max-width: 412px) {
     display: none;
@@ -37,9 +38,10 @@ export const StyledMobileNavLinks = styled.div`
   display: none;
   @media (max-width: 412px) {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    background-color: red;
+    background-color: #ffc524;
     width: 100%;
     height: 100%;
   }
@@ -75,6 +77,22 @@ export const StyledUl = styled.ul`
   }
   @media (max-width: 412px) {
     display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffc524;
+    min-width: 200px;
+    height: 100%;
+
+    p {
+      display: none;
+      font-size: 14px;
+      color: #fff;
+
+      &:first-child {
+        margin-bottom: 10px;
+      }
+    }
   }
 `;
 export const StyledRegister = styled(NavLink)`
@@ -95,6 +113,9 @@ export const StyledRegister = styled(NavLink)`
     background-color: #c5c7c5;
     color: #000;
   }
+  @media (max-width: 412px) {
+    display: none;
+  }
 `;
 export const StyledLogin = styled(NavLink)`
   min-width: 200px;
@@ -113,5 +134,104 @@ export const StyledLogin = styled(NavLink)`
   &:hover {
     background-color: #c5c7c5;
     color: #000;
+  }
+  @media (max-width: 412px) {
+    display: block;
+    justify-self: center;
+    align-items: center;
+    margin: 0;
+    padding: 10px;
+    min-width: 200px;
+    height: 40px;
+    background-color: #ff8020;
+    border-radius: 5px;
+    color: #eee;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0;
+    padding: 10px;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    &:hover {
+      background-color: #c5c7c5;
+      color: #000;
+    }
+  }
+`;
+
+export const StyledEvents = styled(NavLink)`
+  min-width: 200px;
+  height: 40px;
+  background-color: #ff8020;
+  border-radius: 5px;
+  color: #eee;
+  text-align: center;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+  margin: 0 10px;
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    background-color: #c5c7c5;
+    color: #000;
+  }
+  @media (max-width: 412px) {
+    display: block;
+    justify-self: center;
+    align-items: center;
+    margin: 0;
+    padding: 10px;
+    min-width: 200px;
+    height: 40px;
+    background-color: #ff8020;
+    border-radius: 5px;
+    color: #eee;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+  }
+`;
+
+export const StyledMessages = styled(NavLink)`
+  min-width: 200px;
+  height: 40px;
+  background-color: #ff8020;
+  border-radius: 5px;
+  color: #eee;
+  text-align: center;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+  margin: 0 10px;
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    background-color: #c5c7c5;
+    color: #000;
+  }
+  @media (max-width: 412px) {
+    display: block;
+    justify-self: center;
+    align-items: center;
+    margin: 0;
+    padding: 10px;
+    min-width: 200px;
+    height: 40px;
+    background-color: #ff8020;
+    border-radius: 5px;
+    color: #eee;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
   }
 `;

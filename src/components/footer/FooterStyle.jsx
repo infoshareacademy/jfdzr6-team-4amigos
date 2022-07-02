@@ -16,22 +16,24 @@ export const StyledFooter = styled.footer`
   position: fixed;
   bottom: 0;
 
-  @media screen and (max-width: 544px) {
-    flex-direction: column;
-    align-items: flex-start;
+  @media screen and (max-width: 412px) {
+    flex-direction: column-reverse;
+    align-items: center;
     justify-content: center;
     padding: 0;
     margin-top: 0;
     margin-bottom: 0;
     border-top: none;
+    position: fixed;
+    bottom: 0;
+    height: 120px;
   }
 `;
 
 export const StyledUl = styled.ul`
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  justify-items: center;
+  justify-content: flex-start;
+  align-items: left;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -54,5 +56,30 @@ export const StyledUl = styled.ul`
     margin-right: 0.5rem;
     background-color: #ff8020;
     border-radius: 50%;
+  }
+  @media screen and (max-width: 412px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+    li {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-width: 200px;
+      margin: 0;
+      padding: px;
+    }
+    a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #333;
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
 `;

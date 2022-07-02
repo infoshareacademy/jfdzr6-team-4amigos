@@ -65,7 +65,7 @@ export const StyledSection = styled.section`
     background-color: #fff;
     padding: 0 20px;
     margin: 0 auto;
-    margin-top: 5rem;
+    margin-top: 0;
     margin-bottom: 4rem;
     h1 {
       font-size: 64px;

@@ -16,6 +16,24 @@ export const StyledSection = styled.section`
   h2 {
     color: #c5c7c5;
   }
+
+  @media (max-width: 412px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 5%;
+    padding: 0 20px;
+    margin: 0 auto;
+    margin-top: 100px;
+    font-family: Open Sans;
+    color: #fff;
+    h2 {
+      color: #c5c7c5;
+    }
+  }
 `;
 
 export const StyledForm = styled.div`

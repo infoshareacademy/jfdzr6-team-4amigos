@@ -1,5 +1,10 @@
-import { StyledUl } from "./NavStyle";
-import { StyledRegister } from "./NavStyle";
+import {
+  StyledLogin,
+  StyledUl,
+  StyledRegister,
+  StyledEvents,
+  StyledMessages,
+} from "./NavStyle";
 import { Link } from "react-router-dom";
 import defaultPicture from "../../assets/img/defaultPicture.png";
 import { Avatar } from "../../routes/messages/MessagesStyle";
@@ -22,16 +27,16 @@ export const NavLinks = () => {
             <StyledRegister to="/register">Zarejestruj się</StyledRegister>
           </li>
           <li>
-            <StyledRegister to="/login">Zaloguj się</StyledRegister>
+            <StyledLogin to="/login">Zaloguj się</StyledLogin>
           </li>
         </>
       ) : (
         <>
           <li>
-            <StyledRegister to="/events">Wydarzenia</StyledRegister>
+            <StyledEvents to="/events">Wydarzenia</StyledEvents>
           </li>
           <li>
-            <StyledRegister to="/messages">Wiadomości</StyledRegister>
+            <StyledMessages to="/messages">Wiadomości</StyledMessages>
           </li>
           <li onClick={() => signOut(auth)}>
             <StyledRegister to="/">Wyloguj się</StyledRegister>
