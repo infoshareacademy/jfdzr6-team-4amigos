@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import { displayEvents } from "../../api/events";
 import { AuthContext } from "../../context/Auth";
 import EventElement from "./eventElement/EventElement";
-import { StyledEventsList } from "./EventsListStyle";
 import { EventsContainer } from "./EventsStyle";
 
 const EventsList = () => {

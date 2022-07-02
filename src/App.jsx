@@ -15,7 +15,6 @@ import MyEvents from "./routes/events/myEvents/MyEvents";
 import UserPanel from "./routes/userPanel/UserPanel";
 import { useContext } from "react";
 import { Footer } from "./components/footer/Footer";
-import AddEventForm from "./components/eventsForm/AddEventForm";
 import AddEvent from "./routes/events/AddEvent";
 
 function App() {

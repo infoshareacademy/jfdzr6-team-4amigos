@@ -1,10 +1,10 @@
 import { useContext } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { addEvent } from "../../api/events";
 import AddEventForm from "../../components/eventsForm/AddEventForm";
 import EventsNav from "../../components/nav/EventsNav";
 import { AuthContext } from "../../context/Auth";
-import { Container, EventsListContainer, StyledContainer } from "./EventsStyle";
+import { Container, EventsListContainer } from "./EventsStyle";
 
 const AddEvent = () => {
   const { userData } = useContext(AuthContext);

@@ -5,7 +5,7 @@ import {
   createCommentsHistory,
   updateEvent,
 } from "../../api/events";
-import { StyledAddComment, StyledBtn, StyledInputDiv } from "./Comments.styled";
+import { StyledAddComment, StyledBtn } from "./Comments.styled";
 
 const AddComment = ({ uid, userName, eventId, comments }) => {
   const [commentText, setCommentText] = useState("");
