@@ -6,7 +6,6 @@ import {
   StyledSection,
   StyledSportsDivContainer,
   StyledSubmitButton,
-  StyledGenderDivContainer,
 } from "./UserPanelFormStyle";
 
 const UserPanelForm = ({

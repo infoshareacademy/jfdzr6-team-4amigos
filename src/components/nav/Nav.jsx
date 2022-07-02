@@ -8,13 +8,7 @@ import { Avatar } from "../../routes/messages/MessagesStyle";
 import defaultPicture from "../../assets/img/defaultPicture.png";
 
 // styles
-import {
-  StyledNav,
-  StyledUl,
-  StyledRegister,
-  StyledLogin,
-  StyledLogo,
-} from "./NavStyle";
+import { StyledNav, StyledUl, StyledRegister, StyledLogo } from "./NavStyle";
 
 export const Nav = () => {
   const { userData, role } = useContext(AuthContext);

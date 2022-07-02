@@ -7,12 +7,14 @@ import {
   onSnapshot,
   orderBy,
   query,
+  Timestamp,
   updateDoc,
   where,
 } from "firebase/firestore";
 import { firebaseErrors } from "../utils/firebaseErrors";
 
 const EVENTS_COLLECTION = "events";
+const COMMENTS_COLLECTION = "comments"
 
 const collectionRef = collection(db, EVENTS_COLLECTION);
 
@@ -61,6 +63,36 @@ export const registerListenerMyEvents = (uid,cb) =>{
 }
 
 export const getEvents = (querySnapshot) =>{
+  return querySnapshot.docs.map( doc=> {
+    return {id:doc.id, ...doc.data()}
+  })
+}
+
+// Comments
+const commentsRef = collection(db, COMMENTS_COLLECTION)
+export const createCommentsHistory = (commentsData) => {
+  try {
+    const docRef = addDoc(commentsRef, { commentsHistory: [{...commentsData,createdAt: Timestamp.fromDate(new Date())}] })
+    return docRef
+  } catch (error) {
+    return firebaseErrors[error.code]
+  }
+}
+
+export const addComment = (commentId, commentData) => {
+  const commentRef = doc(db, COMMENTS_COLLECTION, commentId)
+  try {
+    updateDoc(commentRef, commentData)
+  } catch (error) {
+    console.dir(error)
+  }
+}
+
+export const registerCommentsListener = (commentsRef,cb) => {
+  onSnapshot(commentsRef, cb)
+}
+
+export const getComments = (querySnapshot) =>{
   return querySnapshot.docs.map( doc=> {
     return {id:doc.id, ...doc.data()}
   })

@@ -13,13 +13,11 @@ const AddEventForm = ({ onSubmit }) => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const minDate = new Date()
-    .toLocaleDateString()
-    .replaceAll(".", "-")
-    .split("-")
-    .reverse()
-    .join("-");
-
+  let minDate = new Date().toLocaleDateString().replaceAll(".", "-").split("-");
+  if (minDate[0] < 10) {
+    minDate[0] = `0${minDate[0]}`;
+  }
+  minDate = minDate.reverse().join("-");
   return (
     <div>
       <StyledForm onSubmit={handleSubmit(onSubmit)}>

@@ -69,7 +69,6 @@ const Register = () => {
         [e.target.name]: e.target.value,
       });
     }
-    console.log(formData);
   };
 
   const handleSubmit = async (e) => {
@@ -95,7 +94,6 @@ const Register = () => {
       createdAt: serverTimestamp(),
       isAdmin: false,
     });
-    console.log(data);
 
     setFormData(defaultValue);
     navigate("/login");

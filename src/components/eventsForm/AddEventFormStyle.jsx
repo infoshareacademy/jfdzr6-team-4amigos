@@ -4,11 +4,12 @@ export const StyledForm = styled.form`
   width: 500px;
   background-color: #ffc524;
   padding: 50px 50px;
-  margin: 150px auto 50px auto;
   display: flex;
   flex-direction: column;
+  margin: 25px auto;
   justify-content: space-between;
   color: #fff;
+  border-radius: 10px;
   h3 {
     margin: 0 0 20px 0;
   }
