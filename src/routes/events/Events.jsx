@@ -1,24 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import EventsNav from "../../components/nav/EventsNav";
 import EventsList from "./EventsList";
-import { Container, EventsListContainer, StyledContainer } from "./EventsStyle";
+import { Container, EventsListContainer } from "./EventsStyle";
 
 const Events = () => {
   return (
     <Container>
-      <StyledContainer>
-        <ul>
-          <li>
-            <Link to="/events">Wydarzenia</Link>
-          </li>
-          <li>
-            <Link to="my-events">Moje wydarzenia</Link>
-          </li>
-          <li>
-            <Link to="add-events">Dodaj wydarzenie</Link>
-          </li>
-        </ul>
-      </StyledContainer>
+      <EventsNav />
       <EventsListContainer>
         <EventsList />
       </EventsListContainer>

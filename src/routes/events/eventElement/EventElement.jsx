@@ -8,6 +8,31 @@ const EventElement = ({ event }) => {
   const { id, title, city, startDate, description, category, members } = event;
 
   const date = startDate.split("-").reverse().join(".");
+
+  const displayMembersCount = () => {
+    let step = 0;
+    if (members.length === 1) {
+      step = 1;
+    } else if (members.length >= 2) {
+      step = 2;
+    } else {
+      step = 3;
+    }
+    switch (step) {
+      case 1:
+        return `${members.length} osoba weźmie udział`;
+        break;
+      case 2:
+        return `${members.length} osoby weźmie udział`;
+        break;
+      case 3:
+        return `${members.length} osób weźmie udział`;
+        break;
+
+      default:
+        break;
+    }
+  };
   return (
     <CardContainer>
       <Icon>{sportsIcon[category]}</Icon>
@@ -22,7 +47,7 @@ const EventElement = ({ event }) => {
         <p>{description}</p>
         <span>
           <FcConferenceCall />
-          {members.length} osób weźmie udział
+          {displayMembersCount()}
         </span>
       </InfoWrapper>
 

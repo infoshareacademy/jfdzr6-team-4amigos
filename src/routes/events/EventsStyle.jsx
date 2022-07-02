@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 export const StyledContainer = styled.div`
@@ -10,12 +11,27 @@ export const StyledContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
   color: #fff;
+  border-radius: 0 10px 10px 0;
   ul {
     list-style: none;
   }
   li {
     margin: 10px 0;
     font-size: 20px;
+  }
+
+  h4 {
+    font-size: 20px;
+    width: 100%;
+    border-bottom: 1px solid #ff8020;
+  }
+`;
+
+export const StyledLink = styled(NavLink)`
+  color: #fff;
+
+  &.active {
+    color: #ff8020;
   }
 `;
 
@@ -29,6 +45,7 @@ export const Container = styled.div`
 
 export const EventsListContainer = styled.div`
   width: 74%;
+  color: #262f40;
 `;
 
 export const CardContainer = styled.div`

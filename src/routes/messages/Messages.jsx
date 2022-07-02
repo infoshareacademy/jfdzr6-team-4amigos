@@ -8,7 +8,13 @@ import {
   OutgoingMessage,
   TypingInput,
 } from "../../components/chat/ChatStyle";
-import { Avatar, ChatContainer, Container, PeopleList } from "./MessagesStyle";
+import {
+  Avatar,
+  AvatarWrapper,
+  ChatContainer,
+  Container,
+  PeopleList,
+} from "./MessagesStyle";
 import defaultPicture from "../../assets/img/defaultPicture.png";
 import { useContext } from "react";
 import { AuthContext } from "../../context/Auth";
@@ -104,7 +110,7 @@ const Messages = () => {
         <ul>{renderUsersWithChats}</ul>
       </PeopleList>
       <ChatContainer onSubmit={sendMessage}>
-        <div>
+        <AvatarWrapper>
           <Avatar>
             <img
               src={writtingUser.profilePicture || defaultPicture}
@@ -112,7 +118,7 @@ const Messages = () => {
             />
             {writtingUser.name || "Z nikim jeszcze nie otworzyłeś chatu"}
           </Avatar>
-        </div>
+        </AvatarWrapper>
         <ChatMessagesWrapper>{renderMessages}</ChatMessagesWrapper>
         <TypingInput
           placeholder="Aa..."
