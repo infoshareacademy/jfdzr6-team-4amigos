@@ -10,7 +10,7 @@ export const StyledContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  color: #fff;
+  color: black;
   border-radius: 0 10px 10px 0;
   ul {
     list-style: none;
@@ -23,7 +23,8 @@ export const StyledContainer = styled.div`
   h4 {
     font-size: 20px;
     width: 100%;
-    border-bottom: 1px solid #ff8020;
+    border-bottom: 2px solid #ff8020;
+    padding-bottom: 3px;
   }
 `;
 
