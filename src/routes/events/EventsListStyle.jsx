@@ -8,6 +8,7 @@ export const StyledEventsList = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin-bottom: 7rem;
   ul {
     list-style: none;
   }
