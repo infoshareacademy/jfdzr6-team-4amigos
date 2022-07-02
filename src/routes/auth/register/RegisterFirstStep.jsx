@@ -30,10 +30,8 @@ const RegisterFirstStep = ({ nextStep, handleChange, errorMessage }) => {
           value={sportEl.value}
           onChange={handleChange}
         />
-        <label htmlFor="sports">
-          {sportEl.label}
-          {sportsIcon[sportEl.value]}
-        </label>
+        <label htmlFor="sports">{sportEl.label}</label>
+        <i> {sportsIcon[sportEl.value]}</i>
       </StyledSportsDiv>
     );
   });

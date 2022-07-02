@@ -11,7 +11,7 @@ export const StyledSection = styled.section`
   padding: 0 20px;
   margin: 0 auto;
   margin-top: 5rem;
-  margin-bottom: 4rem;
+  margin-bottom: 1rem;
   h1 {
     font-size: 128px;
     font-weight: 400;

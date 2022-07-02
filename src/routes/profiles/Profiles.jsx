@@ -42,25 +42,24 @@ const Profiles = () => {
 
       return (
         <CardContainer key={id}>
+          <CardPictureWrapper>
+            <img src={profilePicture || defaultPicture} alt={name} />
+            <div>
+              <span>{name}</span>
+              <p>{city}</p>
+            </div>
+          </CardPictureWrapper>
+          <CardInfoWrapper>
+            <ul>{renderSportsIcon}</ul>
+            <p>
+              {description.length > 75
+                ? `${description.slice(0, 75)}...`
+                : description}
+            </p>
+            <span className="separator"></span>
+          </CardInfoWrapper>
           <Link to={`/profiles/${id}`}>
-            <CardPictureWrapper>
-              <img src={profilePicture || defaultPicture} alt={name} />
-              <div>
-                <span>{name}</span>
-                <p>{city}</p>
-              </div>
-            </CardPictureWrapper>
-            <CardInfoWrapper>
-              <ul>{renderSportsIcon}</ul>
-              <p>
-                {description.length > 75
-                  ? `${description.slice(0, 75)}...`
-                  : description}
-              </p>
-              <span className="separator"></span>
-            </CardInfoWrapper>
-
-            <button>Zaczep</button>
+            <button>Wyświetl profil</button>
           </Link>
         </CardContainer>
       );

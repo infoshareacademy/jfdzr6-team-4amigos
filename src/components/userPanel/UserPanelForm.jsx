@@ -7,6 +7,7 @@ import {
   StyledSportsDivContainer,
   StyledSubmitButton,
 } from "./UserPanelFormStyle";
+import { sportsIcon } from "../../utils/sportsLabel";
 
 const UserPanelForm = ({
   handleChange,
@@ -35,6 +36,7 @@ const UserPanelForm = ({
           onChange={handleChange}
         />
         <label htmlFor="sports">{sportEl.label}</label>
+        <i> {sportsIcon[sportEl.value]}</i>
       </StyledSportsDiv>
     );
   });
@@ -50,7 +52,6 @@ const UserPanelForm = ({
             type="text"
             name="name"
             value={formData.name}
-            placeholder="Twoje imię lub pseudonim"
             onChange={handleChange}
           ></input>
         </div>
@@ -61,7 +62,6 @@ const UserPanelForm = ({
             type="number"
             name="age"
             value={formData.age}
-            placeholder="Podaj swój wiek"
             onChange={handleChange}
           />
         </div>
@@ -72,7 +72,6 @@ const UserPanelForm = ({
             type="text"
             name="city"
             value={formData.city}
-            placeholder="Wpisz swoje miasto"
             onChange={handleChange}
           />
         </div>
@@ -81,7 +80,6 @@ const UserPanelForm = ({
           <label htmlFor="description"></label>
           <textarea
             name="description"
-            placeholder="..."
             value={formData.description}
             onChange={handleChange}
           />
