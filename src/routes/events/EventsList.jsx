@@ -3,6 +3,7 @@ import { displayEvents } from "../../api/events";
 import { AuthContext } from "../../context/Auth";
 import EventElement from "./eventElement/EventElement";
 import { StyledEventsList } from "./EventsListStyle";
+import { EventsContainer } from "./EventsStyle";
 
 const EventsList = () => {
   const { userData } = useContext(AuthContext);
@@ -28,10 +29,8 @@ const EventsList = () => {
 
   return (
     <>
-      <StyledEventsList>
-        <h1>Lista wydarzeń</h1>
-        {renderEvents}
-      </StyledEventsList>
+      <h1>Lista wydarzeń</h1>
+      <EventsContainer>{renderEvents}</EventsContainer>
     </>
   );
 };

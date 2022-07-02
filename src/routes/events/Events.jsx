@@ -1,33 +1,16 @@
-import React, { useContext } from "react";
-import { Link } from "react-router-dom";
-import { addEvent } from "../../api/events";
-import AddEventForm from "../../components/eventsForm/AddEventForm";
-import { AuthContext } from "../../context/Auth";
+import React from "react";
+import EventsNav from "../../components/nav/EventsNav";
 import EventsList from "./EventsList";
-import { StyledContainer } from "./EventsStyle";
+import { Container, EventsListContainer } from "./EventsStyle";
 
 const Events = () => {
   return (
-    <div style={{ display: "flex" }}>
-      <StyledContainer>
-        <ul>
-          <li>
-            <Link to="/events">Wydarzenia</Link>
-          </li>
-          <li>
-            <Link to="my-events">Moje wydarzenia</Link>
-          </li>
-          <li>
-            <Link to="add-events">Dodaj wydarzenie</Link>
-          </li>
-        </ul>
-      </StyledContainer>
-      <div>
-        <button>Dodaj wydarzenie</button>
-        {/* <AddEventForm onSubmit={onSubmit} /> */}
+    <Container>
+      <EventsNav />
+      <EventsListContainer>
         <EventsList />
-      </div>
-    </div>
+      </EventsListContainer>
+    </Container>
   );
 };
 

@@ -10,10 +10,9 @@ export const ChatContainer = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  overflow-y: scroll;
 `;
 export const TypingInput = styled.input`
-  width: 94%;
+  width: 100%;
   margin: 0;
   border: none;
   padding: 10px 10px;
@@ -29,11 +28,11 @@ export const TypingInput = styled.input`
 `;
 export const ChatMessagesWrapper = styled.div`
   padding: 10px;
-  height: 100%;
+  height: calc(100% - 115px);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  overflow-y: scroll;
+  overflow: scroll;
 `;
 
 export const IncommingMessage = styled.div`

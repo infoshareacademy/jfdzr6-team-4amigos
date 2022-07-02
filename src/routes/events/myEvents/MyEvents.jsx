@@ -2,9 +2,17 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { getEvents, registerListenerMyEvents } from "../../../api/events";
+import EventsNav from "../../../components/nav/EventsNav";
 import { AuthContext } from "../../../context/Auth";
+import EventElement from "../eventElement/EventElement";
+import {
+  Container,
+  EventsContainer,
+  EventsListContainer,
+  StyledContainer,
+} from "../EventsStyle";
 import { StyledMyEventsList } from "./MyEventsStyle";
 
 const MyEvents = () => {
@@ -21,25 +29,17 @@ const MyEvents = () => {
     return <h2>Trwa ładowanie strony</h2>;
   }
 
-  const renderMyEvents = myEvents.map(
-    ({ id, title, category, city, description, startTime, startDate }) => {
-      return (
-        <Link to={`/events/${id}`} key={id}>
-          <p>Sport: {category}</p>
-          <h2>{title}</h2>
-          <p>Miasto: {city}</p>
-          <p>Opis: {description}</p>
-          <p>Data: {startDate}</p>
-          <p>Godzina: {startTime}</p>
-        </Link>
-      );
-    }
-  );
+  const renderMyEvents = myEvents.map((event) => {
+    return <EventElement event={event} key={event.id} />;
+  });
   return (
-    <StyledMyEventsList>
-      <h1>Moje Wydarzenia</h1>
-      {renderMyEvents}
-    </StyledMyEventsList>
+    <Container>
+      <EventsNav />
+      <EventsListContainer>
+        <h1>Moje wydarzenia</h1>
+        <EventsContainer>{renderMyEvents}</EventsContainer>
+      </EventsListContainer>
+    </Container>
   );
 };
 

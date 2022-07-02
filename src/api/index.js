@@ -23,6 +23,7 @@ import { firebaseErrors } from "../utils/firebaseErrors";
 export const COLLECTIONS_NAMES = {
   CHATS: "chats",
   USERS: "users",
+  COMMENTS: "comments"
 };
 
 export const profilesCollection = collection(db, COLLECTIONS_NAMES.USERS);
@@ -74,7 +75,6 @@ export const loginUser = (email, password, cb) => {
   signInWithEmailAndPassword(auth, email, password)
     .then(cb)
     .catch((e) => {
-      console.log(e.code);
       alert(e.code);
     });
 };
