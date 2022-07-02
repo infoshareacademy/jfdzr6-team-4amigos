@@ -266,6 +266,15 @@ export const ProvinceSelect = styled.select`
   border-radius: 5px;
   color: gray;
   padding-left: 5px;
-  font-size: 14px;
+  font-size: 16px;
   border: none;
+  outline: 3px solid #ffc524;
+
+  :focus-visible {
+    outline: 3px solid #ff8020;
+  }
+  transition: 0.2s;
+  :hover {
+    outline: 3px solid #ff8020;
+  }
 `;

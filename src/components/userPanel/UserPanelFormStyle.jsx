@@ -161,7 +161,7 @@ export const StyledSportsDiv = styled.div`
     margin: 15px;
     accent-color: #ff8020;
   }
-  i {
+  div {
     position: absolute;
     right: 10px;
     height: 30px;
@@ -224,5 +224,25 @@ export const StyledSubmitButton = styled.button`
   :hover {
     background: #fe6e00;
     border: 1px solid #fe6e00;
+  }
+`;
+
+export const ProvinceSelect = styled.select`
+  width: 250px;
+  height: 50px;
+  background: white;
+  border-radius: 5px;
+  color: black;
+  padding-left: 5px;
+  font-size: 16px;
+  border: none;
+  outline: 3px solid #ffc524;
+
+  :focus-visible {
+    outline: 3px solid #ff8020;
+  }
+  transition: 0.2s;
+  :hover {
+    outline: 3px solid #ff8020;
   }
 `;
