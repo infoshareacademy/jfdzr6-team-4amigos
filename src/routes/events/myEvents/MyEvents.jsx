@@ -24,16 +24,14 @@ const MyEvents = () => {
   const renderMyEvents = myEvents.map(
     ({ id, title, category, city, description, startTime, startDate }) => {
       return (
-        <>
-          <Link to={`/events/${id}`} key={id}>
-            <h2>{title}</h2>
-            <p>Sport: {category}</p>
-            <p>Miasto: {city}</p>
-            <p>Opis: {description}</p>
-            <p>Data: {startDate}</p>
-            <p>Godzina: {startTime}</p>
-          </Link>
-        </>
+        <Link to={`/events/${id}`} key={id}>
+          <p>Sport: {category}</p>
+          <h2>{title}</h2>
+          <p>Miasto: {city}</p>
+          <p>Opis: {description}</p>
+          <p>Data: {startDate}</p>
+          <p>Godzina: {startTime}</p>
+        </Link>
       );
     }
   );

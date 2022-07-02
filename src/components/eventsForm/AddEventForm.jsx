@@ -1,5 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { ErrorField } from "../error/ErrorStyle";
 import {
   StyledAddButton,
   StyledForm,
@@ -12,6 +13,12 @@ const AddEventForm = ({ onSubmit }) => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const minDate = new Date()
+    .toLocaleDateString()
+    .replaceAll(".", "-")
+    .split("-")
+    .reverse()
+    .join("-");
 
   return (
     <div>
@@ -20,7 +27,9 @@ const AddEventForm = ({ onSubmit }) => {
         <StyledInputDiv>
           <label>Nazwa wydarzenia</label>
           <input name="title" {...register("title", { required: true })} />
-          {errors.title?.type === "required" && "Nazwa jest wymagana"}
+          {errors.title?.type === "required" && (
+            <ErrorField>Nazwa jest wymagana</ErrorField>
+          )}
         </StyledInputDiv>
         <StyledInputDiv>
           <label>Miejsce wydarzenia</label>
@@ -32,29 +41,38 @@ const AddEventForm = ({ onSubmit }) => {
               maxLength: 20,
             })}
           />
-          {errors.city?.type === "required" && "Miejsce jest wymagane"}
-          {errors.city?.type === "minLength" &&
-            "Nazwa miejsca wydarzenia jest zbyt krótka"}
-          {errors.city?.type === "maxLength" &&
-            "Nazwa miejsca wydarzenia jest zbyt długa"}
+          {errors.city?.type === "required" && (
+            <ErrorField>Miejsce jest wymagane</ErrorField>
+          )}
+          {errors.city?.type === "minLength" && (
+            <ErrorField>Nazwa miejsca wydarzenia jest zbyt krótka</ErrorField>
+          )}
+          {errors.city?.type === "maxLength" && (
+            <ErrorField>Nazwa miejsca wydarzenia jest zbyt długa</ErrorField>
+          )}
         </StyledInputDiv>
         <StyledInputDiv>
           <label>Data</label>
           <input
             type="date"
-            name="date"
+            defaultValue={minDate}
+            min={minDate}
             {...register("startDate", { required: true })}
           />
-          {errors.startDate?.type === "required" && "Miejsce jest wymagana"}
+          {errors.startDate?.type === "required" && (
+            <ErrorField>Data wydarzenia jest wymagana</ErrorField>
+          )}
         </StyledInputDiv>
         <StyledInputDiv>
           <label>Godzina</label>
           <input
             type="time"
-            name="time"
+            defaultValue="12:00"
             {...register("startTime", { required: true })}
           />
-          {errors.startTime?.type === "required" && "Godzina jest wymagana"}
+          {errors.startTime?.type === "required" && (
+            <ErrorField>Godzina wydarzenia jest wymagana</ErrorField>
+          )}
         </StyledInputDiv>
         <StyledInputDiv>
           <label>Opis wydarzenia</label>
@@ -66,9 +84,15 @@ const AddEventForm = ({ onSubmit }) => {
               maxLength: 200,
             })}
           />
-          {errors.description?.type === "required" && "Opis jest wymagany"}
-          {errors.description?.type === "minLength" && "Opis jest zbyt krótki"}
-          {errors.description?.type === "maxLength" && "Opis jest zbyt długi"}
+          {errors.description?.type === "required" && (
+            <ErrorField>Opis jest wymagany</ErrorField>
+          )}
+          {errors.description?.type === "minLength" && (
+            <ErrorField>Opis jest zbyt krótki</ErrorField>
+          )}
+          {errors.description?.type === "maxLength" && (
+            <ErrorField>Opis jest zbyt długi</ErrorField>
+          )}
         </StyledInputDiv>
         <StyledInputDiv>
           <label>Sport</label>

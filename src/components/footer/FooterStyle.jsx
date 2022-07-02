@@ -2,14 +2,29 @@ import styled from "styled-components";
 
 export const StyledFooter = styled.footer`
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
+  width: 100%;
+  height: 4rem;
   background-color: #f5f5f5;
   padding: 1rem;
   margin-top: auto;
+  margin-bottom: auto;
   font-size: 0.8rem;
   color: #333;
   border-top: 1px solid #ccc;
+  position: fixed;
+  bottom: 0;
+
+  @media screen and (max-width: 544px) {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    border-top: none;
+  }
 `;
 
 export const StyledUl = styled.ul`

@@ -67,7 +67,7 @@ export const CardPictureWrapper = styled.div`
     border-radius: 10px 10px 0 0;
   }
 
-  span {
+  div {
     width: 100%;
     padding: 10px 20px;
     position: absolute;
@@ -76,7 +76,14 @@ export const CardPictureWrapper = styled.div`
     color: #fff;
     font-size: 22px;
     font-weight: 300;
-    box-shadow: inset 0px -50px 20px -20px #303032cc;
+    box-shadow: inset 0px -50px 30px -20px #303032e7;
+    p {
+      margin: 0;
+      font-size: 14px;
+    }
+    span {
+      display: block;
+    }
   }
 `;
 

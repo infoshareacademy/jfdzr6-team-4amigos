@@ -5,6 +5,7 @@ import logo from "../../assets/img/logoOrange.png";
 import { useContext } from "react";
 import { AuthContext } from "../../context/Auth";
 import { Avatar } from "../../routes/messages/MessagesStyle";
+import defaultPicture from "../../assets/img/defaultPicture.png";
 
 // styles
 import {
@@ -33,7 +34,7 @@ export const Nav = () => {
               <StyledRegister to="/register">Zarejestruj się</StyledRegister>
             </li>
             <li>
-              <StyledLogin to="/login">Zaloguj się</StyledLogin>
+              <StyledRegister to="/login">Zaloguj się</StyledRegister>
             </li>
           </>
         ) : (
@@ -50,7 +51,10 @@ export const Nav = () => {
             <li>
               <Link to="/userpanel">
                 <Avatar>
-                  <img src={userData?.profilePicture} alt={userData?.name} />
+                  <img
+                    src={userData.profilePicture || defaultPicture}
+                    alt={userData.name}
+                  />
                 </Avatar>
               </Link>
             </li>

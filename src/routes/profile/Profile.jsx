@@ -83,8 +83,8 @@ const Profile = () => {
         <h4>Sporty, które uprawiam</h4>
         <ul>
           {profile.sports.map((sport) => (
-            <Tippy content={sportsTooltip[sport]}>
-              <li key={sport}>{sportsIcon[sport]}</li>
+            <Tippy content={sportsTooltip[sport]} key={sport}>
+              <li>{sportsIcon[sport]}</li>
             </Tippy>
           ))}
         </ul>

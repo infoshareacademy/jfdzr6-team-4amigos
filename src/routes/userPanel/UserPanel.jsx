@@ -6,18 +6,19 @@ import UserPanelForm from "../../components/userPanel/UserPanelForm";
 import { AuthContext } from "../../context/Auth";
 
 const UserPanel = () => {
+  const { userData } = useContext(AuthContext);
+  const { name, age, gender, description, city } = userData;
   const defaultValue = {
-    name: "",
-    gender: "",
-    age: "",
-    description: "",
-    city: "",
+    name: name,
+    gender: gender,
+    age: age,
+    description: description,
+    city: city,
     sports: [],
   };
   const [formData, setFormData] = useState(defaultValue);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
-  const { userData } = useContext(AuthContext);
 
   const handleChange = (e) => {
     if (e.target.type === "checkbox") {
@@ -42,6 +43,7 @@ const UserPanel = () => {
 
     if (!name || !description || !gender || !age || !sports.length) {
       setError("Wszystkie pola muszą być uzupełnione");
+      console.log(error);
       return;
     }
 

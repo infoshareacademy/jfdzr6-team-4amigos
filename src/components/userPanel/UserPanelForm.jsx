@@ -1,5 +1,5 @@
-import React, { useContext } from "react";
-import { AuthContext } from "../../context/Auth";
+import React from "react";
+import Error from "../error/Error";
 import {
   StyledSportsDiv,
   StyledForm,
@@ -9,9 +9,12 @@ import {
   StyledGenderDivContainer,
 } from "./UserPanelFormStyle";
 
-const UserPanelForm = ({ handleChange, formData, error, handleSubmit }) => {
-  const { userData } = useContext(AuthContext);
-
+const UserPanelForm = ({
+  handleChange,
+  formData,
+  errorMessage,
+  handleSubmit,
+}) => {
   const sportsLabel = [
     { label: "Jazda na rowerze", value: "bike" },
     { label: "Spacer", value: "walk" },
@@ -51,29 +54,6 @@ const UserPanelForm = ({ handleChange, formData, error, handleSubmit }) => {
             onChange={handleChange}
           ></input>
         </div>
-        <h5>Jesteś kobietą czy mężczyzną?</h5>
-        <StyledGenderDivContainer>
-          <div>
-            <input
-              type="radio"
-              name="gender"
-              value="woman"
-              checked={formData.gender === "woman"}
-              onChange={handleChange}
-            />
-            <label htmlFor="gender">Kobieta</label>
-          </div>
-          <div>
-            <input
-              type="radio"
-              name="gender"
-              value="man"
-              checked={formData.gender === "man"}
-              onChange={handleChange}
-            />
-            <label htmlFor="gender">Mężczyzna</label>
-          </div>
-        </StyledGenderDivContainer>
         <h5>Ile masz lat?</h5>
         <div>
           <label htmlFor="age"></label>
@@ -107,6 +87,7 @@ const UserPanelForm = ({ handleChange, formData, error, handleSubmit }) => {
         <StyledSportsDivContainer>{renderSportsInput}</StyledSportsDivContainer>
         <StyledSubmitButton type="submit">Zapisz</StyledSubmitButton>
       </StyledForm>
+      {errorMessage && <Error message={errorMessage} />}
     </StyledSection>
   );
 };
