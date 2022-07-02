@@ -7,7 +7,7 @@ import { AuthContext } from "../../context/Auth";
 
 const UserPanel = () => {
   const { userData } = useContext(AuthContext);
-  const { name, age, gender, description, city } = userData;
+  const { name, age, gender, description, city, province } = userData;
   const defaultValue = {
     name: name,
     gender: gender,
@@ -15,6 +15,7 @@ const UserPanel = () => {
     description: description,
     city: city,
     sports: [],
+    province: province,
   };
   const [formData, setFormData] = useState(defaultValue);
   const [error, setError] = useState(null);
