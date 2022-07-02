@@ -168,7 +168,7 @@ export const StyledSportsDiv = styled.div`
     width: 20px;
     height: 20px;
     margin: 15px;
-    accent-color: #fefdfb;
+    accent-color: #ff8020;
   }
   i {
     position: absolute;
