@@ -6,6 +6,7 @@ import {
   StyledSection,
   StyledSportsDivContainer,
   StyledSubmitButton,
+  ProvinceSelect,
 } from "./UserPanelFormStyle";
 import { sportsIcon } from "../../utils/sportsLabel";
 
@@ -26,6 +27,30 @@ const UserPanelForm = ({
     { label: "Nordic Walking", value: "nordicWalking" },
   ];
 
+  const provinces = [
+    "dolnośląskie",
+    "kujawsko-pomorskie",
+    "lubelskie",
+    "lubuskie",
+    "łódzkie",
+    "małopolskie",
+    "mazowieckie",
+    "opolskie",
+    "podkarpackie",
+    "podlaskie",
+    "pomorskie",
+    "śląskie",
+    "świętokrzyskie",
+    "warmińsko-mazurskie",
+    "zachodniopomorskie",
+  ];
+
+  const renderProvinence = provinces.map((province) => (
+    <option key={province} value={province}>
+      {province}
+    </option>
+  ));
+
   const renderSportsInput = sportsLabel.map((sportEl) => {
     return (
       <StyledSportsDiv key={sportEl.value}>
@@ -36,7 +61,7 @@ const UserPanelForm = ({
           onChange={handleChange}
         />
         <label htmlFor="sports">{sportEl.label}</label>
-        <i> {sportsIcon[sportEl.value]}</i>
+        <div> {sportsIcon[sportEl.value]}</div>
       </StyledSportsDiv>
     );
   });
@@ -74,6 +99,17 @@ const UserPanelForm = ({
             value={formData.city}
             onChange={handleChange}
           />
+        </div>
+        <div>
+          <h5>Twoje województwo</h5>
+          <label htmlFor="province"></label>
+          <ProvinceSelect
+            value={formData.province}
+            name="province"
+            onChange={handleChange}
+          >
+            {renderProvinence}
+          </ProvinceSelect>
         </div>
         <h5>Napisz coś o sobie:</h5>
         <div>
