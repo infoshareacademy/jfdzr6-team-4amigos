@@ -5,6 +5,7 @@ import {
   createCommentsHistory,
   updateEvent,
 } from "../../api/events";
+import { StyledAddComment, StyledBtn, StyledInputDiv } from "./Comments.styled";
 
 const AddComment = ({ uid, userName, eventId, comments }) => {
   const [commentText, setCommentText] = useState("");
@@ -39,13 +40,16 @@ const AddComment = ({ uid, userName, eventId, comments }) => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="comment"
-          value={commentText}
-          onChange={(e) => setCommentText(e.target.value)}
-        />
-        <button>Dodaj komentarz</button>
+        <StyledAddComment>
+          <input
+            type="text"
+            name="comment"
+            placeholder="Twój komentarz"
+            value={commentText}
+            onChange={(e) => setCommentText(e.target.value)}
+          />
+          <StyledBtn>Dodaj komentarz</StyledBtn>
+        </StyledAddComment>
       </form>
     </div>
   );

@@ -17,6 +17,12 @@ const Comments = ({ uid, userName, eventId, eventData }) => {
   }, [eventData]);
   return (
     <div>
+      <AddComment
+        uid={uid}
+        userName={userName}
+        eventId={eventId}
+        comments={comments}
+      />
       <div>
         <h3>Komentarze</h3>
       </div>
@@ -27,12 +33,6 @@ const Comments = ({ uid, userName, eventId, eventData }) => {
           comments={comments}
         />
       )}
-      <AddComment
-        uid={uid}
-        userName={userName}
-        eventId={eventId}
-        comments={comments}
-      />
     </div>
   );
 };
