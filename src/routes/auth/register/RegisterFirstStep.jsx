@@ -7,6 +7,7 @@ import {
   StyledSportsDivContainer,
   StyledSubmitButton,
 } from "../../../components/registerForm/RegisterFormStyle";
+import { sportsIcon } from "../../../utils/sportsLabel";
 
 const RegisterFirstStep = ({ nextStep, handleChange, errorMessage }) => {
   const sportsLabel = [
@@ -29,7 +30,10 @@ const RegisterFirstStep = ({ nextStep, handleChange, errorMessage }) => {
           value={sportEl.value}
           onChange={handleChange}
         />
-        <label htmlFor="sports">{sportEl.label}</label>
+        <label htmlFor="sports">
+          {sportEl.label}
+          {sportsIcon[sportEl.value]}
+        </label>
       </StyledSportsDiv>
     );
   });

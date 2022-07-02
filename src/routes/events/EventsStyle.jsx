@@ -50,9 +50,9 @@ export const EventsListContainer = styled.div`
 
 export const CardContainer = styled.div`
   width: 260px;
-  height: fit-content;
+  height: 430px;
   background-color: #fff;
-  padding: 10px;
+  padding: 20px;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   display: flex;
@@ -70,7 +70,7 @@ export const CardContainer = styled.div`
   }
 
   h2 {
-    margin-bottom: 0;
+    margin-bottom: 10px;
   }
 `;
 
@@ -82,6 +82,7 @@ export const EventsContainer = styled.div`
   margin: 20px auto;
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 30px;
   color: #262f40;
 `;
@@ -101,14 +102,14 @@ export const Icon = styled.div`
 `;
 
 export const DateWrapper = styled.div`
-  width: 80%;
+  width: 100%;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
-  gap: 10px;
 
   svg {
     font-size: 16px;
+    margin-right: 5px;
   }
 
   span {
@@ -117,13 +118,21 @@ export const DateWrapper = styled.div`
 `;
 
 export const InfoWrapper = styled.div`
-  width: 80%;
+  width: 100%;
+  height: 150px;
   margin-bottom: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   span {
     font-size: 14px;
-
+    text-align: center;
     svg {
       margin-right: 5px;
     }
+  }
+
+  p {
+    text-align: justify;
   }
 `;

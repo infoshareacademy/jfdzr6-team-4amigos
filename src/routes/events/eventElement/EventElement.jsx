@@ -2,8 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { sportsIcon } from "../../../utils/sportsLabel";
 import { CardContainer, DateWrapper, Icon, InfoWrapper } from "../EventsStyle";
-import { FcOvertime, FcConferenceCall } from "react-icons/fc";
-
+import { FcCalendar, FcConferenceCall } from "react-icons/fc";
+import { MdLocationPin } from "react-icons/md";
 const EventElement = ({ event }) => {
   const { id, title, city, startDate, description, category, members } = event;
 
@@ -13,7 +13,7 @@ const EventElement = ({ event }) => {
     let step = 0;
     if (members.length === 1) {
       step = 1;
-    } else if (members.length >= 2) {
+    } else if (members.length >= 2 || members.length <= 4) {
       step = 2;
     } else {
       step = 3;
@@ -23,7 +23,7 @@ const EventElement = ({ event }) => {
         return `${members.length} osoba weźmie udział`;
         break;
       case 2:
-        return `${members.length} osoby weźmie udział`;
+        return `${members.length} osoby weźmią udział`;
         break;
       case 3:
         return `${members.length} osób weźmie udział`;
@@ -39,12 +39,21 @@ const EventElement = ({ event }) => {
       <h2>{title}</h2>
 
       <DateWrapper>
-        <FcOvertime />
-        <span>{city},</span>
-        <span>{date}</span>
+        <span>
+          <MdLocationPin />
+          {city.length > 10 ? `${city.slice(0, 10)}...` : city},
+        </span>
+        <span>
+          <FcCalendar />
+          {date}
+        </span>
       </DateWrapper>
       <InfoWrapper>
-        <p>{description}</p>
+        <p>
+          {description.length > 70
+            ? `${description.slice(0, 70)}...`
+            : description}
+        </p>
         <span>
           <FcConferenceCall />
           {displayMembersCount()}

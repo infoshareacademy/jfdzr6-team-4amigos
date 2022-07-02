@@ -1,4 +1,5 @@
 import React from "react";
+import { sportsIcon } from "../../utils/sportsLabel";
 import Error from "../error/Error";
 import {
   StyledSportsDiv,
@@ -36,7 +37,8 @@ const RegisterForm = ({
           value={sportEl.value}
           onChange={handleChange}
         />
-        <label htmlFor="sports">{sportEl.label}</label>
+        <label htmlFor="sports">sporty</label>
+        blabla
       </StyledSportsDiv>
     );
   });

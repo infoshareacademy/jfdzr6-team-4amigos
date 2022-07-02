@@ -24,7 +24,7 @@ const EventsList = () => {
   }
 
   const renderEvents = events.map((event) => {
-    return <EventElement event={event} uid={userData?.id} key={event.id} />;
+    return <EventElement event={event} key={event.id} />;
   });
 
   return (

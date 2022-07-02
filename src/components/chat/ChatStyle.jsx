@@ -31,8 +31,11 @@ export const ChatMessagesWrapper = styled.div`
   height: calc(100% - 115px);
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
   overflow: scroll;
+
+  .growingBox {
+    flex-grow: 1;
+  }
 `;
 
 export const IncommingMessage = styled.div`
