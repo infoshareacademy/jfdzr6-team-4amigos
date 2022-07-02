@@ -2,7 +2,6 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useContext } from "react";
-import { Link, NavLink } from "react-router-dom";
 import { getEvents, registerListenerMyEvents } from "../../../api/events";
 import EventsNav from "../../../components/nav/EventsNav";
 import { AuthContext } from "../../../context/Auth";
@@ -11,9 +10,7 @@ import {
   Container,
   EventsContainer,
   EventsListContainer,
-  StyledContainer,
 } from "../EventsStyle";
-import { StyledMyEventsList } from "./MyEventsStyle";
 
 const MyEvents = () => {
   const { userData } = useContext(AuthContext);

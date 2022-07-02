@@ -1,7 +1,7 @@
 import githubLogo from "../../assets/img/githubLogo.png";
 
 // styles
-import { FooterContainer, StyledFooter } from "./FooterStyle";
+import { StyledFooter } from "./FooterStyle";
 import { StyledUl } from "./FooterStyle";
 
 const currentYear = new Date().getFullYear();

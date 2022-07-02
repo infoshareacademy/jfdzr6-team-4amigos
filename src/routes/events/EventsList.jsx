@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import { displayEvents } from "../../api/events";
 import { AuthContext } from "../../context/Auth";
 import EventElement from "./eventElement/EventElement";
-import { StyledEventsList } from "./EventsListStyle";
 import { EventsContainer } from "./EventsStyle";
 
 const EventsList = () => {
@@ -24,7 +23,7 @@ const EventsList = () => {
   }
 
   const renderEvents = events.map((event) => {
-    return <EventElement event={event} uid={userData?.id} key={event.id} />;
+    return <EventElement event={event} key={event.id} />;
   });
 
   return (

@@ -1,5 +1,5 @@
 import { Timestamp } from "firebase/firestore";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { addMessage, getChat } from "../../api";
 import { getChattingUsers } from "../../api/messages";
 import {
@@ -25,6 +25,7 @@ const Messages = () => {
   const [chat, setChat] = useState({ messages: [] });
   const [writtingUser, setWrittingUser] = useState({ name: "", id: "" });
   const [inputValue, setInputValue] = useState("");
+  const bottomRef = useRef(null);
 
   const getUsersWithChat = async () => {
     getChattingUsers(Object.keys(userData.chatHistory), (querySnapshot) => {
@@ -39,6 +40,10 @@ const Messages = () => {
   useEffect(() => {
     getUsersWithChat();
   }, []);
+
+  useEffect(() => {
+    bottomRef.current?.scrollIntoView();
+  }, [chat.messages]);
 
   if (!usersWithChat) {
     return <p>ładowanie...</p>;
@@ -99,7 +104,6 @@ const Messages = () => {
         },
       ],
     };
-    // const chatId = writtingUser.id
     addMessage(writtingUser.chatId, data);
     setInputValue("");
   };
@@ -119,7 +123,11 @@ const Messages = () => {
             {writtingUser.name || "Z nikim jeszcze nie otworzyłeś chatu"}
           </Avatar>
         </AvatarWrapper>
-        <ChatMessagesWrapper>{renderMessages}</ChatMessagesWrapper>
+        <ChatMessagesWrapper>
+          <div className="growingBox"></div>
+          {renderMessages}
+          <div ref={bottomRef}></div>
+        </ChatMessagesWrapper>
         <TypingInput
           placeholder="Aa..."
           value={inputValue}
