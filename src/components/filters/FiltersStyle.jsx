@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const FiltersSection = styled.section`
-  margin: 25px 0;
+  margin: 20px 0;
   width: 280px;
   height: min-content;
   background-color: #ffc524;
@@ -12,6 +12,8 @@ export const FiltersSection = styled.section`
   display: flex;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
     rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  position: sticky;
+  top: 120px;
   h5 {
     margin: 10px 0;
     font-size: 16px;
