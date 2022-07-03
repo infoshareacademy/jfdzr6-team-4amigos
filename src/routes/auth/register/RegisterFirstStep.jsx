@@ -6,6 +6,7 @@ import {
   StyledSportsDiv,
   StyledSportsDivContainer,
   StyledSubmitButton,
+  ButtonContainer,
 } from "../../../components/registerForm/RegisterFormStyle";
 import { sportsIcon } from "../../../utils/sportsLabel";
 
@@ -46,7 +47,9 @@ const RegisterFirstStep = ({ nextStep, handleChange, errorMessage }) => {
           <StyledSportsDivContainer>
             {renderSportsInput}
           </StyledSportsDivContainer>
-          <StyledSubmitButton onClick={nextStep}>Dalej</StyledSubmitButton>
+          <ButtonContainer>
+            <StyledSubmitButton onClick={nextStep}>Dalej</StyledSubmitButton>{" "}
+          </ButtonContainer>
         </StyledForm>
         {errorMessage && <Error message={errorMessage} />}
       </StyledSection>
