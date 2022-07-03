@@ -6,7 +6,9 @@ const EventsNav = () => {
   return (
     <StyledContainer>
       <h4>
-        <Link to="/events">Wydarzenia</Link>
+        <Link style={{ color: "#262f40" }} to="/events">
+          Wydarzenia
+        </Link>
       </h4>
       <ul>
         <li>
