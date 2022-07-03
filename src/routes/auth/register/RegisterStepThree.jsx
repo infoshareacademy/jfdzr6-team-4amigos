@@ -2,7 +2,7 @@ import React from "react";
 import Error from "../../../components/error/Error";
 import {
   ButtonContainer,
-  StyledForm,
+  StyledFormThree,
   StyledSection,
   StyledSubmitButton,
 } from "../../../components/registerForm/RegisterFormStyle";
@@ -18,7 +18,7 @@ const RegisterStepThree = ({
     <StyledSection>
       <h2>Witaj! Dołącz do społeczności SportAmigos!</h2>
 
-      <StyledForm>
+      <StyledFormThree>
         <h3>3. Dane do logowania</h3>
         {errorMessage && <Error message={errorMessage} />}
         <div>
@@ -65,7 +65,7 @@ const RegisterStepThree = ({
             Zarejestruj
           </StyledSubmitButton>
         </ButtonContainer>
-      </StyledForm>
+      </StyledFormThree>
     </StyledSection>
   );
 };
