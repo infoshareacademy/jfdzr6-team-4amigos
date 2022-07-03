@@ -27,7 +27,7 @@ export const StyledForm = styled.div`
   margin-bottom: 50px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   p {
     font-size: 14px;
     color: red;
@@ -36,7 +36,6 @@ export const StyledForm = styled.div`
   h3 {
     margin: 0;
     font-size: 1.5rem;
-    text-align: center;
   }
   h5 {
     font-size: 16px;
@@ -140,17 +139,96 @@ export const StyledForm = styled.div`
   }
 `;
 
+export const StyledFormThree = styled.div`
+  margin: 0 auto;
+  width: 800px;
+  background-color: #ffc524;
+  padding: 50px 125px;
+  border-radius: 10px;
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  p {
+    font-size: 14px;
+    color: red;
+  }
+
+  h3 {
+    margin: 0;
+    font-size: 1.5rem;
+  }
+  h5 {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 22px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #fff;
+    margin-bottom: 10px;
+  }
+  input[type="text"] {
+    background-color: #fff;
+    height: 50px;
+    width: 250px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    border: none;
+    font-size: 16px;
+    padding: 10px;
+    outline: 3px solid #ffc524;
+    ::placeholder {
+      color: #c5c7c5;
+    }
+    :focus-visible {
+      outline: 3px solid #ff8020;
+    }
+    transition: 0.2s;
+    :hover {
+      outline: 3px solid #ff8020;
+    }
+  }
+  input[type="password"] {
+    background-color: #fff;
+    height: 50px;
+    width: 250px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    border: none;
+    font-size: 16px;
+    padding: 10px;
+    outline: 3px solid #ffc524;
+    ::placeholder {
+      color: #c5c7c5;
+    }
+    :focus-visible {
+      outline: 3px solid #ff8020;
+    }
+    transition: 0.2s;
+    :hover {
+      outline: 3px solid #ff8020;
+    }
+  }
+`;
+
 export const StyledSportsDivContainer = styled.div`
   display: flex;
   width: 550px;
   border: 1px solid #ffc524;
   height: 250px;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
 `;
 
 export const StyledSportsDiv = styled.div`
+  margin: 5px 5px;
   background-color: #fff;
   height: 50px;
   width: 250px;
@@ -218,7 +296,7 @@ export const ButtonContainer = styled.div`
   width: 100%;
   display: flex;
   gap: 10px;
-  justify-content: center;
+  justify-content: space-around;
 `;
 
 export const StyledSubmitButton = styled.button`
