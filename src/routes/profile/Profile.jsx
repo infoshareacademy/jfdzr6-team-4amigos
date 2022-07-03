@@ -78,7 +78,9 @@ const Profile = () => {
         </div>
         <div>
           <FaMapMarkerAlt />
-          <span>{profile.city}</span>
+          <span>
+            {profile.city}, {profile.province}
+          </span>
         </div>
         <h4>Sporty, które uprawiam</h4>
         <ul>
