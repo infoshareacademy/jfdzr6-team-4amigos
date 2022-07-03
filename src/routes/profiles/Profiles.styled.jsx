@@ -96,8 +96,12 @@ export const CardInfoWrapper = styled.div`
     overflow: hidden;
   }
   p {
-    height: 50px;
+    height: 65px;
     margin-top: 5px;
     margin-bottom: 10px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 `;
