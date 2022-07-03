@@ -71,9 +71,8 @@ export const registerUser = async (email, password, userData) => {
   }
 };
 
-export const loginUser = (email, password, cb) => {
-  signInWithEmailAndPassword(auth, email, password)
-    .then(cb)
+export const loginUser = (email, password) => {
+  return signInWithEmailAndPassword(auth, email, password)
     .catch((e) => {
       alert(e.code);
     });
