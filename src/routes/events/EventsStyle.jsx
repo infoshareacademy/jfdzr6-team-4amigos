@@ -6,6 +6,7 @@ export const StyledContainer = styled.div`
   height: 100%;
   background-color: #ffc524;
   margin-top: 25px;
+  margin-bottom: 80px;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -85,6 +86,7 @@ export const EventsContainer = styled.div`
   flex-wrap: wrap;
   gap: 30px;
   color: #262f40;
+  margin-bottom: 100px;
 `;
 
 export const Icon = styled.div`
