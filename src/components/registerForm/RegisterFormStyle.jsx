@@ -24,7 +24,7 @@ export const StyledForm = styled.div`
   background-color: #ffc524;
   padding: 50px 125px;
   border-radius: 10px;
-  margin-bottom: 50px;
+  margin-bottom: 100px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
