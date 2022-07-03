@@ -27,7 +27,7 @@ export const StyledForm = styled.div`
   margin-bottom: 50px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   p {
     font-size: 14px;
     color: red;
@@ -36,7 +36,6 @@ export const StyledForm = styled.div`
   h3 {
     margin: 0;
     font-size: 1.5rem;
-    text-align: center;
   }
   h5 {
     font-size: 16px;
@@ -146,11 +145,13 @@ export const StyledSportsDivContainer = styled.div`
   border: 1px solid #ffc524;
   height: 250px;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
 `;
 
 export const StyledSportsDiv = styled.div`
+  margin: 5px 5px;
   background-color: #fff;
   height: 50px;
   width: 250px;
@@ -218,7 +219,7 @@ export const ButtonContainer = styled.div`
   width: 100%;
   display: flex;
   gap: 10px;
-  justify-content: center;
+  justify-content: space-around;
 `;
 
 export const StyledSubmitButton = styled.button`
