@@ -51,11 +51,7 @@ const Profiles = () => {
           </CardPictureWrapper>
           <CardInfoWrapper>
             <ul>{renderSportsIcon}</ul>
-            <p>
-              {description.length > 75
-                ? `${description.slice(0, 75)}...`
-                : description}
-            </p>
+            <p>{description}</p>
             <span className="separator"></span>
           </CardInfoWrapper>
           <Link to={`/profiles/${id}`}>
