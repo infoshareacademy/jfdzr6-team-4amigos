@@ -1,20 +1,19 @@
 import styled from "styled-components";
 
 export const StyledEventDetail = styled.div`
-  width: 800px;
+  width: 820px;
   background: #fff;
-  margin-top: 115px;
-  margin-left: 50px;
-  margin-bottom: 5rem;
+  margin: 115px auto 5rem auto;
   color: grey;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  padding: 10px;
   p {
     margin: 10px;
   }
   h2 {
-    margin: 0 20px;
+    margin: 10px 10px 20px 10px;
   }
 `;
 
