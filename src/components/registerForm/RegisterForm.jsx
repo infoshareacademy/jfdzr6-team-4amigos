@@ -1,4 +1,5 @@
 import React from "react";
+import { sportsIcon } from "../../utils/sportsLabel";
 import Error from "../error/Error";
 import {
   StyledSportsDiv,
@@ -19,14 +20,12 @@ const RegisterForm = ({
   const sportsLabel = [
     { label: "Jazda na rowerze", value: "bike" },
     { label: "Spacer", value: "walk" },
-    { label: "Taniec", value: "dance" },
     { label: "Jazda na rolkach", value: "rollerSkating" },
     { label: "Bieganie", value: "running" },
     { label: "Siłownia", value: "gym" },
     { label: "Wędkowanie", value: "fishing" },
-    { label: "Badminton", value: "badminton" },
-    { label: "Piłka nożna", value: "football" },
-    { label: "Koszykówka", value: "basketball" },
+    { label: "Tenis", value: "tennis" },
+    { label: "Nordic Walking", value: "nordicWalking" },
   ];
 
   const renderSportsInput = sportsLabel.map((sportEl) => {
@@ -38,7 +37,8 @@ const RegisterForm = ({
           value={sportEl.value}
           onChange={handleChange}
         />
-        <label htmlFor="sports">{sportEl.label}</label>
+        <label htmlFor="sports">sporty</label>
+        blabla
       </StyledSportsDiv>
     );
   });
@@ -78,6 +78,8 @@ const RegisterForm = ({
             onChange={handleChange}
           />
         </div>
+        <h5>Twoje województwo</h5>
+        <div></div>
 
         <h5>Ile masz lat?</h5>
         <div>
@@ -85,6 +87,7 @@ const RegisterForm = ({
           <input
             type="number"
             name="age"
+            min={0}
             value={formData.age}
             placeholder="Podaj swój wiek"
             onChange={handleChange}

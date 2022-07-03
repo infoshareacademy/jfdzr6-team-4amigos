@@ -3,16 +3,16 @@ import styled from "styled-components";
 export const ChatContainer = styled.form`
   flex: 2;
   min-width: 350px;
+  max-width: 650px;
   height: 500px;
   border: ${(props) => (props.fullWidth ? "none" : "2px solid #e8e7e5")};
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  overflow-y: scroll;
 `;
 export const TypingInput = styled.input`
-  width: 94%;
+  width: 100%;
   margin: 0;
   border: none;
   padding: 10px 10px;
@@ -28,11 +28,14 @@ export const TypingInput = styled.input`
 `;
 export const ChatMessagesWrapper = styled.div`
   padding: 10px;
-  height: 100%;
+  height: calc(100% - 115px);
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  overflow-y: scroll;
+  overflow: scroll;
+
+  .growingBox {
+    flex-grow: 1;
+  }
 `;
 
 export const IncommingMessage = styled.div`

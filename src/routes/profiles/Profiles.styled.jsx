@@ -3,21 +3,23 @@ import styled from "styled-components";
 export const Container = styled.div`
   min-height: 100vh;
   margin-top: 100px;
+  margin-bottom: 80px;
   display: flex;
 `;
 
 export const ProfilesContainer = styled.div`
   width: 100%;
   max-width: 1440px;
+  height: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 25px;
+  justify-content: center;
+  gap: 30px;
   margin: 20px auto;
 `;
 
 export const CardContainer = styled.div`
-  width: 240px;
+  width: 260px;
   border-radius: 10px 10px 0 0;
   background-color: #fff;
   border-radius: 10px;
@@ -66,7 +68,7 @@ export const CardPictureWrapper = styled.div`
     border-radius: 10px 10px 0 0;
   }
 
-  span {
+  div {
     width: 100%;
     padding: 10px 20px;
     position: absolute;
@@ -75,10 +77,27 @@ export const CardPictureWrapper = styled.div`
     color: #fff;
     font-size: 22px;
     font-weight: 300;
-    box-shadow: inset 0px -50px 20px -20px #303032cc;
+    box-shadow: inset 0px -50px 30px -20px #303032e7;
+    p {
+      margin: 0;
+      font-size: 14px;
+    }
+    span {
+      display: block;
+    }
   }
 `;
 
 export const CardInfoWrapper = styled.div`
   margin: 10px;
+  height: 110px;
+  ul {
+    width: 90%;
+    overflow: hidden;
+  }
+  p {
+    height: 50px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+  }
 `;

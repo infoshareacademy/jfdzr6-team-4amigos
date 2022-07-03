@@ -1,20 +1,17 @@
 import { signOut } from "@firebase/auth";
 import { auth } from "../../api/firebase";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 import logo from "../../assets/img/logoOrange.png";
+import { useContext } from "react";
+import { AuthContext } from "../../context/Auth";
+import { Avatar } from "../../routes/messages/MessagesStyle";
+import defaultPicture from "../../assets/img/defaultPicture.png";
 
 // styles
-import {
-  StyledNav,
-  StyledUl,
-  StyledRegister,
-  StyledLogin,
-  StyledLogo,
-} from "./NavStyle";
+import { StyledNav, StyledUl, StyledRegister, StyledLogo } from "./NavStyle";
 
-export const Nav = ({ role }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+export const Nav = () => {
+  const { userData, role } = useContext(AuthContext);
 
   return (
     <StyledNav>
@@ -31,19 +28,29 @@ export const Nav = ({ role }) => {
               <StyledRegister to="/register">Zarejestruj się</StyledRegister>
             </li>
             <li>
-              <StyledLogin to="/login">Zaloguj się</StyledLogin>
+              <StyledRegister to="/login">Zaloguj się</StyledRegister>
             </li>
           </>
         ) : (
           <>
-            <StyledRegister to="/events">Wydarzenia</StyledRegister>
-
             <li>
-              <StyledRegister to="/userpanel">Panel użytkownika</StyledRegister>
+              <StyledRegister to="/events">Wydarzenia</StyledRegister>
             </li>
-            <StyledRegister to="/messages">Wiadomości</StyledRegister>
+            <li>
+              <StyledRegister to="/messages">Wiadomości</StyledRegister>
+            </li>
             <li onClick={() => signOut(auth)}>
               <StyledRegister to="/">Wyloguj się</StyledRegister>
+            </li>
+            <li>
+              <Link to="/userpanel">
+                <Avatar>
+                  <img
+                    src={userData.profilePicture || defaultPicture}
+                    alt={userData.name}
+                  />
+                </Avatar>
+              </Link>
             </li>
           </>
         )}

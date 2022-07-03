@@ -6,11 +6,12 @@ export const StyledSection = styled.section`
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 90vh;
+  height: 89vh;
   background-color: #fff;
   padding: 0 20px;
   margin: 0 auto;
-  margin-top: 80px;
+  margin-top: 5rem;
+  margin-bottom: 1rem;
   h1 {
     font-size: 128px;
     font-weight: 400;

@@ -1,16 +1,21 @@
+import { useContext } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { updateUser } from "../../api";
 import UserPanelForm from "../../components/userPanel/UserPanelForm";
+import { AuthContext } from "../../context/Auth";
 
-const UserPanel = ({ uid }) => {
+const UserPanel = () => {
+  const { userData } = useContext(AuthContext);
+  const { name, age, gender, description, city, province } = userData;
   const defaultValue = {
-    name: "",
-    gender: "",
-    age: "",
-    description: "",
-    city: "",
+    name: name,
+    gender: gender,
+    age: age,
+    description: description,
+    city: city,
     sports: [],
+    province: province,
   };
   const [formData, setFormData] = useState(defaultValue);
   const [error, setError] = useState(null);
@@ -42,7 +47,7 @@ const UserPanel = ({ uid }) => {
       return;
     }
 
-    updateUser(formData, uid);
+    updateUser(formData, userData.id);
 
     setFormData(defaultValue);
     navigate("/");

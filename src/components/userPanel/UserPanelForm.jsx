@@ -1,26 +1,55 @@
-import React, { useState } from "react";
+import React from "react";
+import Error from "../error/Error";
 import {
   StyledSportsDiv,
   StyledForm,
   StyledSection,
   StyledSportsDivContainer,
   StyledSubmitButton,
-  StyledGenderDivContainer,
+  ProvinceSelect,
 } from "./UserPanelFormStyle";
+import { sportsIcon } from "../../utils/sportsLabel";
 
-const UserPanelForm = ({ handleChange, formData, error, handleSubmit }) => {
+const UserPanelForm = ({
+  handleChange,
+  formData,
+  errorMessage,
+  handleSubmit,
+}) => {
   const sportsLabel = [
     { label: "Jazda na rowerze", value: "bike" },
     { label: "Spacer", value: "walk" },
-    { label: "Taniec", value: "dance" },
     { label: "Jazda na rolkach", value: "rollerSkating" },
     { label: "Bieganie", value: "running" },
     { label: "Siłownia", value: "gym" },
     { label: "Wędkowanie", value: "fishing" },
-    { label: "Badminton", value: "badminton" },
-    { label: "Piłka nożna", value: "football" },
-    { label: "Koszykówka", value: "basketball" },
+    { label: "Tenis", value: "tennis" },
+    { label: "Nordic Walking", value: "nordicWalking" },
   ];
+
+  const provinces = [
+    "dolnośląskie",
+    "kujawsko-pomorskie",
+    "lubelskie",
+    "lubuskie",
+    "łódzkie",
+    "małopolskie",
+    "mazowieckie",
+    "opolskie",
+    "podkarpackie",
+    "podlaskie",
+    "pomorskie",
+    "śląskie",
+    "świętokrzyskie",
+    "warmińsko-mazurskie",
+    "zachodniopomorskie",
+  ];
+
+  const renderProvinence = provinces.map((province) => (
+    <option key={province} value={province}>
+      {province}
+    </option>
+  ));
 
   const renderSportsInput = sportsLabel.map((sportEl) => {
     return (
@@ -32,6 +61,7 @@ const UserPanelForm = ({ handleChange, formData, error, handleSubmit }) => {
           onChange={handleChange}
         />
         <label htmlFor="sports">{sportEl.label}</label>
+        <div> {sportsIcon[sportEl.value]}</div>
       </StyledSportsDiv>
     );
   });
@@ -47,33 +77,9 @@ const UserPanelForm = ({ handleChange, formData, error, handleSubmit }) => {
             type="text"
             name="name"
             value={formData.name}
-            placeholder="Twoje imię lub pseudonim"
             onChange={handleChange}
           ></input>
         </div>
-        <h5>Jesteś kobietą czy mężczyzną?</h5>
-        <StyledGenderDivContainer>
-          <div>
-            <input
-              type="radio"
-              name="gender"
-              value="woman"
-              checked={formData.gender === "woman"}
-              onChange={handleChange}
-            />
-            <label htmlFor="gender">Kobieta</label>
-          </div>
-          <div>
-            <input
-              type="radio"
-              name="gender"
-              value="man"
-              checked={formData.gender === "man"}
-              onChange={handleChange}
-            />
-            <label htmlFor="gender">Mężczyzna</label>
-          </div>
-        </StyledGenderDivContainer>
         <h5>Ile masz lat?</h5>
         <div>
           <label htmlFor="age"></label>
@@ -81,7 +87,6 @@ const UserPanelForm = ({ handleChange, formData, error, handleSubmit }) => {
             type="number"
             name="age"
             value={formData.age}
-            placeholder="Podaj swój wiek"
             onChange={handleChange}
           />
         </div>
@@ -92,16 +97,25 @@ const UserPanelForm = ({ handleChange, formData, error, handleSubmit }) => {
             type="text"
             name="city"
             value={formData.city}
-            placeholder="Wpisz swoje miasto"
             onChange={handleChange}
           />
+        </div>
+        <div>
+          <h5>Twoje województwo</h5>
+          <label htmlFor="province"></label>
+          <ProvinceSelect
+            value={formData.province}
+            name="province"
+            onChange={handleChange}
+          >
+            {renderProvinence}
+          </ProvinceSelect>
         </div>
         <h5>Napisz coś o sobie:</h5>
         <div>
           <label htmlFor="description"></label>
           <textarea
             name="description"
-            placeholder="..."
             value={formData.description}
             onChange={handleChange}
           />
@@ -110,6 +124,7 @@ const UserPanelForm = ({ handleChange, formData, error, handleSubmit }) => {
         <StyledSportsDivContainer>{renderSportsInput}</StyledSportsDivContainer>
         <StyledSubmitButton type="submit">Zapisz</StyledSubmitButton>
       </StyledForm>
+      {errorMessage && <Error message={errorMessage} />}
     </StyledSection>
   );
 };

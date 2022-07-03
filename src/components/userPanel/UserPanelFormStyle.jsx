@@ -7,7 +7,6 @@ export const StyledSection = styled.section`
   justify-content: center;
   width: 100%;
   height: 100%;
-  background-color: #fff;
   border-radius: 5%;
   padding: 0 20px;
   margin: 0 auto;
@@ -136,7 +135,7 @@ export const StyledSportsDivContainer = styled.div`
   display: flex;
   width: 550px;
   border: 1px solid #ffc524;
-  height: 300px;
+  height: 250px;
   flex-direction: column;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -148,7 +147,6 @@ export const StyledSportsDiv = styled.div`
   width: 250px;
   border-radius: 5px;
   display: flex;
-  justify-content: start;
   align-items: center;
   font-family: "Open Sans";
   font-style: normal;
@@ -156,11 +154,22 @@ export const StyledSportsDiv = styled.div`
   font-size: 16px;
   line-height: 22px;
   color: #c5c7c5;
+  position: relative;
   input[type="checkbox"] {
     width: 20px;
     height: 20px;
     margin: 15px;
     accent-color: #ff8020;
+  }
+  div {
+    position: absolute;
+    right: 10px;
+    height: 30px;
+    width: 30px;
+  }
+  svg {
+    height: 30px;
+    width: 30px;
   }
 `;
 
@@ -215,5 +224,25 @@ export const StyledSubmitButton = styled.button`
   :hover {
     background: #fe6e00;
     border: 1px solid #fe6e00;
+  }
+`;
+
+export const ProvinceSelect = styled.select`
+  width: 250px;
+  height: 50px;
+  background: white;
+  border-radius: 5px;
+  color: black;
+  padding-left: 5px;
+  font-size: 16px;
+  border: none;
+  outline: 3px solid #ffc524;
+
+  :focus-visible {
+    outline: 3px solid #ff8020;
+  }
+  transition: 0.2s;
+  :hover {
+    outline: 3px solid #ff8020;
   }
 `;
