@@ -23,7 +23,7 @@ const EventElement = ({ event }) => {
         return `${members.length} osoba weźmie udział`;
         break;
       case 2:
-        return `${members.length} osoby weźmią udział`;
+        return `${members.length} osoby wezmą udział`;
         break;
       case 3:
         return `${members.length} osób weźmie udział`;

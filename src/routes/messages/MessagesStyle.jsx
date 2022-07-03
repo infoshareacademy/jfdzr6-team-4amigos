@@ -40,6 +40,10 @@ export const ChatContainer = styled.form`
   flex: 2;
   min-width: 350px;
   border-radius: 10px;
+  height: 500px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const AvatarWrapper = styled.div`

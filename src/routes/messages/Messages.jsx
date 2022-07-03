@@ -21,20 +21,24 @@ import { AuthContext } from "../../context/Auth";
 
 const Messages = () => {
   const { userData } = useContext(AuthContext);
-  const [usersWithChat, setUsersWithChat] = useState(null);
+  const [usersWithChat, setUsersWithChat] = useState([]);
   const [chat, setChat] = useState({ messages: [] });
   const [writtingUser, setWrittingUser] = useState({ name: "", id: "" });
   const [inputValue, setInputValue] = useState("");
   const bottomRef = useRef(null);
 
   const getUsersWithChat = async () => {
-    getChattingUsers(Object.keys(userData.chatHistory), (querySnapshot) => {
-      setUsersWithChat(
-        querySnapshot.docs.map((doc) => {
-          return { id: doc.id, ...doc.data() };
-        })
-      );
-    });
+    try {
+      getChattingUsers(Object.keys(userData.chatHistory), (querySnapshot) => {
+        setUsersWithChat(
+          querySnapshot.docs.map((doc) => {
+            return { id: doc.id, ...doc.data() };
+          })
+        );
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {
@@ -44,10 +48,6 @@ const Messages = () => {
   useEffect(() => {
     bottomRef.current?.scrollIntoView();
   }, [chat.messages]);
-
-  if (!usersWithChat) {
-    return <p>ładowanie...</p>;
-  }
 
   const renderUsersWithChats = usersWithChat.map((user) => {
     return (

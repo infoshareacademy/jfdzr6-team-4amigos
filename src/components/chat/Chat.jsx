@@ -1,5 +1,5 @@
 import { Timestamp } from "firebase/firestore";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   ChatContainer,
   ChatMessagesWrapper,
@@ -14,11 +14,16 @@ const Chat = ({ profileData, uid }) => {
   const [chat, setChat] = useState({ messages: [] });
   const [inputValue, setInputValue] = useState("");
   const chatId = profileData.chatHistory[loggedUserId].id;
+  const bottomRef = useRef(null);
   useEffect(() => {
     getChat(chatId, (docSnapshot) => {
       setChat({ id: docSnapshot.id, ...docSnapshot.data() });
     });
   }, [chatId]);
+
+  useEffect(() => {
+    bottomRef.current?.scrollIntoView();
+  }, [chat.messages]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -53,7 +58,11 @@ const Chat = ({ profileData, uid }) => {
 
   return (
     <ChatContainer onSubmit={handleSubmit}>
-      <ChatMessagesWrapper>{renderMessages}</ChatMessagesWrapper>
+      <ChatMessagesWrapper>
+        <div className="growingBox"></div>
+        {renderMessages}
+        <div ref={bottomRef}></div>
+      </ChatMessagesWrapper>
       <TypingInput
         placeholder="Aa..."
         value={inputValue}
